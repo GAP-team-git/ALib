@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Kind</key>
+    <string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
+
+    <key>Identifier</key>
+    <string>com.alib.aobject</string>
+
+    <key>Title</key>
+    <string>AObject Class</string>
+
+    <key>Summary</key>
+    <string>Generates a full AObject header and cpp with I/O, error handling, clone and versioning</string>
+    <key>Options</key>
+    <array>
+        <dict>
+            <key>Identifier</key>
+            <string>ClassName</string>
+            <key>Required</key>
+            <true/>
+            <key>Name</key>
+            <string>Class Name</string>
+            <key>Description</key>
+			<string>New Class Name</string>
+            <key>Type</key>
+            <string>text</string>
+            <key>NotPersisted</key>
+			<true/>
+        </dict>
+    </array>
+
+    <key>Nodes</key>
+    <array>
+        <dict>
+            <key>Group</key>
+            <string>Header Files</string>
+            <key>Path</key>
+            <string>___VARIABLE_ClassName___.h</string>
+        </dict>
+        <dict>
+            <key>Group</key>
+            <string>Source Files</string>
+            <key>Path</key>
+            <string>___VARIABLE_ClassName___.cpp</string>
+        </dict>
+    </array>
+</dict>
+</plist>
