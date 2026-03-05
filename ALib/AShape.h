@@ -10,77 +10,120 @@
 
 #include <vector>
 #include <numeric>
-#include <cstdint>
-#include <iostream>
 #include <stdexcept>
-#include <functional>
-#include "AObject.h"
+#include <algorithm>
+#include <cstddef>
+#include <iostream>
 
 namespace Alib {
 
-class AShape : public AObject {
+class AShape {
 public:
     AShape() = default;
-    explicit AShape(const std::vector<size_t>& dims) : p_dims(dims) { computeStrides(); }
-    
-    // Variadic constructor
-    template<typename... Dims,
-             typename = std::enable_if_t<(std::conjunction_v<std::is_integral<Dims>...>)>>
-    explicit AShape(Dims... dims) : p_dims({static_cast<size_t>(dims)...}) { computeStrides(); }
-
-    const std::vector<size_t>& dims() const noexcept { return p_dims; }
-    const std::vector<size_t>& strides() const noexcept { return p_strides; }
+    explicit AShape(const std::vector<size_t>& dims) : p_dims(dims) { calcStrides(); }
 
     size_t rank() const noexcept { return p_dims.size(); }
-    size_t totalSize() const noexcept {
-        return rank() == 0 ? 0 : std::accumulate(p_dims.begin(), p_dims.end(), size_t(1), std::multiplies<>());
+    const std::vector<size_t>& dims() const noexcept { return p_dims; }
+    const std::vector<size_t>& strides() const noexcept { return p_strides; }
+    void setStrides(std::vector<size_t>& str) noexcept { p_strides=str; }
+
+    void setDims(const std::vector<size_t>& dims) { p_dims = dims; calcStrides(); }
+    size_t totalSize() const noexcept { if(p_dims.empty()) return 0; else return std::accumulate(p_dims.begin(), p_dims.end(), 1ULL, std::multiplies<size_t>()); }
+
+    // -------------------------
+    // Slice helpers
+    // -------------------------
+    AShape sliceShape(const std::vector<size_t>& start,
+                      const std::vector<size_t>& stop,
+                      const std::vector<size_t>& step) const
+    {
+        if(start.size() != rank() || stop.size() != rank() || step.size() != rank())
+            throw std::invalid_argument("sliceShape: size mismatch");
+
+        std::vector<size_t> newDims(rank());
+        for(size_t i=0;i<rank();++i){
+            if(step[i]==0) throw std::invalid_argument("sliceShape: step cannot be 0");
+            if(stop[i] <= start[i]) newDims[i] = 0;
+            else newDims[i] = (stop[i]-start[i] + step[i]-1)/step[i]; // ceil division
+        }
+        return AShape(newDims);
     }
 
-    bool operator==(const AShape& other) const noexcept { return p_dims == other.p_dims; }
-    bool operator!=(const AShape& other) const noexcept { return !(*this == other); }
+    // Calcolo indice lineare nel vettore originale a partire dall’indice i del risultato
+    size_t flatIndexFromSlice(size_t idx, const std::vector<size_t>& start, const std::vector<size_t>& step) const
+    {
+        size_t linear = 0;
+        for(int d=int(rank())-1; d>=0; --d){
+            size_t cur = idx % dims()[d];
+            linear += (start[d] + cur*step[d])*strides()[d];
+            idx /= dims()[d];
+        }
+        return linear;
+    }
+    size_t flatIndex(const std::vector<size_t>& idx) const
+    {
+        if(idx.size() != p_dims.size())
+            throw std::runtime_error("AShape::flatIndex rank mismatch");
 
-    // Clone and hash
-    std::unique_ptr<AObject> clone() const override { return std::make_unique<AShape>(*this); }
-    size_t hash() const override {
-        size_t h = 0;
-        for(auto d : p_dims) h ^= std::hash<size_t>{}(d) + 0x9e3779b9 + (h<<6) + (h>>2);
-        return h;
+        size_t offset = 0;
+
+        for(size_t i=0;i<p_dims.size();++i)
+        {
+            if(idx[i] >= p_dims[i])
+                throw std::out_of_range("AShape::flatIndex index out of bounds");
+
+            offset += idx[i] * p_strides[i];
+        }
+
+        return offset;
     }
 
-    // Stream operators
-    std::ostream& toStream(std::ostream& os) const override {
-        AObject::toStream(os);
-        os << p_dims.size() << " ";
-        for(auto d : p_dims) os << d << " ";
-        return os;
+    // -------------------------
+    // Transpose
+    // -------------------------
+    void transpose(const std::vector<size_t>& axes) {
+        if(axes.size() != rank()) throw std::invalid_argument("transpose: axes size mismatch");
+        std::vector<size_t> newDims(rank());
+        for(size_t i=0;i<rank();++i) newDims[i] = p_dims[axes[i]];
+        p_dims = newDims;
+        calcStrides();
     }
 
-    std::istream& fromStream(std::istream& is) override {
-        AObject::fromStream(is);
-        size_t n;
-        is >> n;
-        p_dims.resize(n);
-        for(size_t i=0;i<n;++i) is >> p_dims[i];
-        computeStrides();
-        return is;
+    // -------------------------
+    // Broadcasting
+    // -------------------------
+    static AShape broadcast(const AShape& a, const AShape& b) {
+        size_t r1 = a.rank(), r2 = b.rank();
+        size_t rmax = std::max(r1,r2);
+        std::vector<size_t> dims(rmax,1);
+        for(size_t i=0;i<rmax;++i) {
+            size_t da = (i<rmax-r1)?1:a.p_dims[i-(rmax-r1)];
+            size_t db = (i<rmax-r2)?1:b.p_dims[i-(rmax-r2)];
+            if(da != db && da!=1 && db!=1)
+                throw std::invalid_argument("broadcast: incompatible shapes");
+            dims[i] = std::max(da,db);
+        }
+        return AShape(dims);
     }
+
+    // -------------------------
+    // Comparison
+    // -------------------------
+    bool operator==(const AShape& other) const { return p_dims==other.p_dims; }
+    bool operator!=(const AShape& other) const { return !(*this==other); }
 
 private:
     std::vector<size_t> p_dims;
     std::vector<size_t> p_strides;
 
-    void computeStrides() {
-        p_strides.resize(p_dims.size());
-        if(p_dims.empty()) return;
-        p_strides.back() = 1;
-        for(int i = int(p_dims.size()) - 2; i >= 0; --i)
-            p_strides[i] = p_strides[i+1] * p_dims[i+1];
+    void calcStrides() {
+        p_strides.resize(rank());
+        if(rank()==0) return;
+        p_strides[rank()-1]=1;
+        for(int i=int(rank())-2;i>=0;--i)
+            p_strides[i] = p_strides[i+1]*p_dims[i+1];
     }
-
-    void m_copy(const AShape& other) { AObject::m_copy(other); p_dims = other.p_dims; p_strides = other.p_strides; }
-    void m_move(AShape&& other) noexcept { AObject::m_move(std::move(other)); p_dims = std::move(other.p_dims); p_strides = std::move(other.p_strides); }
-    bool m_compare(const AShape& other) const noexcept { return p_dims == other.p_dims; }
 };
 
 } // namespace Alib
-#endif // ASHAPE_H
+#endif

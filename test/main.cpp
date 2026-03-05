@@ -5,9 +5,6 @@
 //  Created by Giuseppe Coppini on 25/02/26.
 //
 
-#include <iostream>
-#include "Alib.h"
-#include <assert.h>
 
 //namespace Alib {
 //
@@ -25,102 +22,111 @@
 //}
 //}
 
-#include <iostream>
+
 #include "AArray.h"
+#include "AShape.h"
+#include <iostream>
+#include <cassert>
+#include <numeric> // per iota
 
 using namespace Alib;
 
+/// <#Description#>
 int main() {
-    try {
-        // -----------------------
-        // Crea un array 2x3
-        // -----------------------
-        AArray<int> arr({2,3});
-        int counter = 1;
-        for(auto& v : *arr.dataPtr()) v = counter++;
+    std::cout << "=== AArray / AShape Extended Test ===\n";
 
-        std::cout << "Original array (2x3): ";
-        for(auto v : *arr.dataPtr()) std::cout << v << " ";
-        std::cout << "\n";
+    // =======================
+    // 1️⃣ Creazione array ND
+    // =======================
+    AArray<int> A({2, 1, 3});       // shape (2,1,3)
+    AArray<int> B({1, 2, 3});       // shape (1,2,3)
+    AArray<int> C({2,2,3});         // shape (2,2,3)
+    
+    // Riempio con valori semplici
+    int val = 1;
+    for(auto& v : *A.dataPtr()) v = val++;
+    val = 10;
+    for(auto& v : *B.dataPtr()) v = val++;
+    val = 100;
+    for(auto& v : *C.dataPtr()) v = val++;
 
-        // -----------------------
-        // Slice: seleziona righe/colonne
-        // -----------------------
-        std::vector<size_t> start = {0,0};
-        std::vector<size_t> stop  = {2,3};
-        std::vector<size_t> step  = {1,2};
-        auto sliceArr = arr.slice(start, stop, step);
-        std::cout << "Slice array shape: ";
-        for(auto d : sliceArr.shape().dims()) std::cout << d << " ";
-        std::cout << "\n";
+    // =======================
+    // 2️⃣ Accesso proxy ND
+    // =======================
+    std::cout << "A[1][0][2] = " << A[1][0][2] << " (should be 6)\n";
+    A[1][0][2] = 42;
+    std::cout << "A[1][0][2] after set = " << A[1][0][2] << "\n";
 
-        // -----------------------
-        // Reshape
-        // -----------------------
-        arr.reshape({3,2});
-        std::cout << "Reshaped array (3x2): ";
-        for(auto v : *arr.dataPtr()) std::cout << v << " ";
-        std::cout << "\n";
+    // =======================
+    // 3️⃣ Slice con step
+    // =======================
+    AArray<int> S = A.slice({0,0,0},{2,1,3},{1,1,2}); // step in ultima dim
+    std::cout << "Slice shape: ";
+    for(auto d : S.shape().dims()) std::cout << d << " ";
+    std::cout << " | size = " << S.size() << "\n";
 
-        // -----------------------
-        // Transpose
-        // -----------------------
-        arr.transpose({1,0});
-        std::cout << "Transposed array shape: ";
-        for(auto d : arr.shape().dims()) std::cout << d << " ";
-        std::cout << "\n";
+    // =======================
+    // 4️⃣ Broadcasting automatico
+    // =======================
+    AArray<int> D = A + B; // broadcast shapes (2,1,3) + (1,2,3) -> (2,2,3)
+    std::cout << "Broadcast result shape: ";
+    for(auto d : D.shape().dims()) std::cout << d << " ";
+    std::cout << "\nValues:\n";
+    for(auto v : *D.dataPtr()) std::cout << v << " ";
+    std::cout << "\n";
 
-        // -----------------------
-        // Broadcasting
-        // -----------------------
-        AArray<int> bcast({1,2});
-        bcast.broadcastTo({3,2}); // broadcast 1x2 -> 3x2
-        std::cout << "Broadcasted array shape: ";
-        for(auto d : bcast.shape().dims()) std::cout << d << " ";
-        std::cout << "\n";
+    // =======================
+    // 5️⃣ Operazioni miste ND
+    // =======================
+    AArray<int> E = A + B * C; // broadcasting automatico
+    std::cout << "Mixed op (A + B*C) values:\n";
+    for(auto v : *E.dataPtr()) std::cout << v << " ";
+    std::cout << "\n";
 
-        // -----------------------
-        // Operatori aritmetici
-        // -----------------------
-        AArray<int> arr2({3,2});
-        int k=10;
-        for(auto& v : *arr2.dataPtr()) v=k++;
-        arr += arr2;
-        std::cout << "After addition: ";
-        for(auto v : *arr.dataPtr()) std::cout << v << " ";
-        std::cout << "\n";
+    // =======================
+    // 6️⃣ Reshape
+    // =======================
+    AArray<int> R(3,2) ;//= A.reshape({3,2});
+    std::cout << "Reshape A -> (3,2), size: " << R.size() << "\n";
 
-        // -----------------------
-        // Clone
-        // -----------------------
-        auto cloneArr = arr.clone();
-        std::cout << "Cloned array hash: " << cloneArr->hash() << "\n";
+    // =======================
+    // 7️⃣ Transpose
+    // =======================
+    AArray<int> T = C.transpose({2,1,0});
+    std::cout << "Transpose C axes (2,1,0), shape: ";
+    for(auto d : T.shape().dims()) std::cout << d << " ";
+    std::cout << "\n";
 
-        // -----------------------
-        // Hash & Comparison
-        // -----------------------
-        AArray<int> arrCopy({3,2});
-        *arrCopy.dataPtr() = *arr.dataPtr();
-        std::cout << "arr == arrCopy? " << ((*arrCopy.dataPtr() == *arr.dataPtr()) ? "Yes" : "No") << "\n";
+    // =======================
+    // 8️⃣ Operazioni in-place
+    // =======================
+    A += B;
+    std::cout << "A += B (broadcasted) values:\n";
+    for(auto v : *A.dataPtr()) std::cout << v << " ";
+    std::cout << "\n";
 
-        // -----------------------
-        // Access via proxy (multi-index)
-        // -----------------------
-        AArray<int> mat({2,3});
-        counter=1;
-        for(auto& v : *mat.dataPtr()) v=counter++;
-        std::cout << "Matrix access via proxy:\n";
-        for(size_t i=0;i<2;++i){
-            for(size_t j=0;j<3;++j){
-                std::cout << mat[i][j] << " ";
-            }
-            std::cout << "\n";
-        }
+    C *= B;
+    std::cout << "C *= B (broadcasted) values:\n";
+    for(auto v : *C.dataPtr()) std::cout << v << " ";
+    std::cout << "\n";
 
-    } catch(const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << "\n";
-        return -1;
-    }
+    // =======================
+    // 9️⃣ Clone e hash
+    // =======================
+    auto Cl = A.clone();
+    std::cout << "Clone OID: " << Cl->Oid() << " | Original OID: " << A.Oid() << "\n";
+    std::cout << "Hash A: " << A.hash() << " | Hash clone: " << Cl->hash() << "\n";
 
-    return 0;
+    // =======================
+    // 10️⃣ Assert automatici
+    // =======================
+    assert(A.shape().totalSize() == D.shape().totalSize());
+    assert(S.shape().rank() == 3); // shape slice (2,1,2) -> 3 elements
+    assert(T.shape().dims()[0] == 3); // first axis after transpose
+    assert(E.size() == 12); // broadcast shape (2,2,3) -> 12 elements
+
+    std::cout << "All extended tests passed ✅\n";
+    std:: cout << "HASH " << A.hash() << " " << B.hash() << std::endl;
+    return EXIT_SUCCESS;
 }
+

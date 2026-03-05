@@ -10,189 +10,502 @@
 #include <vector>
 #include <memory>
 #include <iostream>
-#include <stdexcept>
+#include <initializer_list>
 #include <numeric>
 #include <algorithm>
-#include <functional>
+#include <stdexcept>
 #include "AObject.h"
 #include "AShape.h"
 
 namespace Alib {
 
-template<typename T>
-class AArray;
+inline size_t mapIndex(const std::vector<size_t>& idx,
+                       const std::vector<size_t>& shape,
+                       const std::vector<size_t>& strides)
+{
+    size_t offset = 0;
+    size_t dimOffset = shape.size() - idx.size();
+    for(size_t i = 0; i < idx.size(); ++i)
+    {
+        size_t dimSize = shape[i + dimOffset];
+        size_t cur = (dimSize == 1 ? 0 : idx[i]);
+        offset += cur * strides[i + dimOffset];
+    }
+    return offset;
+}
+
+class BroadcastIterator {
+    std::vector<size_t> idx;
+    const std::vector<size_t>& dims;
+    bool done = false;
+
+public:
+    BroadcastIterator(const std::vector<size_t>& dims_)
+        : idx(dims_.size(),0), dims(dims_) {}
+
+    const std::vector<size_t>& index() const { return idx; }
+
+    bool next() {
+        if(done) return false;
+        for(int i = int(idx.size()) - 1; i >= 0; --i) {
+            if(++idx[i] < dims[i]) return true;
+            idx[i] = 0;
+        }
+        done = true;
+        return false;
+    }
+
+    bool hasNext() const { return !done; }
+};
+
+template<typename T> class AArray;
+
 
 template<typename T>
 class AArrayProxy {
-public:
-    AArrayProxy(AArray<T>& array, size_t offset, size_t dim, const std::vector<size_t>& shape, const std::vector<size_t>& strides)
-        : p_array(array), p_offset(offset), p_dim(dim), p_shape(shape), p_strides(strides) {}
-
-    T& operator[](size_t idx);
-    const T& operator[](size_t idx) const;
 
 private:
-    AArray<T>& p_array;
-    size_t p_offset;
-    size_t p_dim;
-    std::vector<size_t> p_shape;
-    std::vector<size_t> p_strides;
+
+    AArray<T>* p_array;
+    std::vector<size_t> p_index;
+
+public:
+    
+    using value_type = T;
+    
+
+    AArrayProxy(AArray<T>* arr, const std::vector<size_t>& idx)
+        : p_array(arr), p_index(idx) {}
+    // Chainable operator[]
+    AArrayProxy<T> operator[](size_t i) {
+        auto next = p_index;
+        next.push_back(i);
+        return AArrayProxy<T>(p_array, std::move(next));
+    }
+
+    // Read conversion
+    operator T() const {
+        return p_array->at(p_index); // implement at(indices) to compute flat index
+    }
+
+    // Assignment from scalar
+    AArrayProxy<T>& operator=(const T& value) {
+        p_array->at(p_index) = value;
+        return *this;
+    }
+    
+
+    // conversione quando l'indice è completo
+    operator T&()
+    {
+        if(p_index.size()!=p_array->shape().rank())
+            throw std::runtime_error("Incomplete index");
+
+        size_t flat = p_array->shape().flatIndex(p_index);
+        return (*p_array->dataPtr())[flat];
+    }
+
+    operator const T&() const
+    {
+        if(p_index.size()!=p_array->shape().rank())
+            throw std::runtime_error("Incomplete index");
+
+        size_t flat = p_array->shape().flatIndex(p_index);
+        return (*p_array->dataPtr())[flat];
+    }
 };
 
 template<typename T>
 class AArray : public AObject {
 public:
+    
+
+    using value_type = T;
     using iterator = T*;
     using const_iterator = const T*;
 
-    AArray() : p_shape(), p_dataPtr(std::make_shared<std::vector<T>>()) {}
-    explicit AArray(const std::vector<size_t>& dims) : p_shape(dims), p_dataPtr(std::make_shared<std::vector<T>>(p_shape.totalSize())) {}
-    explicit AArray(const AShape& shape) : p_shape(shape), p_dataPtr(std::make_shared<std::vector<T>>(p_shape.totalSize())) {}
+    // -------------------------
+    // Constructors
+    // -------------------------
+        AArray() = default;
 
-    // Variadic constructor
-    template<typename... Dims, typename = std::enable_if_t<(std::conjunction_v<std::is_integral<Dims>...>)>>
-    explicit AArray(Dims... dims) : p_shape(std::vector<size_t>{static_cast<size_t>(dims)...}), p_dataPtr(std::make_shared<std::vector<T>>(p_shape.totalSize())) {}
+        explicit AArray(const std::vector<size_t>& dims)
+            : p_shape(dims),
+              p_dataPtr(std::make_shared<std::vector<T>>(p_shape.totalSize())),
+              p_offset(0)
+        {}
 
-    // Copy/Move
-    AArray(const AArray& other) { m_copy(other); }
-    AArray(AArray&& other) noexcept { m_move(std::move(other)); }
-    AArray& operator=(const AArray& other) { if(*this != other) m_copy(other); return *this; }
-    AArray& operator=(AArray&& other) noexcept { if(*this != other) m_move(std::move(other)); return *this; }
+        explicit AArray(const AShape& shape)
+            : p_shape(shape),
+              p_dataPtr(std::make_shared<std::vector<T>>(shape.totalSize())),
+              p_offset(0)
+        {}
 
-    // Clone / hash
-    std::unique_ptr<AObject> clone() const override {
-        auto ptr = std::make_unique<AArray<T>>(*this);
-        ptr->p_dataPtr = std::make_shared<std::vector<T>>(*p_dataPtr);
-        return ptr;
+        template<typename... Dims,
+                 typename = std::enable_if_t<(std::conjunction_v<std::is_integral<Dims>...>)>>
+        explicit AArray(Dims... dims)
+            : p_shape(std::vector<size_t>{static_cast<size_t>(dims)...}),
+              p_dataPtr(std::make_shared<std::vector<T>>(p_shape.totalSize())),
+              p_offset(0)
+        {}
+
+        explicit AArray(std::initializer_list<size_t> dims)
+            : p_shape(std::vector<size_t>(dims)),
+              p_dataPtr(std::make_shared<std::vector<T>>(p_shape.totalSize())),
+              p_offset(0)
+        {}
+    // -------------------------
+    // Copy / Move
+    // -------------------------
+    AArray(const AArray&) = default;
+        AArray(AArray&&) noexcept = default;
+        AArray& operator=(const AArray&) = default;
+        AArray& operator=(AArray&&) noexcept = default;
+    
+    // -------------------------
+        // Clone / Hash
+        // -------------------------
+
+        std::unique_ptr<AObject> clone() const override
+        {
+            return std::make_unique<AArray<T>>(*this);
+        }
+
+        size_t hash() const override
+        {
+            size_t h = 0;
+            for(const auto& v : *p_dataPtr)
+                h ^= std::hash<T>{}(v) + 0x9e3779b9 + (h<<6) + (h>>2);
+            return h;
+        }
+
+
+    // -------------------------
+        // Shape
+        // -------------------------
+
+        const AShape& shape() const noexcept { return p_shape; }
+        size_t size() const noexcept { return p_shape.totalSize(); }
+        size_t rank() const noexcept { return p_shape.rank(); }
+
+
+    // -------------------------
+        // Data access
+        // -------------------------
+
+        std::shared_ptr<std::vector<T>>& dataPtr() noexcept { return p_dataPtr; }
+        const std::shared_ptr<std::vector<T>>& dataPtr() const noexcept { return p_dataPtr; }
+
+        // -------------------------
+        // flat index computation
+        // -------------------------
+
+    private:
+
+        size_t flatIndex(const std::vector<size_t>& idx) const
+        {
+            const auto& strides = p_shape.strides();
+            const auto& dims = p_shape.dims();
+
+            if(idx.size() != dims.size())
+                throw std::runtime_error("AArray::flatIndex rank mismatch");
+
+            size_t flat = p_offset;
+
+            for(size_t i=0;i<idx.size();++i)
+            {
+                if(idx[i] >= dims[i])
+                    throw std::out_of_range("AArray index out of bounds");
+
+                flat += idx[i] * strides[i];
+            }
+
+            return flat;
+        }
+
+    public:
+    
+    
+    
+    // -------------------------
+    // at() ND access
+    // -------------------------
+
+    T& at(const std::vector<size_t>& idx)
+    {
+        return (*p_dataPtr)[flatIndex(idx)];
     }
 
-    size_t hash() const override {
-        size_t h = p_shape.hash();
-        for(auto& v : *p_dataPtr) h ^= std::hash<T>{}(v) + 0x9e3779b9 + (h<<6) + (h>>2);
-        return h;
+    const T& at(const std::vector<size_t>& idx) const
+    {
+        return (*p_dataPtr)[flatIndex(idx)];
     }
 
-    // Shape access
-    const AShape& shape() const noexcept { return p_shape; }
+    // -------------------------
+    // operator()
+    // -------------------------
 
-    // Data access
-    std::shared_ptr<std::vector<T>>& dataPtr() noexcept { return p_dataPtr; }
-    const std::shared_ptr<std::vector<T>>& dataPtr() const noexcept { return p_dataPtr; }
+    template<typename... Idx>
+    T& operator()(Idx... idx)
+    {
+        std::array<size_t,sizeof...(Idx)> v{static_cast<size_t>(idx)...};
+        return at(std::vector<size_t>(v.begin(),v.end()));
+    }
 
-    // Iterator
+    template<typename... Idx>
+    const T& operator()(Idx... idx) const
+    {
+        std::array<size_t,sizeof...(Idx)> v{static_cast<size_t>(idx)...};
+        return at(std::vector<size_t>(v.begin(),v.end()));
+    }
+    // Proxy subscript operator for ND
+    
+
+    AArrayProxy<T> operator[](size_t i)
+    {
+        return AArrayProxy<T>(this,{i});
+    }
+
+    AArrayProxy<T> operator[](size_t i) const
+    {
+        return AArrayProxy<T>(
+            const_cast<AArray<T>*>(this),
+            {i}
+        );
+    }
+
+    // -------------------------
+    // at() access by vector index
+    // -------------------------
+    
+    
+    
+    
+    
+    // -------------------------
+    // Iterators
+    // -------------------------
     iterator begin() noexcept { return p_dataPtr->data(); }
-    iterator end() noexcept { return p_dataPtr->data() + p_dataPtr->size(); }
+    iterator end() noexcept { return p_dataPtr->data()+p_dataPtr->size(); }
     const_iterator begin() const noexcept { return p_dataPtr->data(); }
-    const_iterator end() const noexcept { return p_dataPtr->data() + p_dataPtr->size(); }
+    const_iterator end() const noexcept { return p_dataPtr->data()+p_dataPtr->size(); }
 
-    size_t size() const noexcept { return p_dataPtr->size(); }
+    // -------------------------
+        // reshape
+        // -------------------------
 
-    // -----------------------
-    // Slice/View with step
-    // -----------------------
-    AArray<T> slice(const std::vector<size_t>& start,
-                    const std::vector<size_t>& stop,
-                    const std::vector<size_t>& step = {}) const {
-        if(start.size() != p_shape.rank() || stop.size() != p_shape.rank())
-            throw std::invalid_argument("slice: dimension mismatch");
+        void reshape(const std::vector<size_t>& dims)
+        {
+            size_t newSize =
+                std::accumulate(dims.begin(),dims.end(),1ULL,std::multiplies<size_t>());
 
-        std::vector<size_t> newDims(p_shape.rank());
-        for(size_t i=0;i<p_shape.rank();++i){
-            size_t s = start[i];
-            size_t e = stop[i];
-            size_t st = (step.empty()) ? 1 : step[i];
-            if(e <= s || st==0) throw std::invalid_argument("slice: invalid range");
-            newDims[i] = (e - s + st -1)/st;
+            if(newSize != size())
+                throw std::runtime_error("reshape size mismatch");
+
+            p_shape.setDims(dims);
+        }
+    
+    // -------------------------
+    // transpose (view)
+    // -------------------------
+
+    AArray<T> transpose(const std::vector<size_t>& axes = {}) const
+    {
+        size_t r = p_shape.rank();
+
+        std::vector<size_t> perm;
+
+        if(axes.empty())
+        {
+            perm.resize(r);
+            for(size_t i=0;i<r;i++)
+                perm[i] = r-1-i;
+        }
+        else
+            perm = axes;
+
+        std::vector<size_t> newDims(r);
+        std::vector<size_t> newStrides(r);
+
+        for(size_t i=0;i<r;i++)
+        {
+            newDims[i] = p_shape.dims()[perm[i]];
+            newStrides[i] = p_shape.strides()[perm[i]];
         }
 
-        AArray<T> result(newDims);
-        // TODO: copy data respecting stride - simplified here
-        return result;
-    }
+        AShape tshape(newDims);
+        tshape.setStrides(newStrides);
 
-    // -----------------------
-    // Reshape
-    // -----------------------
-    void reshape(const std::vector<size_t>& dims) {
-        size_t newSize = std::accumulate(dims.begin(), dims.end(), size_t(1), std::multiplies<>());
-        if(newSize != size()) throw std::invalid_argument("reshape: size mismatch");
-        p_shape = AShape(dims);
-    }
+        AArray<T> view;
+        view.p_shape = tshape;
+        view.p_dataPtr = p_dataPtr;
+        view.p_offset = p_offset;
 
-    // -----------------------
-    // Transpose
-    // -----------------------
-    void transpose(const std::vector<size_t>& axes) {
-        if(axes.size() != p_shape.rank()) throw std::invalid_argument("transpose: axes mismatch");
-        std::vector<size_t> newDims(axes.size());
-        for(size_t i=0;i<axes.size();++i) newDims[i] = p_shape.dims()[axes[i]];
-        p_shape = AShape(newDims);
+        return view;
     }
+    
+    // -------------------------
+      // slice (view)
+      // -------------------------
 
-    // -----------------------
-    // Broadcasting
-    // -----------------------
-    void broadcastTo(const std::vector<size_t>& targetDims) {
-        if(targetDims.size() < p_shape.rank()) throw std::invalid_argument("broadcastTo: rank mismatch");
-        for(size_t i=0;i<p_shape.rank();++i) {
-            if(p_shape.dims()[i]!=1 && p_shape.dims()[i]!=targetDims[i])
-                throw std::invalid_argument("broadcastTo: dimension incompatible");
-        }
-        p_shape = AShape(targetDims);
-    }
+      AArray<T> slice(const std::vector<size_t>& start,
+                      const std::vector<size_t>& stop,
+                      const std::vector<size_t>& step = {}) const
+      {
+          std::vector<size_t> sstep =
+              step.empty()? std::vector<size_t>(rank(),1):step;
 
-    // -----------------------
-    // Arithmetic operators (broadcast-aware)
-    // -----------------------
-    AArray<T>& operator+=(const AArray<T>& rhs) {
-        if(rhs.size()!=size()) throw std::invalid_argument("operator+=: size mismatch");
-        for(size_t i=0;i<size();++i) (*p_dataPtr)[i] += (*rhs.p_dataPtr)[i];
+          AShape newShape = p_shape.sliceShape(start,stop,sstep);
+
+          std::vector<size_t> newStrides = p_shape.strides();
+
+          size_t newOffset = p_offset;
+
+          for(size_t i=0;i<rank();++i)
+          {
+              newOffset += start[i]*newStrides[i];
+              newStrides[i] *= sstep[i];
+          }
+
+          newShape.setStrides(newStrides);
+
+          AArray<T> view;
+          view.p_shape = newShape;
+          view.p_dataPtr = p_dataPtr;
+          view.p_offset = newOffset;
+
+          return view;
+      }
+    
+    // -------------------------
+     // broadcasting
+     // -------------------------
+
+     static AArray<T> broadcastBinaryOp(
+         const AArray<T>& A,
+         const AArray<T>& B,
+         auto op)
+     {
+         AShape resultShape = AShape::broadcast(A.shape(),B.shape());
+         AArray<T> result(resultShape);
+
+         const auto& rDims = resultShape.dims();
+
+         std::vector<size_t> idx(rDims.size(),0);
+
+         for(size_t i=0;i<result.size();++i)
+         {
+             size_t ai=0, bi=0;
+
+             for(size_t d=0; d<rDims.size(); ++d)
+             {
+                 size_t aDim = (d>=rDims.size()-A.rank()) ?
+                     A.shape().dims()[d-(rDims.size()-A.rank())] : 1;
+
+                 size_t bDim = (d>=rDims.size()-B.rank()) ?
+                     B.shape().dims()[d-(rDims.size()-B.rank())] : 1;
+
+                 if(aDim!=1)
+                     ai += idx[d]*A.shape().strides()[d-(rDims.size()-A.rank())];
+
+                 if(bDim!=1)
+                     bi += idx[d]*B.shape().strides()[d-(rDims.size()-B.rank())];
+             }
+
+             (*result.p_dataPtr)[i] =
+                 op((*A.p_dataPtr)[A.p_offset+ai],
+                    (*B.p_dataPtr)[B.p_offset+bi]);
+
+             for(int d=int(rDims.size())-1; d>=0; --d)
+             {
+                 if(++idx[d] < rDims[d]) break;
+                 idx[d]=0;
+             }
+         }
+
+         return result;
+     }
+
+  
+
+    
+
+    
+    // -------------------------
+    // Broadcasting helper
+    // -------------------------
+    static AShape broadcastShape(const AShape& a, const AShape& b) { return AShape::broadcast(a,b); }
+
+    // -------------------------
+    // Arithmetic operators (with broadcasting)
+    // -------------------------
+   
+    AArray<T>& operator+=(const AArray<T>& other)
+    {
+        checkShape(other);
+        for(size_t i=0;i<size();++i)
+            m_data[i] += other.m_data[i];
         return *this;
     }
-    AArray<T>& operator-=(const AArray<T>& rhs) {
-        if(rhs.size()!=size()) throw std::invalid_argument("operator-=: size mismatch");
-        for(size_t i=0;i<size();++i) (*p_dataPtr)[i] -= (*rhs.p_dataPtr)[i];
+
+    AArray<T>& operator-=(const AArray<T>& other)
+    {
+        checkShape(other);
+        for(size_t i=0;i<size();++i)
+            m_data[i] -= other.m_data[i];
         return *this;
     }
-    AArray<T>& operator*=(const T& val) {
-        for(auto& v : *p_dataPtr) v *= val; return *this;
-    }
-    AArray<T>& operator/=(const T& val) {
-        for(auto& v : *p_dataPtr) v /= val; return *this;
+
+    AArray<T>& operator*=(const AArray<T>& other)
+    {
+        checkShape(other);
+        for(size_t i=0;i<size();++i)
+            m_data[i] *= other.m_data[i];
+        return *this;
     }
 
+    AArray<T>& operator/=(const AArray<T>& other)
+    {
+        checkShape(other);
+        for(size_t i=0;i<size();++i)
+            m_data[i] /= other.m_data[i];
+        return *this;
+    }
+    friend AArray<T> operator+(const AArray<T>& lhs, const AArray<T>& rhs) {
+        return broadcastBinaryOp(lhs, rhs, [](T x, T y){ return x + y; });
+    }
+
+    friend AArray<T> operator-(const AArray<T>& lhs, const AArray<T>& rhs) {
+        return broadcastBinaryOp(lhs, rhs, [](T x, T y){ return x - y; });
+    }
+
+    friend AArray<T> operator*(const AArray<T>& lhs, const AArray<T>& rhs) {
+        return broadcastBinaryOp(lhs, rhs, [](T x, T y){ return x * y; });
+    }
+
+    friend AArray<T> operator/(const AArray<T>& lhs, const AArray<T>& rhs) {
+        return broadcastBinaryOp(lhs, rhs, [](T x, T y){ return x / y; });
+    }
+    
 protected:
     AShape p_shape;
     std::shared_ptr<std::vector<T>> p_dataPtr;
+    size_t p_offset = 0;
 
-    void m_copy(const AArray& other) { AObject::m_copy(other); p_shape = other.p_shape; p_dataPtr = std::make_shared<std::vector<T>>(*other.p_dataPtr); }
-    void m_move(AArray&& other) noexcept { AObject::m_move(std::move(other)); p_shape = std::move(other.p_shape); p_dataPtr = std::move(other.p_dataPtr); }
-    bool m_compare(const AArray& other) const noexcept { return p_shape == other.p_shape && *p_dataPtr == *other.p_dataPtr; }
+    void m_copy(const AArray& other) {
+        AObject::m_copy(other);
+        p_shape=other.p_shape;
+        p_dataPtr=std::make_shared<std::vector<T>>(*other.p_dataPtr);
+    }
+
+    void m_move(AArray&& other) {
+        AObject::m_move(std::move(other));
+        p_shape=std::move(other.p_shape);
+        p_dataPtr=std::move(other.p_dataPtr);
+    }
 };
 
-// -----------------------
-// Proxy Implementation
-// -----------------------
-template<typename T>
-T& AArrayProxy<T>::operator[](size_t idx) {
-    if(p_dim == p_shape.size()-1) {
-        return p_array.dataPtr()->at(p_offset + idx*p_strides[p_dim]);
-    } else {
-        size_t newOffset = p_offset + idx*p_strides[p_dim];
-        return AArrayProxy<T>(p_array, newOffset, p_dim+1, p_shape, p_strides)[0];
-    }
-}
-
-template<typename T>
-const T& AArrayProxy<T>::operator[](size_t idx) const {
-    if(p_dim == p_shape.size()-1) {
-        return p_array.dataPtr()->at(p_offset + idx*p_strides[p_dim]);
-    } else {
-        size_t newOffset = p_offset + idx*p_strides[p_dim];
-        return AArrayProxy<T>(const_cast<AArray<T>&>(p_array), newOffset, p_dim+1, p_shape, p_strides)[0];
-    }
-}
-
 } // namespace Alib
+#endif
 
-#endif // AARRAY_H
+
