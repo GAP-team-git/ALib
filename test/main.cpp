@@ -4,129 +4,80 @@
 //
 //  Created by Giuseppe Coppini on 25/02/26.
 //
-
-
-//namespace Alib {
-//
-//void test_broadcast() {
-//    AArray<float> a(4,1,2);
-//    AArray<float> b(1,3,2);
-//    
-//   // auto c = a + b;
-//    
-//    for(auto &a: c.shape().dims())
-//    std::cout << a<< " ";
-//    std::cout << std::endl;
-//    
-//    assert(c.shape() == AShape(4,3, 2) );
-//}
-//}
-
-
-#include "AArray.h"
-#include "AShape.h"
 #include <iostream>
-#include <cassert>
-#include <numeric> // per iota
+#include <vector>
+#include <iomanip>
+#include "AArray.h"
 
 using namespace Alib;
 
-/// <#Description#>
-int main() {
-    std::cout << "=== AArray / AShape Extended Test ===\n";
+// Funzione ricorsiva per stampare ND array con indentazione
+template<typename T>
+void printND(const AArray<T>& arr, size_t dim=0, std::vector<size_t> idx={}) {
+    if(idx.empty()) idx.resize(arr.shape().rank(), 0);
 
-    // =======================
-    // 1️⃣ Creazione array ND
-    // =======================
-    AArray<int> A({2, 1, 3});       // shape (2,1,3)
-    AArray<int> B({1, 2, 3});       // shape (1,2,3)
-    AArray<int> C({2,2,3});         // shape (2,2,3)
-    
-    // Riempio con valori semplici
-    int val = 1;
-    for(auto& v : *A.dataPtr()) v = val++;
-    val = 10;
-    for(auto& v : *B.dataPtr()) v = val++;
-    val = 100;
-    for(auto& v : *C.dataPtr()) v = val++;
+    if(dim == arr.shape().rank()) {
+        // indice completo, stampo il valore
+        std::cout << arr.at(idx) << " ";
+        return;
+    }
 
-    // =======================
-    // 2️⃣ Accesso proxy ND
-    // =======================
-    std::cout << "A[1][0][2] = " << A[1][0][2] << " (should be 6)\n";
-    A[1][0][2] = 42;
-    std::cout << "A[1][0][2] after set = " << A[1][0][2] << "\n";
-
-    // =======================
-    // 3️⃣ Slice con step
-    // =======================
-    AArray<int> S = A.slice({0,0,0},{2,1,3},{1,1,2}); // step in ultima dim
-    std::cout << "Slice shape: ";
-    for(auto d : S.shape().dims()) std::cout << d << " ";
-    std::cout << " | size = " << S.size() << "\n";
-
-    // =======================
-    // 4️⃣ Broadcasting automatico
-    // =======================
-    AArray<int> D = A + B; // broadcast shapes (2,1,3) + (1,2,3) -> (2,2,3)
-    std::cout << "Broadcast result shape: ";
-    for(auto d : D.shape().dims()) std::cout << d << " ";
-    std::cout << "\nValues:\n";
-    for(auto v : *D.dataPtr()) std::cout << v << " ";
-    std::cout << "\n";
-
-    // =======================
-    // 5️⃣ Operazioni miste ND
-    // =======================
-    AArray<int> E = A + B * C; // broadcasting automatico
-    std::cout << "Mixed op (A + B*C) values:\n";
-    for(auto v : *E.dataPtr()) std::cout << v << " ";
-    std::cout << "\n";
-
-    // =======================
-    // 6️⃣ Reshape
-    // =======================
-    AArray<int> R(3,2) ;//= A.reshape({3,2});
-    std::cout << "Reshape A -> (3,2), size: " << R.size() << "\n";
-
-    // =======================
-    // 7️⃣ Transpose
-    // =======================
-    AArray<int> T = C.transpose({2,1,0});
-    std::cout << "Transpose C axes (2,1,0), shape: ";
-    for(auto d : T.shape().dims()) std::cout << d << " ";
-    std::cout << "\n";
-
-    // =======================
-    // 8️⃣ Operazioni in-place
-    // =======================
-    A += B;
-    std::cout << "A += B (broadcasted) values:\n";
-    for(auto v : *A.dataPtr()) std::cout << v << " ";
-    std::cout << "\n";
-
-    C *= B;
-    std::cout << "C *= B (broadcasted) values:\n";
-    for(auto v : *C.dataPtr()) std::cout << v << " ";
-    std::cout << "\n";
-
-    // =======================
-    // 9️⃣ Clone e hash
-    // =======================
-    auto Cl = A.clone();
-    std::cout << "Clone OID: " << Cl->Oid() << " | Original OID: " << A.Oid() << "\n";
-    std::cout << "Hash A: " << A.hash() << " | Hash clone: " << Cl->hash() << "\n";
-
-    // =======================
-    // 10️⃣ Assert automatici
-    // =======================
-    assert(A.shape().totalSize() == D.shape().totalSize());
-    assert(S.shape().rank() == 3); // shape slice (2,1,2) -> 3 elements
-    assert(T.shape().dims()[0] == 3); // first axis after transpose
-    assert(E.size() == 12); // broadcast shape (2,2,3) -> 12 elements
-
-    std::cout << "All extended tests passed ✅\n";
-    std:: cout << "HASH " << A.hash() << " " << B.hash() << std::endl;
-    return EXIT_SUCCESS;
+    for(size_t i = 0; i < arr.shape().dims()[dim]; ++i) {
+        idx[dim] = i;
+        printND(arr, dim+1, idx);
+        if(dim == arr.shape().rank()-1) std::cout << "\n";
+    }
 }
 
+
+
+// Funzione helper per separatore fra test
+void printSeparator(const std::string& msg) {
+    std::cout << "\n================ " << msg << " ================\n";
+}
+
+int main() {
+    // Creazione array 3x2x2
+    AArray<int> A({3,2,2});
+    int val = 1;
+    for(size_t i=0;i<A.size();++i) (*A.dataPtr())[i] = val++;
+
+    printSeparator("Original A");
+    printND(A);
+
+    // Slice [1:3,0:2,0:2]
+    AArray<int> slice = A.slice({1,0,0},{3,2,2});
+    printSeparator("Slice A[1:3,0:2,0:2]");
+    printND(slice);
+
+    // Reshape 2x3x2
+    AArray<int> B = A;
+    B.reshape({2,3,2});
+    printSeparator("Reshaped B (2x3x2)");
+    printND(B);
+
+    // Transpose (reverse axes)
+    AArray<int> C = A.transpose();
+    printSeparator("Transposed C (axes reversed)");
+    printND(C);
+
+    // Broadcasting inplace
+    AArray<int> X({2,3});
+    AArray<int> Y({1,3});
+    for(size_t i=0;i<X.size();++i) (*X.dataPtr())[i] = int(i+1);
+    for(size_t i=0;i<Y.size();++i) (*Y.dataPtr())[i] = int(10*(i+1));
+
+    printSeparator("X before iadd(Y)");
+    printND(X);
+
+    X += Y;
+    printSeparator("X after iadd(Y) (broadcasted)");
+    printND(X);
+
+    // Binary operator broadcasting
+    AArray<int> Z = X + Y;
+    printSeparator("Z = X + Y");
+    printND(Z);
+
+    return 0;
+}
