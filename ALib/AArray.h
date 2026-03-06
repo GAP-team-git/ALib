@@ -26,7 +26,8 @@ class AArrayProxy {
 private:
     AArray<T>* p_array;
     std::vector<size_t> p_index;
-
+    
+    
 public:
     AArrayProxy(AArray<T>* arr, const std::vector<size_t>& idx)
         : p_array(arr), p_index(idx) {}
@@ -97,16 +98,38 @@ public:
     AArrayProxy<T> operator[](size_t i) { return AArrayProxy<T>(this,{i}); }
     const AArrayProxy<T> operator[](size_t i) const { return AArrayProxy<T>(const_cast<AArray<T>*>(this),{i}); }
 
-    T& at(const std::vector<size_t>& idx) {
-        if(p_customAt) return p_customAt(idx);
-        if(idx.size()!=p_shape.rank()) throw std::invalid_argument("at: rank mismatch");
-        return p_dataPtr->at(p_shape.flatIndex(idx));
-    }
-    const T& at(const std::vector<size_t>& idx) const {
-        if(idx.size()!=p_shape.rank()) throw std::invalid_argument("at: rank mismatch");
-        return p_dataPtr->at(p_shape.flatIndex(idx));
+    T& at(const std::vector<size_t>& idx)
+    {
+        if(p_customAt)
+            return p_customAt(idx);
+
+        if(idx.size()!=p_shape.rank())
+            throw std::invalid_argument("at: rank mismatch");
+
+        size_t flat = p_offset;
+
+        const auto& strides = p_shape.strides();
+
+        for(size_t i=0;i<idx.size();++i)
+            flat += idx[i]*strides[i];
+
+        return (*p_dataPtr)[flat];
     }
 
+    const T& at(const std::vector<size_t>& idx) const
+    {
+        if(idx.size()!=p_shape.rank())
+            throw std::invalid_argument("at: rank mismatch");
+
+        size_t flat = p_offset;
+
+        const auto& strides = p_shape.strides();
+
+        for(size_t i=0;i<idx.size();++i)
+            flat += idx[i]*strides[i];
+
+        return (*p_dataPtr)[flat];
+    }
     
 
     
@@ -158,45 +181,44 @@ public:
     // Slice (view)
     // -------------------
 
-    AArray<T> slice(const std::vector<size_t>& start,
-                    const std::vector<size_t>& stop,
-                    const std::vector<size_t>& step={}) const {
-
+    AArray<T> slice(
+        const std::vector<size_t>& start,
+        const std::vector<size_t>& stop,
+        const std::vector<size_t>& step = {}) const
+    {
         size_t rank = p_shape.rank();
-        if(start.size() != rank || stop.size() != rank)
-            throw std::invalid_argument("slice: start/stop rank mismatch");
 
-        std::vector<size_t> sstep = step.empty() ? std::vector<size_t>(rank,1) : step;
+        if(start.size()!=rank || stop.size()!=rank)
+            throw std::invalid_argument("slice rank mismatch");
 
-        // nuova shape
+        std::vector<size_t> sstep =
+            step.empty() ? std::vector<size_t>(rank,1) : step;
+
         std::vector<size_t> newDims(rank);
-        for(size_t d=0; d<rank; ++d){
-            if(sstep[d]==0) throw std::invalid_argument("slice: step=0");
-            newDims[d] = (stop[d]<=start[d]) ? 0 : (stop[d]-start[d]+sstep[d]-1)/sstep[d];
+        std::vector<size_t> newStrides(rank);
+
+        for(size_t d=0; d<rank; ++d)
+        {
+            newDims[d] =
+                (stop[d]<=start[d]) ?
+                0 :
+                (stop[d]-start[d]+sstep[d]-1)/sstep[d];
+
+            newStrides[d] =
+                p_shape.strides()[d] * sstep[d];
         }
 
-        AArray<T> result(newDims);
+        AArray<T> view;
 
-        // ND index temporaneo
-        std::vector<size_t> idxND(rank,0);
-        const auto& origStrides = p_shape.strides();
-        auto& resData = *result.dataPtr();
-        const auto& srcData = *p_dataPtr;
-        size_t total = result.size();
+        view.p_shape.setDims(newDims);
+        view.p_shape.setStrides(newStrides);
 
-        for(size_t i=0;i<total;++i){
-            size_t tmp = i;
-            size_t srcFlat = 0;
-            for(int d=int(rank)-1; d>=0; --d){
-                idxND[d] = tmp % newDims[d];
-                tmp /= newDims[d];
-                // moltiplico per step * stride originale
-                srcFlat += (start[d] + idxND[d]*sstep[d]) * origStrides[d];
-            }
-            resData[i] = srcData[srcFlat];
-        }
+        view.p_dataPtr = p_dataPtr;
 
-        return result;
+        view.p_offset =
+            p_offset + p_shape.flatIndex(start);
+
+        return view;
     }
 
     // -------------------
@@ -211,20 +233,44 @@ public:
     // -------------------
     // Transpose (view)
     // -------------------
-    AArray<T> transpose(const std::vector<size_t>& axes={}) const {
-        AShape tshape = p_shape;
-        if(axes.empty()){
-            std::vector<size_t> perm(p_shape.rank());
-            for(size_t i=0;i<p_shape.rank();++i) perm[i]=p_shape.rank()-1-i;
-            tshape.transpose(perm);
-        } else tshape.transpose(axes);
+    AArray<T> transpose(const std::vector<size_t>& axes = {}) const
+    {
+        size_t rank = p_shape.rank();
 
-        AArray<T> result;
-        result.p_shape = tshape;
-        result.p_dataPtr = p_dataPtr; // shared view
-        return result;
+        std::vector<size_t> perm;
+
+        if(axes.empty())
+        {
+            perm.resize(rank);
+            for(size_t i=0;i<rank;i++)
+                perm[i] = rank-1-i;
+        }
+        else
+            perm = axes;
+
+        std::vector<size_t> newDims(rank);
+        std::vector<size_t> newStrides(rank);
+
+        for(size_t i=0;i<rank;i++)
+        {
+            newDims[i] =
+                p_shape.dims()[perm[i]];
+
+            newStrides[i] =
+                p_shape.strides()[perm[i]];
+        }
+
+        AArray<T> view;
+
+        view.p_shape.setDims(newDims);
+        view.p_shape.setStrides(newStrides);
+
+        view.p_dataPtr = p_dataPtr;
+
+        view.p_offset = p_offset;
+
+        return view;
     }
-
     // -------------------
     // Arithmetic in-place
     // -------------------
@@ -251,10 +297,81 @@ public:
     const std::shared_ptr<std::vector<T>>& dataPtr() const noexcept { return p_dataPtr; }
     size_t size() const noexcept { return p_dataPtr->size(); }
 
+    
+    void debugPrint(const std::string& name="AArray") const {
+        std::cout << "=== Debug " << name << " ===\n";
+        std::cout << "Shape: ";
+        for(auto d : p_shape.dims()) std::cout << d << " ";
+        std::cout << "\nStrides: ";
+        for(auto s : p_shape.strides()) std::cout << s << " ";
+        std::cout << "\nOffset: " << p_offset << "\n";
+        std::cout << "Total elements: " << size() << "\n";
+
+        if(size()>0) {
+            std::cout << "First element: " << at(std::vector<size_t>(p_shape.rank(),0)) << "\n";
+
+            std::vector<size_t> lastIdx;
+            for(auto d: p_shape.dims()) lastIdx.push_back(d>0?d-1:0);
+
+            std::cout << "Last element: " << at(lastIdx) << "\n";
+        }
+
+        std::cout << "====================\n";
+    }
+    
+    void debugPrintND(const std::string& name="AArray", size_t maxElems=20) const {
+        std::cout << "=== Debug ND " << name << " ===\n";
+        std::cout << "Shape: ";
+        for(auto d : p_shape.dims()) std::cout << d << " ";
+        std::cout << "\nStrides: ";
+        for(auto s : p_shape.strides()) std::cout << s << " ";
+        std::cout << "\nTotal elements: " << size() << "\n";
+
+        if(size()==0){
+            std::cout << "(empty array)\n====================\n";
+            return;
+        }
+
+        // ND traversal
+        std::vector<size_t> idxND(p_shape.rank(),0);
+        size_t count=0;
+
+        auto printValue = [&](size_t flatIdx){
+            std::cout << at(idxND);
+            ++count;
+            if(count >= maxElems){
+                std::cout << " ...";
+                return true;
+            }
+            return false;
+        };
+
+        bool done=false;
+        while(!done){
+            done = printValue(p_shape.flatIndex(idxND));
+            // increment ND indices
+            for(int d=int(p_shape.rank())-1; d>=0; --d){
+                idxND[d]++;
+                if(idxND[d] < p_shape.dims()[d]){
+                    break;
+                } else {
+                    if(d==0){ done=true; break; }
+                    idxND[d]=0;
+                }
+            }
+            if(done) break;
+            std::cout << ", ";
+        }
+
+        std::cout << "\n====================\n";
+    }
 protected:
     AShape p_shape;
     std::shared_ptr<std::vector<T>> p_dataPtr;
-
+    
+    size_t p_offset = 0;
+    
+  
     // Custom at() for slice views
     mutable std::function<T&(const std::vector<size_t>&)> p_customAt;
     mutable AShape p_customAtShape;

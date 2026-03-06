@@ -64,44 +64,61 @@ void printNDColored(const AArray<T>& arr, size_t dim=0, std::vector<size_t> idx=
     std::cout << std::string(indent,' ') << "]";
 }
 
+template<typename T>
+void fillSequential(AArray<T>& arr) {
+    T val = 1;
+    for(auto& x : *arr.dataPtr()) x = val++;
+}
+
 int main() {
-    AArray<int> A({2,3,4}); // 2x3x4
-    int val=1;
-    for(size_t i=0;i<2;++i)
-        for(size_t j=0;j<3;++j)
-            for(size_t k=0;k<4;++k)
-                A[i][j][k] = val++;
+//    AArray<int> A({2,3,4}); // 2x3x4
+//    int val=1;
+//    for(size_t i=0;i<2;++i)
+//        for(size_t j=0;j<3;++j)
+//            for(size_t k=0;k<4;++k)
+//                A[i][j][k] = val++;
+//
+//    std::cout << "Array A (2x3x4):\n";
+//    printNDColored(A);
+//    std::cout << "\n\n";
+//
+//    // Slice e reshape
+//    auto S = A.slice({0,0,0},{2,2,4});
+//    S.reshape({4,2,2});
+//    std::cout << "Slice S reshaped (4x2x2):\n";
+//    printNDColored(S);
+//    std::cout << "\n\n";
+//
+//    // Transpose
+//    auto T = S.transpose({2,1,0});
+//    std::cout << "Transposed T (2x2x4):\n";
+//    printNDColored(T);
+//    std::cout << "\n\n";
+//
+//    // Broadcasting arithmetic
+//    AArray<int> B({1,3,4});
+//    B[0][0][0] = 100; B[0][1][1] = 200; B[0][2][2] = 300;
+//    auto C = A + B;
+//    std::cout << "Broadcasted sum C (A+B):\n";
+//    printNDColored(C);
+//    std::cout << "\n\n";
+//
+//    // In-place arithmetic
+//    C += B;
+//    std::cout << "C after in-place C += B:\n";
+//    printNDColored(C);
+//    std::cout << "\n\n";
 
-    std::cout << "Array A (2x3x4):\n";
-    printNDColored(A);
-    std::cout << "\n\n";
+    
+    AArray<int> A({3,4,5});
+    fillSequential(A);
 
-    // Slice e reshape
-    auto S = A.slice({0,0,0},{2,2,4});
-    S.reshape({4,2,2});
-    std::cout << "Slice S reshaped (4x2x2):\n";
-    printNDColored(S);
-    std::cout << "\n\n";
+    auto S = A.slice({0,0,0},{3,4,5},{1,2,1});
+    auto T = S.transpose({2,0,1});
 
-    // Transpose
-    auto T = S.transpose({2,1,0});
-    std::cout << "Transposed T (2x2x4):\n";
-    printNDColored(T);
-    std::cout << "\n\n";
-
-    // Broadcasting arithmetic
-    AArray<int> B({1,3,4});
-    B[0][0][0] = 100; B[0][1][1] = 200; B[0][2][2] = 300;
-    auto C = A + B;
-    std::cout << "Broadcasted sum C (A+B):\n";
-    printNDColored(C);
-    std::cout << "\n\n";
-
-    // In-place arithmetic
-    C += B;
-    std::cout << "C after in-place C += B:\n";
-    printNDColored(C);
-    std::cout << "\n\n";
-
+    A.debugPrint("Original A");
+    S.debugPrint("Slice S");
+    T.debugPrint("Transpose T");
+    
     return 0;
 }
