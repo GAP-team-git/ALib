@@ -65,7 +65,6 @@ public:
     explicit AArray(Dims... dims)
         : p_shape(std::vector<size_t>{static_cast<size_t>(dims)...}),
           p_dataPtr(std::make_shared<std::vector<T>>(p_shape.totalSize())) {}
-
     explicit AArray(const std::initializer_list<size_t>& dims)
         : p_shape(dims), p_dataPtr(std::make_shared<std::vector<T>>(p_shape.totalSize())) {}
 
@@ -99,6 +98,7 @@ public:
     const AArrayProxy<T> operator[](size_t i) const { return AArrayProxy<T>(const_cast<AArray<T>*>(this),{i}); }
 
     T& at(const std::vector<size_t>& idx) {
+        if(p_customAt) return p_customAt(idx);
         if(idx.size()!=p_shape.rank()) throw std::invalid_argument("at: rank mismatch");
         return p_dataPtr->at(p_shape.flatIndex(idx));
     }
@@ -117,21 +117,37 @@ public:
     }
 
     // -------------------
-    // Slice
+    // Slice (view)
     // -------------------
     AArray<T> slice(const std::vector<size_t>& start,
                     const std::vector<size_t>& stop,
                     const std::vector<size_t>& step={}) const {
-        std::vector<size_t> sstep = step.empty()? std::vector<size_t>(p_shape.rank(),1):step;
-        AShape newShape = p_shape.sliceShape(start,stop,sstep);
-        AArray<T> result(newShape);
-        for(size_t i=0;i<result.size();++i){
-            size_t srcIdx=p_shape.flatIndexFromSlice(i,start,sstep);
-            (*result.p_dataPtr)[i]=(*p_dataPtr)[srcIdx];
-        }
+
+        std::vector<size_t> sstep = step.empty() ? std::vector<size_t>(p_shape.rank(), 1) : step;
+        AShape newShape = p_shape.sliceShape(start, stop, sstep);
+
+        AArray<T> result;
+        result.p_shape = newShape;
+        result.p_dataPtr = p_dataPtr; // shared view
+
+        size_t offset = 0;
+        const auto& strides = p_shape.strides();
+        for(size_t d=0; d<p_shape.rank(); ++d)
+            offset += start[d] * strides[d];
+
+        // Lambda view: catturiamo tutte le info necessarie
+        result.p_customAt = [this, offset, sstep, newShape](const std::vector<size_t>& idx) -> T& {
+            if(idx.size() != newShape.rank()) throw std::invalid_argument("slice view: rank mismatch");
+            size_t flat = offset;
+            const auto& strides = p_shape.strides();
+            for(size_t d=0; d<idx.size(); ++d)
+                flat += idx[d] * sstep[d] * strides[d];
+            return (*p_dataPtr)[flat];
+        };
+
         return result;
     }
-
+    
     // -------------------
     // Reshape
     // -------------------
@@ -142,7 +158,7 @@ public:
     }
 
     // -------------------
-    // Transpose
+    // Transpose (view)
     // -------------------
     AArray<T> transpose(const std::vector<size_t>& axes={}) const {
         AShape tshape = p_shape;
@@ -151,6 +167,7 @@ public:
             for(size_t i=0;i<p_shape.rank();++i) perm[i]=p_shape.rank()-1-i;
             tshape.transpose(perm);
         } else tshape.transpose(axes);
+
         AArray<T> result;
         result.p_shape = tshape;
         result.p_dataPtr = p_dataPtr; // shared view
@@ -187,6 +204,10 @@ protected:
     AShape p_shape;
     std::shared_ptr<std::vector<T>> p_dataPtr;
 
+    // Custom at() for slice views
+    mutable std::function<T&(const std::vector<size_t>&)> p_customAt;
+    mutable AShape p_customAtShape;
+
     void m_copy(const AArray& other){
         AObject::m_copy(other);
         p_shape=other.p_shape;
@@ -199,50 +220,50 @@ protected:
     }
 
     // -------------------
-    // Binary ops with broadcasting
+    // Broadcasted binary ops (optimized)
     // -------------------
     template<typename Op>
     static AArray<T> broadcastBinaryOp(const AArray<T>& lhs,const AArray<T>& rhs, Op op){
-        AShape resultShape = AShape::broadcast(lhs.shape(),rhs.shape());
+        AShape resultShape = AShape::broadcast(lhs.shape(), rhs.shape());
         AArray<T> result(resultShape);
 
-        const auto& lhsDims=lhs.shape().dims();
-        const auto& rhsDims=rhs.shape().dims();
-        const auto& lhsStrides=lhs.shape().strides();
-        const auto& rhsStrides=rhs.shape().strides();
-        const auto& resDims=resultShape.dims();
+        const auto& lhsDims = lhs.shape().dims();
+        const auto& rhsDims = rhs.shape().dims();
+        const auto& lhsStrides = lhs.shape().strides();
+        const auto& rhsStrides = rhs.shape().strides();
+        const auto& resDims = resultShape.dims();
+        const auto& resStrides = resultShape.strides();
 
-        auto& resData = result.p_dataPtr;
-        const auto& lhsData = lhs.p_dataPtr;
-        const auto& rhsData = rhs.p_dataPtr;
+        auto& resData = *result.p_dataPtr;
+        const auto& lhsData = *lhs.p_dataPtr;
+        const auto& rhsData = *rhs.p_dataPtr;
 
         size_t rankRes = resultShape.rank();
         size_t rankL = lhs.shape().rank();
         size_t rankR = rhs.shape().rank();
 
-        for(size_t i=0;i<resultShape.totalSize();++i){
-            size_t idx=i;
+        std::vector<size_t> lhsOffsets(rankRes,0), rhsOffsets(rankRes,0);
+        for(size_t d=0; d<rankRes; ++d){
+            size_t ldim = (d >= rankRes-rankL ? lhsDims[d-(rankRes-rankL)] : 1);
+            lhsOffsets[d] = (ldim==1 ? 0 : lhsStrides[d-(rankRes-rankL)]);
+            size_t rdim = (d >= rankRes-rankR ? rhsDims[d-(rankRes-rankR)] : 1);
+            rhsOffsets[d] = (rdim==1 ? 0 : rhsStrides[d-(rankRes-rankR)]);
+        }
+
+        for(size_t i=0; i<resultShape.totalSize(); ++i){
             size_t lhsIdx=0, rhsIdx=0;
-            for(int d=int(rankRes)-1;d>=0;--d){
-                size_t cur = idx % resDims[d];
-
-                size_t ldim = (d>=rankRes-rankL)?lhsDims[d-(rankRes-rankL)]:1;
-                size_t rdim = (d>=rankRes-rankR)?rhsDims[d-(rankRes-rankR)]:1;
-
-                size_t lstride=(d>=rankRes-rankL)?lhsStrides[d-(rankRes-rankL)]:0;
-                size_t rstride=(d>=rankRes-rankR)?rhsStrides[d-(rankRes-rankR)]:0;
-
-                lhsIdx += (ldim==1?0:cur*lstride);
-                rhsIdx += (rdim==1?0:cur*rstride);
-
-                idx/=resDims[d];
+            size_t idx=i;
+            for(size_t d=0; d<rankRes; ++d){
+                size_t pos = idx / resStrides[d];
+                lhsIdx += pos * lhsOffsets[d];
+                rhsIdx += pos * rhsOffsets[d];
+                idx %= resStrides[d];
             }
-            (*resData)[i] = op((*lhsData)[lhsIdx], (*rhsData)[rhsIdx]);
+            resData[i] = op(lhsData[lhsIdx], rhsData[rhsIdx]);
         }
 
         return result;
     }
-
 };
 
 } // namespace Alib

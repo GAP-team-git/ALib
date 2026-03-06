@@ -52,9 +52,7 @@ TEST(AArrayTest, Slice) {
     fillSequential(A); // values 1..12
 
     auto S = A.slice({0,1},{3,4},{1,2}); // pick every 2nd column
-    printND(A);
-    std::cout << std::endl;
-    printND(S);
+    
     EXPECT_EQ(S.shape().dims(), (std::vector<size_t>{3,2}));
     EXPECT_EQ(S(0,0), 2);
     EXPECT_EQ(S(2,1), 12);
