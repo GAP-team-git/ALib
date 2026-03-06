@@ -107,47 +107,98 @@ public:
         return p_dataPtr->at(p_shape.flatIndex(idx));
     }
 
+    
+
+    
+    // AArray.h - operator() universale sicuro
     template<typename... Idx>
-    T& operator()(Idx... idx){
-        return at(std::vector<size_t>{static_cast<size_t>(idx)...});
-    }
-    template<typename... Idx>
-    const T& operator()(Idx... idx) const {
-        return at(std::vector<size_t>{static_cast<size_t>(idx)...});
+    T& operator()(Idx... idxs) {
+        static_assert((std::is_integral_v<Idx> && ...), "All indices must be integral types");
+        return at(std::vector<size_t>{static_cast<size_t>(idxs)...});
     }
 
+    template<typename... Idx>
+    const T& operator()(Idx... idxs) const {
+        static_assert((std::is_integral_v<Idx> && ...), "All indices must be integral types");
+        return at(std::vector<size_t>{static_cast<size_t>(idxs)...});
+    }
+
+    // Overload per std::vector
+    T& operator()(const std::vector<size_t>& idxs) { return at(idxs); }
+    const T& operator()(const std::vector<size_t>& idxs) const { return at(idxs); }
+
+    // Overload per std::vector con tipi interi diversi (ad esempio unsigned long)
+    template<typename IntVec,
+             typename = std::enable_if_t<
+                 std::is_same_v<IntVec, std::vector<int>> ||
+                 std::is_same_v<IntVec, std::vector<unsigned>> ||
+                 std::is_same_v<IntVec, std::vector<unsigned long>> ||
+                 std::is_same_v<IntVec, std::vector<long>> ||
+                 std::is_same_v<IntVec, std::vector<size_t>>
+             >>
+    T& operator()(const IntVec& idxs){
+        std::vector<size_t> tmp(idxs.begin(), idxs.end());
+        return at(tmp);
+    }
+
+    template<typename IntVec,
+             typename = std::enable_if_t<
+                 std::is_same_v<IntVec, std::vector<int>> ||
+                 std::is_same_v<IntVec, std::vector<unsigned>> ||
+                 std::is_same_v<IntVec, std::vector<unsigned long>> ||
+                 std::is_same_v<IntVec, std::vector<long>> ||
+                 std::is_same_v<IntVec, std::vector<size_t>>
+             >>
+    const T& operator()(const IntVec& idxs) const {
+        std::vector<size_t> tmp(idxs.begin(), idxs.end());
+        return at(tmp);
+    }
+    
     // -------------------
     // Slice (view)
     // -------------------
+
     AArray<T> slice(const std::vector<size_t>& start,
                     const std::vector<size_t>& stop,
                     const std::vector<size_t>& step={}) const {
 
-        std::vector<size_t> sstep = step.empty() ? std::vector<size_t>(p_shape.rank(), 1) : step;
-        AShape newShape = p_shape.sliceShape(start, stop, sstep);
+        size_t rank = p_shape.rank();
+        if(start.size() != rank || stop.size() != rank)
+            throw std::invalid_argument("slice: start/stop rank mismatch");
 
-        AArray<T> result;
-        result.p_shape = newShape;
-        result.p_dataPtr = p_dataPtr; // shared view
+        std::vector<size_t> sstep = step.empty() ? std::vector<size_t>(rank,1) : step;
 
-        size_t offset = 0;
-        const auto& strides = p_shape.strides();
-        for(size_t d=0; d<p_shape.rank(); ++d)
-            offset += start[d] * strides[d];
+        // nuova shape
+        std::vector<size_t> newDims(rank);
+        for(size_t d=0; d<rank; ++d){
+            if(sstep[d]==0) throw std::invalid_argument("slice: step=0");
+            newDims[d] = (stop[d]<=start[d]) ? 0 : (stop[d]-start[d]+sstep[d]-1)/sstep[d];
+        }
 
-        // Lambda view: catturiamo tutte le info necessarie
-        result.p_customAt = [this, offset, sstep, newShape](const std::vector<size_t>& idx) -> T& {
-            if(idx.size() != newShape.rank()) throw std::invalid_argument("slice view: rank mismatch");
-            size_t flat = offset;
-            const auto& strides = p_shape.strides();
-            for(size_t d=0; d<idx.size(); ++d)
-                flat += idx[d] * sstep[d] * strides[d];
-            return (*p_dataPtr)[flat];
-        };
+        AArray<T> result(newDims);
+
+        // ND index temporaneo
+        std::vector<size_t> idxND(rank,0);
+        const auto& origStrides = p_shape.strides();
+        auto& resData = *result.dataPtr();
+        const auto& srcData = *p_dataPtr;
+        size_t total = result.size();
+
+        for(size_t i=0;i<total;++i){
+            size_t tmp = i;
+            size_t srcFlat = 0;
+            for(int d=int(rank)-1; d>=0; --d){
+                idxND[d] = tmp % newDims[d];
+                tmp /= newDims[d];
+                // moltiplico per step * stride originale
+                srcFlat += (start[d] + idxND[d]*sstep[d]) * origStrides[d];
+            }
+            resData[i] = srcData[srcFlat];
+        }
 
         return result;
     }
-    
+
     // -------------------
     // Reshape
     // -------------------
@@ -223,42 +274,47 @@ protected:
     // Broadcasted binary ops (optimized)
     // -------------------
     template<typename Op>
-    static AArray<T> broadcastBinaryOp(const AArray<T>& lhs,const AArray<T>& rhs, Op op){
+    static AArray<T> broadcastBinaryOp(const AArray<T>& lhs, const AArray<T>& rhs, Op op){
         AShape resultShape = AShape::broadcast(lhs.shape(), rhs.shape());
         AArray<T> result(resultShape);
+
+        size_t rankRes = resultShape.rank();
+        size_t rankL = lhs.shape().rank();
+        size_t rankR = rhs.shape().rank();
 
         const auto& lhsDims = lhs.shape().dims();
         const auto& rhsDims = rhs.shape().dims();
         const auto& lhsStrides = lhs.shape().strides();
         const auto& rhsStrides = rhs.shape().strides();
         const auto& resDims = resultShape.dims();
-        const auto& resStrides = resultShape.strides();
 
-        auto& resData = *result.p_dataPtr;
-        const auto& lhsData = *lhs.p_dataPtr;
-        const auto& rhsData = *rhs.p_dataPtr;
+        const auto& lhsData = *lhs.dataPtr();
+        const auto& rhsData = *rhs.dataPtr();
+        auto& resData = *result.dataPtr();
 
-        size_t rankRes = resultShape.rank();
-        size_t rankL = lhs.shape().rank();
-        size_t rankR = rhs.shape().rank();
+        std::vector<size_t> idxND(rankRes,0);
 
-        std::vector<size_t> lhsOffsets(rankRes,0), rhsOffsets(rankRes,0);
-        for(size_t d=0; d<rankRes; ++d){
-            size_t ldim = (d >= rankRes-rankL ? lhsDims[d-(rankRes-rankL)] : 1);
-            lhsOffsets[d] = (ldim==1 ? 0 : lhsStrides[d-(rankRes-rankL)]);
-            size_t rdim = (d >= rankRes-rankR ? rhsDims[d-(rankRes-rankR)] : 1);
-            rhsOffsets[d] = (rdim==1 ? 0 : rhsStrides[d-(rankRes-rankR)]);
-        }
-
-        for(size_t i=0; i<resultShape.totalSize(); ++i){
-            size_t lhsIdx=0, rhsIdx=0;
-            size_t idx=i;
-            for(size_t d=0; d<rankRes; ++d){
-                size_t pos = idx / resStrides[d];
-                lhsIdx += pos * lhsOffsets[d];
-                rhsIdx += pos * rhsOffsets[d];
-                idx %= resStrides[d];
+        for(size_t i=0; i<result.size(); ++i){
+            size_t tmp = i;
+            for(int d=int(rankRes)-1; d>=0; --d){
+                idxND[d] = tmp % resDims[d];
+                tmp /= resDims[d];
             }
+
+            size_t lhsIdx = 0;
+            for(size_t d=0; d<rankRes; ++d){
+                size_t ld = (d >= rankRes - rankL) ? lhsDims[d-(rankRes-rankL)] : 1;
+                size_t ls = (d >= rankRes - rankL) ? lhsStrides[d-(rankRes-rankL)] : 0;
+                lhsIdx += (ld==1?0:idxND[d]*ls);
+            }
+
+            size_t rhsIdx = 0;
+            for(size_t d=0; d<rankRes; ++d){
+                size_t rd = (d >= rankRes - rankR) ? rhsDims[d-(rankRes-rankR)] : 1;
+                size_t rs = (d >= rankRes - rankR) ? rhsStrides[d-(rankRes-rankR)] : 0;
+                rhsIdx += (rd==1?0:idxND[d]*rs);
+            }
+
             resData[i] = op(lhsData[lhsIdx], rhsData[rhsIdx]);
         }
 

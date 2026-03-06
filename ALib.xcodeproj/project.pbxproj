@@ -11,6 +11,9 @@
 		E331993F2F59F36000946DB5 /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E331993E2F59F36000946DB5 /* libgtest_main.a */; };
 		E33199402F59F3D900946DB5 /* libALib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C682562F4F50FD00D17AA8 /* libALib.a */; };
 		E37BBD042F4F684200A73A75 /* libALib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C682562F4F50FD00D17AA8 /* libALib.a */; };
+		E3849AF22F5B23F900772634 /* libALib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C682562F4F50FD00D17AA8 /* libALib.a */; };
+		E3849AF32F5B245E00772634 /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E331993E2F59F36000946DB5 /* libgtest_main.a */; };
+		E3849AF42F5B249800772634 /* libgtest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E331993C2F59F33B00946DB5 /* libgtest.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +35,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		E3849AE92F5B233A00772634 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +51,7 @@
 		E331993C2F59F33B00946DB5 /* libgtest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgtest.a; path = ../../../../../../opt/homebrew/Cellar/googletest/1.17.0/lib/libgtest.a; sourceTree = "<group>"; };
 		E331993E2F59F36000946DB5 /* libgtest_main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgtest_main.a; path = ../../../../../../opt/homebrew/Cellar/googletest/1.17.0/lib/libgtest_main.a; sourceTree = "<group>"; };
 		E37BBCFD2F4F679F00A73A75 /* Prova */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Prova; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3849AEB2F5B233A00772634 /* MultipleTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MultipleTests; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C682562F4F50FD00D17AA8 /* libALib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libALib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -61,6 +74,11 @@
 		E37BBCFE2F4F679F00A73A75 /* Prova */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Prova;
+			sourceTree = "<group>";
+		};
+		E3849AEC2F5B233A00772634 /* MultipleTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MultipleTests;
 			sourceTree = "<group>";
 		};
 		E3C682582F4F50FD00D17AA8 /* ALib */ = {
@@ -92,6 +110,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E3849AE82F5B233A00772634 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3849AF42F5B249800772634 /* libgtest.a in Frameworks */,
+				E3849AF32F5B245E00772634 /* libgtest_main.a in Frameworks */,
+				E3849AF22F5B23F900772634 /* libALib.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E3C682542F4F50FD00D17AA8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -117,6 +145,7 @@
 				E3C682582F4F50FD00D17AA8 /* ALib */,
 				E37BBCFE2F4F679F00A73A75 /* Prova */,
 				E33199362F59F10B00946DB5 /* Tests */,
+				E3849AEC2F5B233A00772634 /* MultipleTests */,
 				E37BBCF12F4F65AE00A73A75 /* Frameworks */,
 				E3C682572F4F50FD00D17AA8 /* Products */,
 			);
@@ -128,6 +157,7 @@
 				E3C682562F4F50FD00D17AA8 /* libALib.a */,
 				E37BBCFD2F4F679F00A73A75 /* Prova */,
 				E33199352F59F10A00946DB5 /* Tests */,
+				E3849AEB2F5B233A00772634 /* MultipleTests */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -189,6 +219,28 @@
 			productReference = E37BBCFD2F4F679F00A73A75 /* Prova */;
 			productType = "com.apple.product-type.tool";
 		};
+		E3849AEA2F5B233A00772634 /* MultipleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3849AEF2F5B233A00772634 /* Build configuration list for PBXNativeTarget "MultipleTests" */;
+			buildPhases = (
+				E3849AE72F5B233A00772634 /* Sources */,
+				E3849AE82F5B233A00772634 /* Frameworks */,
+				E3849AE92F5B233A00772634 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E3849AEC2F5B233A00772634 /* MultipleTests */,
+			);
+			name = MultipleTests;
+			packageProductDependencies = (
+			);
+			productName = MultipleTests;
+			productReference = E3849AEB2F5B233A00772634 /* MultipleTests */;
+			productType = "com.apple.product-type.tool";
+		};
 		E3C682552F4F50FD00D17AA8 /* ALib */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E3C682612F4F50FD00D17AA8 /* Build configuration list for PBXNativeTarget "ALib" */;
@@ -226,6 +278,9 @@
 					E37BBCFC2F4F679F00A73A75 = {
 						CreatedOnToolsVersion = 26.2;
 					};
+					E3849AEA2F5B233A00772634 = {
+						CreatedOnToolsVersion = 26.3;
+					};
 					E3C682552F4F50FD00D17AA8 = {
 						CreatedOnToolsVersion = 26.2;
 					};
@@ -248,6 +303,7 @@
 				E3C682552F4F50FD00D17AA8 /* ALib */,
 				E37BBCFC2F4F679F00A73A75 /* Prova */,
 				E33199342F59F10A00946DB5 /* Tests */,
+				E3849AEA2F5B233A00772634 /* MultipleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -261,6 +317,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E37BBCF92F4F679F00A73A75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3849AE72F5B233A00772634 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -331,6 +394,40 @@
 			};
 			name = Release;
 		};
+		E3849AF02F5B233A00772634 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YL782TY646;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				HEADER_SEARCH_PATHS = /opt/homebrew/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/homebrew/Cellar/googletest/1.17.0/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E3849AF12F5B233A00772634 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YL782TY646;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				HEADER_SEARCH_PATHS = /opt/homebrew/include;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/homebrew/Cellar/googletest/1.17.0/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		E3C6825F2F4F50FD00D17AA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -374,7 +471,7 @@
 				GCC_C_LANGUAGE_STANDARD = c17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -437,6 +534,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = c17;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -497,6 +595,15 @@
 			buildConfigurations = (
 				E37BBD022F4F679F00A73A75 /* Debug */,
 				E37BBD032F4F679F00A73A75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3849AEF2F5B233A00772634 /* Build configuration list for PBXNativeTarget "MultipleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3849AF02F5B233A00772634 /* Debug */,
+				E3849AF12F5B233A00772634 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
