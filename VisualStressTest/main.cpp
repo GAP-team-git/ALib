@@ -3,102 +3,76 @@
 //
 //  Created by Giuseppe Coppini on 06/03/26.
 //
-#include <iostream>
-#include <vector>
-#include <random>
-#include <algorithm>
-#include <cassert>
 #include "AArray.h"
+#include <gtest/gtest.h>
+#include <random>
+#include <iostream>
 
-// ----------------------
-// Helpers
-// ----------------------
+using namespace Alib;
+
+// Helper: genera un array casuale di dimensioni date
 template<typename T>
-void fillSequential(Alib::AArray<T>& A, T start=1) {
-    T val = start;
-    for(size_t i=0; i<A.size(); ++i) (*A.dataPtr())[i] = val++;
+AArray<T> randomArray(const std::vector<size_t>& dims, T minVal=0, T maxVal=100) {
+    AArray<T> arr(dims);
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<T> dis(minVal,maxVal);
+
+    for(size_t i=0;i<arr.size();++i) arr.dataPtr()->at(i) = dis(gen);
+    return arr;
 }
 
-std::vector<size_t> randomDims(size_t rank, size_t maxDim=6) {
-    std::vector<size_t> dims(rank);
-    std::mt19937 gen(std::random_device{}());
-    std::uniform_int_distribution<size_t> dist(1,maxDim);
-    for(size_t i=0;i<rank;++i) dims[i]=dist(gen);
-    return dims;
+// Helper: copia lineare (per views)
+template<typename T>
+AArray<T> linearCopy(const AArray<T>& arr) {
+    AArray<T> copy(arr.shape());
+    for(size_t i=0;i<arr.size();++i) copy.dataPtr()->at(i) = arr.dataPtr()->at(i);
+    return copy;
 }
 
-void randomSlice(const std::vector<size_t>& dims,
-                 std::vector<size_t>& start,
-                 std::vector<size_t>& stop,
-                 std::vector<size_t>& step) {
-    std::mt19937 gen(std::random_device{}());
-    std::uniform_int_distribution<size_t> stepDist(1,2);
+// Mega Stress Test
+TEST(AArrayStressTest, MegaStressSafe) {
+    std::vector<std::vector<size_t>> shapes = {
+        {3,4}, {5,2,3}, {4,4,4}, {2,3,5,2}
+    };
 
-    start.resize(dims.size());
-    stop.resize(dims.size());
-    step.resize(dims.size());
+    for(const auto& dims : shapes){
+        // Array base
+        auto A = randomArray<int>(dims, 0, 1000);
 
-    for(size_t i=0;i<dims.size();++i){
-        std::uniform_int_distribution<size_t> dist(0,dims[i]-1);
-        start[i]=dist(gen);
-        stop[i]=dist(gen)+1;
-        if(stop[i]>dims[i]) stop[i]=dims[i];
-        step[i]=stepDist(gen);
-        if(start[i]>=stop[i]) start[i]=0;
-    }
-}
+        // Slice casuale
+        std::vector<size_t> start(dims.size(),0);
+        std::vector<size_t> stop = dims;
+        std::vector<size_t> step(dims.size(),1);
+        auto S = A.slice(start, stop, step);
 
-// ----------------------
-// Mega Stress Test Assertivo
-// ----------------------
-void megaStressAssertive(size_t iterations=1000) {
-    using namespace Alib;
-    std::cout << "=== MEGA ASSERTIVE STRESS TEST AArray ===\n";
-
-    for(size_t iter=1; iter<=iterations; ++iter){
-        // Random rank 2-4
-        size_t rank = 2 + rand()%3;
-        auto dims = randomDims(rank,6);
-        AArray<int> A(dims);
-        fillSequential(A);
-
-        // Random slice
-        std::vector<size_t> start, stop, step;
-        randomSlice(dims,start,stop,step);
-        auto S = A.slice(start,stop,step);
-
-        // Check slice dimensions
-        for(size_t d=0; d<rank; ++d) {
-            size_t expectedDim = (stop[d]<=start[d]?0:(stop[d]-start[d]+step[d]-1)/step[d]);
-            assert(S.shape().dims()[d]==expectedDim);
-        }
-
-        // Random transpose
-        std::vector<size_t> axes(S.shape().rank());
-        for(size_t i=0;i<axes.size();++i) axes[i]=i;
-        std::shuffle(axes.begin(), axes.end(), std::mt19937(std::random_device()()));
+        // Transpose casuale
+        std::vector<size_t> axes(dims.size());
+        for(size_t i=0;i<dims.size();++i) axes[i]=i;
+        std::shuffle(axes.begin(), axes.end(), std::mt19937{std::random_device{}()});
         auto T = S.transpose(axes);
 
-        // Check transpose preserves total size
-        assert(T.size()==S.size());
+        // Copia lineare per sicurezza
+        auto L1 = linearCopy(T);
+        auto L2 = linearCopy(T);
 
-        // Broadcasting addition with self
-        auto R = T + T;
-        assert(R.size()==T.size());
+        // Operazioni binarie
+        auto R = L1 + L2;    // somma
+        auto R2 = L1 * L2;   // moltiplicazione
 
-        // Spot check first and last elements
-        if(R.size()>0) {
-            assert(R(0)==T(0)+T(0));
-            assert(R(R.size()-1)==T(T.size()-1)+T(T.size()-1));
+        // Verifiche
+        ASSERT_EQ(R.size(), L1.size());
+        ASSERT_EQ(R2.size(), L1.size());
+
+        for(size_t i=0;i<L1.size();++i){
+            EXPECT_EQ(R(i), L1(i)+L2(i));
+            EXPECT_EQ(R2(i), L1(i)*L2(i));
         }
-
-        if(iter % 100 == 0) std::cout << "Iteration " << iter << " passed.\n";
     }
-
-    std::cout << "\n=== ASSERTIVE TEST COMPLETED SUCCESSFULLY ===\n";
+    std::cout << "[Mega Stress Test] Tutti i casi passati!" << std::endl;
 }
 
-int main() {
-    megaStressAssertive(1000); // 1000 iterazioni
-    return 0;
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

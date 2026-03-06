@@ -364,6 +364,15 @@ public:
         }
 
         std::cout << "\n====================\n";
+        
+        
+    }
+    
+    AArray<T> linearCopy() const {
+        AArray<T> copy(shape());
+        size_t s = size();
+        for(size_t i=0;i<s;++i) copy.dataPtr()->at(i)=dataPtr()->at(i);
+        return copy;
     }
 protected:
     AShape p_shape;
