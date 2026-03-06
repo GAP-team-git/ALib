@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_index" xml:lang="en-US">
+    <info>
+    <title>Alib</title>
+    </info>
+<chapter>
+    <title>Directory Documentation</title>
+    <xi:include href="dir_9ec879804c97a5b64cdde698292268d1.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<chapter>
+    <title>Namespace Documentation</title>
+    <xi:include href="namespace_alib.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<chapter>
+    <title>Class Documentation</title>
+    <xi:include href="class_alib_1_1_a_array.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_alib_1_1_a_array_proxy.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="struct_alib_1_1_a_error_info.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="struct_alib_1_1all__integral.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="struct_alib_1_1all__integral_3_01_t_00_01_rest_8_8_8_01_4.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="struct_alib_1_1all__integral_3_4.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_alib_1_1_a_object.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_alib_1_1_a_shape.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<chapter>
+    <title>File Documentation</title>
+    <xi:include href="_a_array_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href=".xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_a_errors_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href=".xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_a_errors_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href=".xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_alib_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href=".xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_a_l_i_b_h_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href=".xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_a_object_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href=".xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_a_object_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href=".xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_a_shape_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href=".xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="templatesetget_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href=".xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<index/>
+</book>

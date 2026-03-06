@@ -1,0 +1,27 @@
+\doxysection{ALib/\+\+AArray.h File Reference}
+\hypertarget{_a_array_8h}{}\label{_a_array_8h}\index{ALib/AArray.h@{ALib/AArray.h}}
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$memory$>$}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$initializer\+\_\+list$>$}\newline
+{\ttfamily \+\#include $<$numeric$>$}\newline
+{\ttfamily \+\#include $<$algorithm$>$}\newline
+{\ttfamily \+\#include $<$stdexcept$>$}\newline
+{\ttfamily \+\#include "{}AObject.\+h"{}}\newline
+{\ttfamily \+\#include "{}AShape.\+h"{}}\newline
+Include dependency graph for AArray.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_alib_1_1_a_array_proxy}{Alib::\+\+AArray\+Proxy$<$ T $>$}}
+\item 
+class \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray$<$ T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \doxymbox{\hyperlink{namespace_alib}{Alib}}
+\end{DoxyCompactItemize}

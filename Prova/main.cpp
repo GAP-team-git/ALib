@@ -7,8 +7,8 @@
 #include <iostream>
 #include "AArray.h"
 
-#define USE_COLOR
-//#undef USE_COLOR
+//#define USE_COLOR
+#undef USE_COLOR
 using namespace Alib;
 
 // Funzione ricorsiva compatta, colorata solo sui valori

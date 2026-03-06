@@ -1,0 +1,48 @@
+\doxysection{AErrors.\+h}
+\hypertarget{_a_errors_8h_source}{}\label{_a_errors_8h_source}\index{ALib/AErrors.h@{ALib/AErrors.h}}
+\doxymbox{\hyperlink{_a_errors_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ AErrors.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ ALib}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Giuseppe\ Coppini\ on\ 27/02/26.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ AErrors\_h}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ AErrors\_h}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\doxymbox{\hyperlink{namespace_alib}{Alib}}\ \{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{enum\ class}\ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}}\ :\ int32\_t\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb}{noError}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 0,\ \ \textcolor{comment}{//\ No\ error}}
+\DoxyCodeLine{00021\ \ \ \ \ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a026f9bbde1f085ac1e2c9f1cbaca0a4c}{sourceError}}\ \ \ \ \ \ \ \ =\ 1,\ \ \textcolor{comment}{//\ File/stream\ I/O\ error}}
+\DoxyCodeLine{00022\ \ \ \ \ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113afc4f92438e44fc08f46f4fb36dd2e389}{allocationError}}\ \ \ \ =\ 2,\ \ \textcolor{comment}{//\ Memory\ or\ resource\ allocation\ failure}}
+\DoxyCodeLine{00023\ \ \ \ \ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a6fbf66821cd9ba0f8139d0b9b561df77}{invalidOperation}}\ \ \ =\ 3,\ \ \textcolor{comment}{//\ Operation\ not\ allowed}}
+\DoxyCodeLine{00024\ \ \ \ \ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113abca6212be6005d4f726c7887e8e557a7}{rangeError}}\ \ \ \ \ \ \ \ \ =\ 4,\ \ \textcolor{comment}{//\ Value\ out\ of\ range\ or\ invalid\ index}}
+\DoxyCodeLine{00025\ \ \ \ \ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a24b80e3aa8dce2f2ea17912cf83a9757}{typeMismatch}}\ \ \ \ \ \ \ =\ 5,\ \ \textcolor{comment}{//\ Incompatible\ type}}
+\DoxyCodeLine{00026\ \ \ \ \ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113aff18d1dc8b64abff7c82becd3d7135dd}{notInitialized}}\ \ \ \ \ =\ 6,\ \ \textcolor{comment}{//\ Object\ not\ initialized\ or\ not\ ready}}
+\DoxyCodeLine{00027\ \ \ \ \ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113ae492e3586c1e8d275b71ef8f4a5e0782}{unsupportedFeature}}\ =\ 7,\ \ \textcolor{comment}{//\ Feature\ not\ implemented}}
+\DoxyCodeLine{00028\ \ \ \ \ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a4b4c3d08948825f5fe6b51a1087d503e}{ioError}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 8,\ \ \textcolor{comment}{//\ I/O\ error}}
+\DoxyCodeLine{00029\ \ \ \ \ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a9fa57f2cbf2abeb6f35e80fa0977835f}{parseError}}\ \ \ \ \ \ \ \ \ =\ 9,\ \ \textcolor{comment}{//\ Parsing\ failed}}
+\DoxyCodeLine{00030\ \ \ \ \ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a66c7d43b12156560c61f391dbd82175b}{formatError}}\ \ \ \ \ \ \ \ =\ 10,\ \textcolor{comment}{//\ Data\ does\ not\ match\ expected\ format}}
+\DoxyCodeLine{00031\ \ \ \ \ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a36e34147ffd884a31c40739e5371d711}{runtimeError}}\ \ \ \ \ \ \ =\ 11\ \ \textcolor{comment}{//\ Generic\ runtime\ error}}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ [[nodiscard]]\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{namespace_alib_a282aa41d627642dc028d48bf33ace72e}{getErrorName}}(\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}}\ error)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_alib_1_1_a_error_info_a1224cdbd3a8f40ecfcedf2eeceac6580}{AErrorInfo}}\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}}\ \doxymbox{\hyperlink{struct_alib_1_1_a_error_info_a88aca24fb0ada839c5ba1d174b0eaeba}{code}};}
+\DoxyCodeLine{00039\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_alib_1_1_a_error_info_a1f7b9f439a1493023a53d2407c6e6556}{description}};}
+\DoxyCodeLine{00040\ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \doxymbox{\hyperlink{struct_alib_1_1_a_error_info_a1224cdbd3a8f40ecfcedf2eeceac6580}{AErrorInfo}}(\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}}\ c\ =\ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb}{AErrors::noError}},\ std::string\ desc\ =\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{00042\ \ \ \ \ :\ \doxymbox{\hyperlink{struct_alib_1_1_a_error_info_a88aca24fb0ada839c5ba1d174b0eaeba}{code}}(c),\ \doxymbox{\hyperlink{struct_alib_1_1_a_error_info_a1f7b9f439a1493023a53d2407c6e6556}{description}}(std::move(desc))\ \{\}}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \}\ \textcolor{comment}{//\ ALib\ namespace\ end}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ AErrors\_h\ end}}
+
+\end{DoxyCode}

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_templatesetget_8h" xml:lang="en-US">
+<title>ALib/templatesetget.h File Reference</title>
+<indexterm><primary>ALib/templatesetget.h</primary></indexterm>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>&lt;#Type#&gt; <link linkend="_templatesetget_8h_1a0768e17e118d60df015c41e807090154">p_&lt;#variableName#&gt;</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_templatesetget_8h_1a0768e17e118d60df015c41e807090154"/><section>
+    <title>p_&lt;#variableName#&gt;</title>
+<indexterm><primary>p_&lt;#variableName#&gt;</primary><secondary>templatesetget.h</secondary></indexterm>
+<indexterm><primary>templatesetget.h</primary><secondary>p_&lt;#variableName#&gt;</secondary></indexterm>
+<para><computeroutput>&lt;#Type#&gt; p_&lt;#variableName#&gt;<computeroutput>[protected]</computeroutput></computeroutput></para></section>
+</section>
+</section>

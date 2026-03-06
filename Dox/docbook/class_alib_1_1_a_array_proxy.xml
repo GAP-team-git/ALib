@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_alib_1_1_a_array_proxy" xml:lang="en-US">
+<title>Alib::AArrayProxy&lt; T &gt; Class Template Reference</title>
+<indexterm><primary>Alib::AArrayProxy&lt; T &gt;</primary></indexterm>
+<para>
+<computeroutput>#include &lt;AArray.h&gt;</computeroutput>
+</para>
+Collaboration diagram for Alib::AArrayProxy&lt; T &gt;:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_proxy__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_proxy_1aa7e3062575ed35dc13f2233efcfa3add">AArrayProxy</link> (<link linkend="_class_alib_1_1_a_array">AArray</link>&lt; T &gt; *arr, const std::vector&lt; size_t &gt; &amp;idx)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_proxy_1aa7e3062575ed35dc13f2233efcfa3add">AArrayProxy</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array_proxy_1a70c365e3a91c9e5e68988e134fa0af70">operator[]</link> (size_t i)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_proxy_1a710811e653e462463d7f528f313cfc1b">operator T</link> () const</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_proxy_1aa7e3062575ed35dc13f2233efcfa3add">AArrayProxy</link>&lt; T &gt; &amp; <link linkend="_class_alib_1_1_a_array_proxy_1ac9a68a51b26a8ffced346f51a6ef5460">operator=</link> (const T &amp;value)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_alib_1_1_a_array">AArray</link>&lt; T &gt; * <link linkend="_class_alib_1_1_a_array_proxy_1a1d13b9124d87526040f5e403696f1dcb">p_array</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; size_t &gt; <link linkend="_class_alib_1_1_a_array_proxy_1ab4354f9799a6912bdcd9c6ae241a57d8">p_index</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;typename T&gt;<?linebreak?>class Alib::AArrayProxy&lt; T &gt;</title></simplesect>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_array_proxy_1aa7e3062575ed35dc13f2233efcfa3add"/><section>
+    <title>AArrayProxy()</title>
+<indexterm><primary>AArrayProxy</primary><secondary>Alib::AArrayProxy&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArrayProxy&lt; T &gt;</primary><secondary>AArrayProxy</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_proxy">Alib::AArrayProxy</link>&lt; T &gt;::AArrayProxy (<link linkend="_class_alib_1_1_a_array">AArray</link>&lt; T &gt; * arr, const std::vector&lt; size_t &gt; &amp; idx)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<link linkend="_class_alib_1_1_a_array_proxy_1a1d13b9124d87526040f5e403696f1dcb">p_array</link>(<link linkend="_class_alib_1_1_a_array_proxy">arr</link>),&#32;<link linkend="_class_alib_1_1_a_array_proxy_1ab4354f9799a6912bdcd9c6ae241a57d8">p_index</link>(<link linkend="_class_alib_1_1_a_array_proxy">idx</link>)&#32;{}
+</programlisting><para>
+References <link linkend="_l00031">AArrayProxy()</link>, and <link linkend="_l00027">p_array</link>.</para>
+<para>
+Referenced by <link linkend="_l00031">AArrayProxy()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_proxy_aa7e3062575ed35dc13f2233efcfa3add_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_proxy_aa7e3062575ed35dc13f2233efcfa3add_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_array_proxy_1a710811e653e462463d7f528f313cfc1b"/><section>
+    <title>operator T()</title>
+<indexterm><primary>operator T</primary><secondary>Alib::AArrayProxy&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArrayProxy&lt; T &gt;</primary><secondary>operator T</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_proxy">Alib::AArrayProxy</link>&lt; T &gt;::operator T ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00041 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_proxy_1a1d13b9124d87526040f5e403696f1dcb">p_array</link>-&gt;at(<link linkend="_class_alib_1_1_a_array_proxy_1ab4354f9799a6912bdcd9c6ae241a57d8">p_index</link>);&#32;}
+</programlisting><para>
+References <link linkend="_l00027">p_array</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_array_proxy_1ac9a68a51b26a8ffced346f51a6ef5460"/><section>
+    <title>operator=()</title>
+<indexterm><primary>operator=</primary><secondary>Alib::AArrayProxy&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArrayProxy&lt; T &gt;</primary><secondary>operator=</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_proxy_1aa7e3062575ed35dc13f2233efcfa3add">AArrayProxy</link>&lt; T &gt; &amp; <link linkend="_class_alib_1_1_a_array_proxy">Alib::AArrayProxy</link>&lt; T &gt;::operator= (const T &amp; value)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array_proxy_1a1d13b9124d87526040f5e403696f1dcb">p_array</link>-&gt;at(<link linkend="_class_alib_1_1_a_array_proxy_1ab4354f9799a6912bdcd9c6ae241a57d8">p_index</link>)=<link linkend="_class_alib_1_1_a_array_proxy">value</link>;
+00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
+00047 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+References <link linkend="_l00027">p_array</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_array_proxy_1a70c365e3a91c9e5e68988e134fa0af70"/><section>
+    <title>operator[]()</title>
+<indexterm><primary>operator[]</primary><secondary>Alib::AArrayProxy&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArrayProxy&lt; T &gt;</primary><secondary>operator[]</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_proxy_1aa7e3062575ed35dc13f2233efcfa3add">AArrayProxy</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array_proxy">Alib::AArrayProxy</link>&lt; T &gt;::operator[] (size_t i)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_proxy">next</link>=<link linkend="_class_alib_1_1_a_array_proxy_1ab4354f9799a6912bdcd9c6ae241a57d8">p_index</link>;&#32;<link linkend="_class_alib_1_1_a_array_proxy">next</link>.push_back(<link linkend="_class_alib_1_1_a_array_proxy">i</link>);
+00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_proxy_1aa7e3062575ed35dc13f2233efcfa3add">AArrayProxy&lt;T&gt;</link>(<link linkend="_class_alib_1_1_a_array_proxy_1a1d13b9124d87526040f5e403696f1dcb">p_array</link>,<link linkend="_class_alib_1_1_a_array_proxy">std::move</link>(<link linkend="_class_alib_1_1_a_array_proxy">next</link>));
+00038 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_array_proxy_1a1d13b9124d87526040f5e403696f1dcb"/><section>
+    <title>p_array</title>
+<indexterm><primary>p_array</primary><secondary>Alib::AArrayProxy&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArrayProxy&lt; T &gt;</primary><secondary>p_array</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array">AArray</link>&lt;T&gt;* <link linkend="_class_alib_1_1_a_array_proxy">Alib::AArrayProxy</link>&lt; T &gt;::p_array<computeroutput>[private]</computeroutput></computeroutput></para><para>
+Referenced by <link linkend="_l00031">AArrayProxy()</link>, <link linkend="_l00041">operator T()</link>, and <link linkend="_l00044">operator=()</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_array_proxy_1ab4354f9799a6912bdcd9c6ae241a57d8"/><section>
+    <title>p_index</title>
+<indexterm><primary>p_index</primary><secondary>Alib::AArrayProxy&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArrayProxy&lt; T &gt;</primary><secondary>p_index</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>std::vector&lt;size_t&gt; <link linkend="_class_alib_1_1_a_array_proxy">Alib::AArrayProxy</link>&lt; T &gt;::p_index<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+ALib/<link linkend="__a_array_8h">AArray.h</link></section>
+</section>

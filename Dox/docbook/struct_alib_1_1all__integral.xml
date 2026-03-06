@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_alib_1_1all__integral" xml:lang="en-US">
+<title>Alib::all_integral&lt; Ts &gt; Struct Template Reference</title>
+<indexterm><primary>Alib::all_integral&lt; Ts &gt;</primary></indexterm>
+Inheritance diagram for Alib::all_integral&lt; Ts &gt;:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="struct_alib_1_1all__integral__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for Alib::all_integral&lt; Ts &gt;:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="struct_alib_1_1all__integral__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;typename... Ts&gt;<?linebreak?>struct Alib::all_integral&lt; Ts &gt;</title></simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+ALib/<link linkend="__a_l_i_b_h_8h">ALIBH.h</link></section>
+</section>

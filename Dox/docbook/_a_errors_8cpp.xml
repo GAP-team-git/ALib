@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__a_errors_8cpp" xml:lang="en-US">
+<title>ALib/AErrors.cpp File Reference</title>
+<indexterm><primary>ALib/AErrors.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;AErrors.h&quot;<?linebreak?></programlisting>Include dependency graph for AErrors.cpp:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="_a_errors_8cpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespace_alib">Alib</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>const char * <link linkend="_namespace_alib_1a282aa41d627642dc028d48bf33ace72e">Alib::getErrorName</link> (<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> error) noexcept</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,520 @@
+\doxysection{Alib::\+AArray\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_alib_1_1_a_array}{}\label{class_alib_1_1_a_array}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+
+
+{\ttfamily \+\#include $<$AArray.\+h$>$}
+
+
+
+Inheritance diagram for Alib::\+AArray\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}:\+
+% FIG 0
+
+
+Collaboration diagram for Alib::\+AArray\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}:\+
+% FIG 1
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \doxymbox{\hyperlink{class_alib_1_1_a_array_a40d1e02a7a7dcc779208ea9a91d5b189}{value\+\_\+type}} = T
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}} ()=default
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a966a4169848eff6d3eef0fc3de16b8d4}{AArray}} (const std::\+vector$<$ size\+\_\+t $>$ \&dims)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a607ecc0eac12c0905aaaf18482d3e2c2}{AArray}} (const \doxymbox{\hyperlink{class_alib_1_1_a_shape}{AShape}} \&\doxymbox{\hyperlink{class_alib_1_1_a_array_a311c89a88ecdeb561b4f71bc9012b74a}{shape}})
+\item 
+{\footnotesize template$<$typename... Dims, typename = std::\+enable\+\_\+if\+\_\+t$<$(std::\+conjunction\+\_\+v$<$std::\+is\+\_\+integral$<$\+Dims$>$...$>$)$>$$>$ }\\\doxymbox{\hyperlink{class_alib_1_1_a_array_a8318c3187b8d4845f5ff3977aae90984}{AArray}} (Dims... dims)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a8bc60f8faf29764a83300bdd461bbd0f}{AArray}} (const std::\+initializer\+\_\+list$<$ size\+\_\+t $>$ \&dims)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a7c895407dcd77309a4a3ccae0df5e8d1}{AArray}} (const AArray \&other)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a216690f3519525f586470bf9bcb874ab}{AArray}} (AArray \&\&other) noexcept
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}} \& \doxymbox{\hyperlink{class_alib_1_1_a_array_a950ab6162ac4c1894fa800a00226e649}{operator=}} (const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}} \&other)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}} \& \doxymbox{\hyperlink{class_alib_1_1_a_array_ad26ea32e0a882af6cf1a695489af0910}{operator=}} (\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}} \&\&other) noexcept
+\item 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array_a959e0d253e5d5c83f83950e4de590a70}{clone}} () const override
+\item 
+size\+\_\+t \doxymbox{\hyperlink{class_alib_1_1_a_array_aa77147c9010f0e1eb618f37b008bc03c}{hash}} () const override
+\item 
+const \doxymbox{\hyperlink{class_alib_1_1_a_shape}{AShape}} \& \doxymbox{\hyperlink{class_alib_1_1_a_array_a311c89a88ecdeb561b4f71bc9012b74a}{shape}} () const noexcept
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_proxy}{AArray\+Proxy}}$<$ T $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array_a4594756294394addcb2fc95c3b15dd80}{operator\+[$\,$]\+}} (size\+\_\+t i)
+\item 
+const \doxymbox{\hyperlink{class_alib_1_1_a_array_proxy}{AArray\+Proxy}}$<$ T $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array_a056a520ac88590aefd1572335a36e51c}{operator\+[$\,$]\+}} (size\+\_\+t i) const
+\item 
+T \& \doxymbox{\hyperlink{class_alib_1_1_a_array_ae8a29aaf960a23d8ff71a36089f2f31b}{at}} (const std::\+vector$<$ size\+\_\+t $>$ \&idx)
+\item 
+const T \& \doxymbox{\hyperlink{class_alib_1_1_a_array_a8e82b2982e8df9d29ee09d1e496a7a10}{at}} (const std::\+vector$<$ size\+\_\+t $>$ \&idx) const
+\item 
+{\footnotesize template$<$typename... Idx$>$ }\\T \& \doxymbox{\hyperlink{class_alib_1_1_a_array_a2cdd3d3e97bd182c98081ffad432af9f}{operator()}} (Idx... idx)
+\item 
+{\footnotesize template$<$typename... Idx$>$ }\\const T \& \doxymbox{\hyperlink{class_alib_1_1_a_array_ad297f524948e747f4301336f7a14f093}{operator()}} (Idx... idx) const
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array_afb6b6c5d95cc72f71ca9a3072c0eda0d}{slice}} (const std::\+vector$<$ size\+\_\+t $>$ \&start, const std::\+vector$<$ size\+\_\+t $>$ \&stop, const std::\+vector$<$ size\+\_\+t $>$ \&step=\{\}) const
+\item 
+void \doxymbox{\hyperlink{class_alib_1_1_a_array_ade2708d772686f486b09a9ee400c0613}{reshape}} (const std::\+vector$<$ size\+\_\+t $>$ \&new\+Dims)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array_af8c8a79285d915b0cd4e1be0a1b98c61}{transpose}} (const std::\+vector$<$ size\+\_\+t $>$ \&axes=\{\}) const
+\item 
+{\footnotesize template$<$typename Op$>$ }\\void \doxymbox{\hyperlink{class_alib_1_1_a_array_a2b9465c490fdd1aaa20f60040cd60b71}{inplace\+Binary\+Op}} (const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&rhs, Op op)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \& \doxymbox{\hyperlink{class_alib_1_1_a_array_a10ea06a5b62c1643b5db7a095f1c6646}{operator+=}} (const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&rhs)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \& \doxymbox{\hyperlink{class_alib_1_1_a_array_a45b506effa82453a2daee5e94bfe6ec2}{operator-\/=}} (const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&rhs)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \& \doxymbox{\hyperlink{class_alib_1_1_a_array_acc070ca79755a49ed377bebaac2eb706}{operator\texorpdfstring{$\ast$}{*}=}} (const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&rhs)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \& \doxymbox{\hyperlink{class_alib_1_1_a_array_ae5a00d532f2e1cd5375f137939c28d92}{operator/\+=}} (const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&rhs)
+\item 
+std::\+shared\+\_\+ptr$<$ std::\+vector$<$ T $>$ $>$ \& \doxymbox{\hyperlink{class_alib_1_1_a_array_a9e4b8cc47162dbc15cf36cd8c75d9f04}{data\+Ptr}} () noexcept
+\item 
+const std::\+shared\+\_\+ptr$<$ std::\+vector$<$ T $>$ $>$ \& \doxymbox{\hyperlink{class_alib_1_1_a_array_ae71ddb5fae9461781cb62c7e6398313f}{data\+Ptr}} () const noexcept
+\item 
+size\+\_\+t \doxymbox{\hyperlink{class_alib_1_1_a_array_a5101b3d9cd970bdc9aa2543fc37dadcb}{size}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_alib_1_1_a_object}{Alib::\+\+AObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} () noexcept
+\item 
+virtual \doxymbox{\hyperlink{class_alib_1_1_a_object_ac723c4bcf276feb48adcc87077ea0de8}{\texorpdfstring{$\sim$}{\string~}\+AObject}} ()=default
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_object_a0db7dc0be0c2fbe34bbffd95853a141d}{AObject}} (const AObject \&other)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_object_ad9e702854546fef4e8a7347c5a2d6a86}{AObject}} (AObject \&\&other) noexcept
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a5b4dee833b31de7d6e1a7f7808ac1b45}{operator=}} (const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&other)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \& \doxymbox{\hyperlink{class_alib_1_1_a_object_aca672cd0b61929e5b60083f4a089aafd}{operator=}} (\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&\&other) noexcept
+\item 
+const std::\+string \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a6b0671bc3462a3536c4e279c5b4fd93f}{Oid}} () const noexcept
+\item 
+virtual std::\+string \doxymbox{\hyperlink{class_alib_1_1_a_object_aceccb1d3f3f60bb11ad98b93aa5f1906}{get\+Class\+Name}} () const
+\item 
+bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a9969a8ea96a00b22b9de8b06462f4eb9}{valid}} () const noexcept
+\item 
+void \doxymbox{\hyperlink{class_alib_1_1_a_object_adb1385c39f5bf60b7a4fbb1513d4bc5b}{set\+Valid}} (bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a9969a8ea96a00b22b9de8b06462f4eb9}{valid}}) noexcept
+\item 
+void \doxymbox{\hyperlink{class_alib_1_1_a_object_a0c40319f8296948048e37df11553ec8e}{validate}} () noexcept
+\item 
+void \doxymbox{\hyperlink{class_alib_1_1_a_object_a40bfa5d840372cce4d7b772a90206d35}{invalidate}} () noexcept
+\item 
+\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}} \doxymbox{\hyperlink{class_alib_1_1_a_object_a7ba3e1e64c499eb6a0efbab5f6099fca}{get\+Error}} () const noexcept
+\item 
+const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_alib_1_1_a_object_abdd30056ff9f5968b5031889224369ba}{error\+Name}} () const noexcept
+\item 
+void \doxymbox{\hyperlink{class_alib_1_1_a_object_ad7356b6df001d5b314b04b36cf4fa7f5}{set\+Error}} (\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}} err) noexcept
+\item 
+void \doxymbox{\hyperlink{class_alib_1_1_a_object_a4c9dd3270e06a201f4cca9f065b224e8}{reset\+Error}} () noexcept
+\item 
+bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a46c3df806c0533c56be892e56b9419e0}{operator==}} (const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&other) const noexcept
+\item 
+bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a82d7acccc676586f360d1f896ee8cdc0}{operator!=}} (const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&other) const noexcept
+\item 
+virtual std::\+ostream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a369041e84f52063acc82eb237be2dcd5}{to\+Stream}} (std::\+ostream \&os) const
+\item 
+virtual std::\+istream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a3e2ab1a54a6528f483f28623c51129a1}{from\+Stream}} (std::\+istream \&is)
+\item 
+virtual bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a069a31d72ffd5eedd15a52d428d7e8e4}{write}} (const std::\+string \&file\+Name) const
+\item 
+virtual bool \doxymbox{\hyperlink{class_alib_1_1_a_object_aabd29a08609906615a9fd0663ccfae09}{read}} (const std::\+string \&file\+Name)
+\item 
+virtual std::\+ostream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_abc6c17077f8ff798aceb27e68e3c2b1b}{print\+Description}} (std::\+ostream \&os) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_alib_1_1_a_array_a8e857694514b85d459e51551bd957d01}{m\+\_\+copy}} (const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}} \&other)
+\item 
+void \doxymbox{\hyperlink{class_alib_1_1_a_array_abf8c84c7c308a13ec5db4cf87f49a35d}{m\+\_\+move}} (\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}} \&\&other)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{class_alib_1_1_a_object}{Alib::\+\+AObject}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_alib_1_1_a_object_a1a2f9c0d738fc4f33efa114f1703d034}{m\+\_\+copy}} (const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&other)
+\item 
+virtual void \doxymbox{\hyperlink{class_alib_1_1_a_object_a92fdfbddabf57a97a9a8dc6d6840dbd8}{m\+\_\+move}} (\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&\&other) noexcept
+\item 
+virtual bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a6f91bd7daa1f2c6fa33aaf95dd0bf19b}{m\+\_\+compare}} (const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&other) const noexcept
+\item 
+virtual bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a11ed93be939a787f0f1ea7ad494ca0ba}{m\+\_\+is\+Valid}} () const noexcept
+\item 
+virtual std::\+ostream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a65d79973964589936144d6aa03802621}{m\+\_\+print\+Description}} (std::\+ostream \&os) const
+\item 
+virtual std::\+ostream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_addd7e0ab6cb1fee7ce0b658408d5dfec}{m\+\_\+print\+Status}} (std::\+ostream \&os) const
+\item 
+virtual std::\+ostream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_abf0c61976ad65f1e86e524f1f97c408b}{m\+\_\+print}} (std::\+ostream \&os) const
+\item 
+virtual std::\+istream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a93c2eaa4518e566fa43570e0365186fb}{m\+\_\+parse}} (std::\+istream \&is)
+\item 
+virtual bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a857be61132f8e01db3cd7081eba0ea99}{m\+\_\+write}} (std::\+ostream \&os) const
+\item 
+virtual bool \doxymbox{\hyperlink{class_alib_1_1_a_object_acde72c6cb28b5e6529b489adf4bff915}{m\+\_\+read}} (std::\+istream \&is)
+\item 
+virtual std::\+ostream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a05dca6d0d494116b5b8d6608325a3eff}{m\+\_\+to\+Stream}} (std::\+ostream \&os) const
+\item 
+virtual std::\+istream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a553936a2f6615ec73a37ff400d027060}{m\+\_\+from\+Stream}} (std::\+istream \&is)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Op$>$ }\\static \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array_a0650ff5af4b7cebb364491876597189f}{broadcast\+Binary\+Op}} (const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&lhs, const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&rhs, Op op)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions inherited from \doxymbox{\hyperlink{class_alib_1_1_a_object}{Alib::\+\+AObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static std::\+string \doxymbox{\hyperlink{class_alib_1_1_a_object_aa217b46538114a6174adde75ee5ce8ec}{generate\+OID}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_shape}{AShape}} \doxymbox{\hyperlink{class_alib_1_1_a_array_ab0018b30674d14f609db7f1a6ff9442b}{p\+\_\+shape}}
+\item 
+std::\+shared\+\_\+ptr$<$ std::\+vector$<$ T $>$ $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array_ab8050477f13c0777cf07b44a4097a89f}{p\+\_\+data\+Ptr}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{class_alib_1_1_a_object}{Alib::\+\+AObject}}}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{class_alib_1_1_a_object_a4e6a3513fe12e6a2fb2b6930f1e7fcb4}{p\+\_\+magic}} \{\doxymbox{\hyperlink{_a_l_i_b_h_8h_a6d1fb27924334faab61d1c742624bf9b}{AOBJ\+\_\+\+MAGIC}}\}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{class_alib_1_1_a_object_ae39af73e0cacbcd47314682ff32e7fbb}{p\+\_\+version}} \{\doxymbox{\hyperlink{_a_l_i_b_h_8h_a4804ce7577ca74460aef7ad99a904620}{AOBJ\+\_\+\+VERSION}}\}
+\item 
+std::\+string \doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\+\_\+oid}}
+\item 
+bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\+\_\+valid}} \{true\}
+\item 
+\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}} \doxymbox{\hyperlink{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}{p\+\_\+error}} \{\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb}{AErrors::\+no\+Error}}\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array_afafea1ad9d2a80402d1fb5a65591385b}{operator+}} (const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&lhs, const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&rhs)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array_a01488c0cb2ed0a5e70c7f3c981f5159b}{operator-\/}} (const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&lhs, const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&rhs)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array_a633eca656c48f61ad3665f6038130732}{operator\texorpdfstring{$\ast$}{*}}} (const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&lhs, const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&rhs)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array_a66ba1cecf65e2afef5576057be380377}{operator/\+}} (const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&lhs, const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&rhs)
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{class_alib_1_1_a_array_doc-typedef-members}
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{class_alib_1_1_a_array_a40d1e02a7a7dcc779208ea9a91d5b189}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a40d1e02a7a7dcc779208ea9a91d5b189} 
+template$<$typename T$>$ \\
+using \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+value\+\_\+type = T}
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_alib_1_1_a_array_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!AArray@{AArray}}
+\index{AArray@{AArray}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AArray()}{AArray()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+\+AArray (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{class_alib_1_1_a_array_a966a4169848eff6d3eef0fc3de16b8d4}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!AArray@{AArray}}
+\index{AArray@{AArray}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AArray()}{AArray()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a966a4169848eff6d3eef0fc3de16b8d4} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+\+AArray (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ size\+\_\+t $>$ \&}]{dims}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\Hypertarget{class_alib_1_1_a_array_a607ecc0eac12c0905aaaf18482d3e2c2}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!AArray@{AArray}}
+\index{AArray@{AArray}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AArray()}{AArray()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a607ecc0eac12c0905aaaf18482d3e2c2} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+\+AArray (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_shape}{AShape}} \&}]{shape}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\Hypertarget{class_alib_1_1_a_array_a8318c3187b8d4845f5ff3977aae90984}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!AArray@{AArray}}
+\index{AArray@{AArray}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AArray()}{AArray()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a8318c3187b8d4845f5ff3977aae90984} 
+template$<$typename T$>$ \\
+template$<$typename... Dims, typename = std::\+enable\+\_\+if\+\_\+t$<$(std::\+conjunction\+\_\+v$<$std::\+is\+\_\+integral$<$\+Dims$>$...$>$)$>$$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+\+AArray (\begin{DoxyParamCaption}\item[{Dims...}]{dims}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\Hypertarget{class_alib_1_1_a_array_a8bc60f8faf29764a83300bdd461bbd0f}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!AArray@{AArray}}
+\index{AArray@{AArray}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AArray()}{AArray()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a8bc60f8faf29764a83300bdd461bbd0f} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+\+AArray (\begin{DoxyParamCaption}\item[{const std::\+initializer\+\_\+list$<$ size\+\_\+t $>$ \&}]{dims}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\Hypertarget{class_alib_1_1_a_array_a7c895407dcd77309a4a3ccae0df5e8d1}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!AArray@{AArray}}
+\index{AArray@{AArray}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AArray()}{AArray()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a7c895407dcd77309a4a3ccae0df5e8d1} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+\+AArray (\begin{DoxyParamCaption}\item[{const AArray$<$ T $>$ \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_a216690f3519525f586470bf9bcb874ab}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!AArray@{AArray}}
+\index{AArray@{AArray}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AArray()}{AArray()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a216690f3519525f586470bf9bcb874ab} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+\+AArray (\begin{DoxyParamCaption}\item[{AArray$<$ T $>$ \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_alib_1_1_a_array_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_alib_1_1_a_array_ae8a29aaf960a23d8ff71a36089f2f31b}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!at@{at}}
+\index{at@{at}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_ae8a29aaf960a23d8ff71a36089f2f31b} 
+template$<$typename T$>$ \\
+T \& \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+at (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ size\+\_\+t $>$ \&}]{idx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_a8e82b2982e8df9d29ee09d1e496a7a10}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!at@{at}}
+\index{at@{at}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a8e82b2982e8df9d29ee09d1e496a7a10} 
+template$<$typename T$>$ \\
+const T \& \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+at (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ size\+\_\+t $>$ \&}]{idx}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_a0650ff5af4b7cebb364491876597189f}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!broadcastBinaryOp@{broadcastBinaryOp}}
+\index{broadcastBinaryOp@{broadcastBinaryOp}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{broadcastBinaryOp()}{broadcastBinaryOp()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a0650ff5af4b7cebb364491876597189f} 
+template$<$typename T$>$ \\
+template$<$typename Op$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+broadcast\+Binary\+Op (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{lhs}{, }\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{rhs}{, }\item[{Op}]{op}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_alib_1_1_a_array_a959e0d253e5d5c83f83950e4de590a70}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!clone@{clone}}
+\index{clone@{clone}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a959e0d253e5d5c83f83950e4de590a70} 
+template$<$typename T$>$ \\
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_alib_1_1_a_object_a0875bc6b828ff392098c63fdadb84cd4}{Alib::\+\+AObject}}.
+
+\Hypertarget{class_alib_1_1_a_array_ae71ddb5fae9461781cb62c7e6398313f}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!dataPtr@{dataPtr}}
+\index{dataPtr@{dataPtr}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dataPtr()}{dataPtr()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_ae71ddb5fae9461781cb62c7e6398313f} 
+template$<$typename T$>$ \\
+const std::\+shared\+\_\+ptr$<$ std::\+vector$<$ T $>$ $>$ \& \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+data\+Ptr (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_array_a9e4b8cc47162dbc15cf36cd8c75d9f04}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!dataPtr@{dataPtr}}
+\index{dataPtr@{dataPtr}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dataPtr()}{dataPtr()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a9e4b8cc47162dbc15cf36cd8c75d9f04} 
+template$<$typename T$>$ \\
+std::\+shared\+\_\+ptr$<$ std::\+vector$<$ T $>$ $>$ \& \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+data\+Ptr (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_array_aa77147c9010f0e1eb618f37b008bc03c}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!hash@{hash}}
+\index{hash@{hash}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{hash()}{hash()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_aa77147c9010f0e1eb618f37b008bc03c} 
+template$<$typename T$>$ \\
+size\+\_\+t \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+hash (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \doxymbox{\hyperlink{class_alib_1_1_a_object_a98f76b97beb59c02ebb43141d78cac20}{Alib::\+\+AObject}}.
+
+\Hypertarget{class_alib_1_1_a_array_a2b9465c490fdd1aaa20f60040cd60b71}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!inplaceBinaryOp@{inplaceBinaryOp}}
+\index{inplaceBinaryOp@{inplaceBinaryOp}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{inplaceBinaryOp()}{inplaceBinaryOp()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a2b9465c490fdd1aaa20f60040cd60b71} 
+template$<$typename T$>$ \\
+template$<$typename Op$>$ \\
+void \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+inplace\+Binary\+Op (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{rhs}{, }\item[{Op}]{op}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_a8e857694514b85d459e51551bd957d01}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!m\_copy@{m\_copy}}
+\index{m\_copy@{m\_copy}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_copy()}{m\_copy()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a8e857694514b85d459e51551bd957d01} 
+template$<$typename T$>$ \\
+void \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+m\+\_\+copy (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_alib_1_1_a_array_abf8c84c7c308a13ec5db4cf87f49a35d}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!m\_move@{m\_move}}
+\index{m\_move@{m\_move}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_move()}{m\_move()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_abf8c84c7c308a13ec5db4cf87f49a35d} 
+template$<$typename T$>$ \\
+void \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+m\+\_\+move (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_alib_1_1_a_array_a2cdd3d3e97bd182c98081ffad432af9f}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a2cdd3d3e97bd182c98081ffad432af9f} 
+template$<$typename T$>$ \\
+template$<$typename... Idx$>$ \\
+T \& \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+operator() (\begin{DoxyParamCaption}\item[{Idx...}]{idx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_ad297f524948e747f4301336f7a14f093}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_ad297f524948e747f4301336f7a14f093} 
+template$<$typename T$>$ \\
+template$<$typename... Idx$>$ \\
+const T \& \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+operator() (\begin{DoxyParamCaption}\item[{Idx...}]{idx}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_acc070ca79755a49ed377bebaac2eb706}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!operator\texorpdfstring{$\ast$}{*}=@{operator\texorpdfstring{$\ast$}{*}=}}
+\index{operator\texorpdfstring{$\ast$}{*}=@{operator\texorpdfstring{$\ast$}{*}=}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}=()}{operator*=()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_acc070ca79755a49ed377bebaac2eb706} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \& \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+operator\texorpdfstring{$\ast$}{*}= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_a10ea06a5b62c1643b5db7a095f1c6646}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a10ea06a5b62c1643b5db7a095f1c6646} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \& \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+operator+= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_a45b506effa82453a2daee5e94bfe6ec2}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a45b506effa82453a2daee5e94bfe6ec2} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \& \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+operator-\/= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_ae5a00d532f2e1cd5375f137939c28d92}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator/=()}{operator/=()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_ae5a00d532f2e1cd5375f137939c28d92} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \& \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+operator/\+= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_ad26ea32e0a882af6cf1a695489af0910}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_ad26ea32e0a882af6cf1a695489af0910} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}} \& \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+operator= (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_array_a950ab6162ac4c1894fa800a00226e649}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a950ab6162ac4c1894fa800a00226e649} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}} \& \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+operator= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_a4594756294394addcb2fc95c3b15dd80}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!operator\+[]\+@{operator[]}}
+\index{operator\+[]\+@{operator[]}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a4594756294394addcb2fc95c3b15dd80} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array_proxy}{AArray\+Proxy}}$<$ T $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+operator\+[$\,$]\+ (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_a056a520ac88590aefd1572335a36e51c}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!operator\+[]\+@{operator[]}}
+\index{operator\+[]\+@{operator[]}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a056a520ac88590aefd1572335a36e51c} 
+template$<$typename T$>$ \\
+const \doxymbox{\hyperlink{class_alib_1_1_a_array_proxy}{AArray\+Proxy}}$<$ T $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+operator\+[$\,$]\+ (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_ade2708d772686f486b09a9ee400c0613}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!reshape@{reshape}}
+\index{reshape@{reshape}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{reshape()}{reshape()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_ade2708d772686f486b09a9ee400c0613} 
+template$<$typename T$>$ \\
+void \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+reshape (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ size\+\_\+t $>$ \&}]{new\+Dims}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_a311c89a88ecdeb561b4f71bc9012b74a}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!shape@{shape}}
+\index{shape@{shape}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a311c89a88ecdeb561b4f71bc9012b74a} 
+template$<$typename T$>$ \\
+const \doxymbox{\hyperlink{class_alib_1_1_a_shape}{AShape}} \& \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+shape (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_array_a5101b3d9cd970bdc9aa2543fc37dadcb}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!size@{size}}
+\index{size@{size}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a5101b3d9cd970bdc9aa2543fc37dadcb} 
+template$<$typename T$>$ \\
+size\+\_\+t \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_array_afb6b6c5d95cc72f71ca9a3072c0eda0d}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!slice@{slice}}
+\index{slice@{slice}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{slice()}{slice()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_afb6b6c5d95cc72f71ca9a3072c0eda0d} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+slice (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ size\+\_\+t $>$ \&}]{start}{, }\item[{const std::\+vector$<$ size\+\_\+t $>$ \&}]{stop}{, }\item[{const std::\+vector$<$ size\+\_\+t $>$ \&}]{step}{ = {\ttfamily \{\}}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_array_af8c8a79285d915b0cd4e1be0a1b98c61}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!transpose@{transpose}}
+\index{transpose@{transpose}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{transpose()}{transpose()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_af8c8a79285d915b0cd4e1be0a1b98c61} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+transpose (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ size\+\_\+t $>$ \&}]{axes}{ = {\ttfamily \{\}}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-related-members}
+\Hypertarget{class_alib_1_1_a_array_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_alib_1_1_a_array_a633eca656c48f61ad3665f6038130732}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}}{operator*}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a633eca656c48f61ad3665f6038130732} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{lhs}{, }\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+\Hypertarget{class_alib_1_1_a_array_afafea1ad9d2a80402d1fb5a65591385b}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!operator+@{operator+}}
+\index{operator+@{operator+}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator+}{operator+}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_afafea1ad9d2a80402d1fb5a65591385b} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ operator+ (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{lhs}{, }\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+\Hypertarget{class_alib_1_1_a_array_a01488c0cb2ed0a5e70c7f3c981f5159b}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/}{operator-}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a01488c0cb2ed0a5e70c7f3c981f5159b} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ operator-\/ (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{lhs}{, }\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+\Hypertarget{class_alib_1_1_a_array_a66ba1cecf65e2afef5576057be380377}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!operator/@{operator/}}
+\index{operator/@{operator/}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator/}{operator/}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_a66ba1cecf65e2afef5576057be380377} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ operator/\+ (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{lhs}{, }\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_array_a576d8d20b90da46562b7387fe508b370}{AArray}}$<$ T $>$ \&}]{rhs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_alib_1_1_a_array_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_alib_1_1_a_array_ab8050477f13c0777cf07b44a4097a89f}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!p\_dataPtr@{p\_dataPtr}}
+\index{p\_dataPtr@{p\_dataPtr}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{p\_dataPtr}{p\_dataPtr}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_ab8050477f13c0777cf07b44a4097a89f} 
+template$<$typename T$>$ \\
+std::\+shared\+\_\+ptr$<$std::\+vector$<$T$>$ $>$ \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+p\+\_\+data\+Ptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_alib_1_1_a_array_ab0018b30674d14f609db7f1a6ff9442b}\index{Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}!p\_shape@{p\_shape}}
+\index{p\_shape@{p\_shape}!Alib::AArray$<$ T $>$@{Alib::AArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{p\_shape}{p\_shape}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_array_ab0018b30674d14f609db7f1a6ff9442b} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_alib_1_1_a_shape}{AShape}} \doxymbox{\hyperlink{class_alib_1_1_a_array}{Alib::\+\+AArray}}$<$ T $>$::\+p\+\_\+shape\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+ALib/\+\doxymbox{\hyperlink{_a_array_8h}{AArray.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_annotated" xml:lang="en-US">
+<title>Class List</title>
+Here are the classes, structs, unions and interfaces with brief descriptions:<link linkend="_class_alib_1_1_a_array">Alib::AArray&lt; T &gt;</link><link linkend="_class_alib_1_1_a_array_proxy">Alib::AArrayProxy&lt; T &gt;</link><link linkend="_struct_alib_1_1_a_error_info">Alib::AErrorInfo</link>
+<para>Optional helper structure to attach metadata or descriptions to errors </para>
+<link linkend="_struct_alib_1_1all__integral">Alib::all_integral&lt; Ts &gt;</link><link linkend="_struct_alib_1_1all__integral_3_01_t_00_01_rest_8_8_8_01_4">Alib::all_integral&lt; T, Rest... &gt;</link><link linkend="_struct_alib_1_1all__integral_3_4">Alib::all_integral&lt;&gt;</link><link linkend="_class_alib_1_1_a_object">Alib::AObject</link><link linkend="_class_alib_1_1_a_shape">Alib::AShape</link></section>

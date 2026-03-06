@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_9ec879804c97a5b64cdde698292268d1" xml:lang="en-US">
+<title>ALib Directory Reference</title>
+<indexterm><primary>ALib Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="__a_array_8h">AArray.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__a_errors_8cpp">AErrors.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__a_errors_8h">AErrors.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__alib_8h">Alib.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__a_l_i_b_h_8h">ALIBH.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__a_object_8cpp">AObject.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__a_object_8h">AObject.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__a_shape_8h">AShape.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_templatesetget_8h">templatesetget.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,42 @@
+\doxysection{ALib/\+\+AErrors.h File Reference}
+\hypertarget{_a_errors_8h}{}\label{_a_errors_8h}\index{ALib/AErrors.h@{ALib/AErrors.h}}
+{\ttfamily \+\#include $<$iostream$>$}\newline
+Include dependency graph for AErrors.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_alib_1_1_a_error_info}{Alib::\+\+AError\+Info}}
+\begin{DoxyCompactList}\small\item\em Optional helper structure to attach metadata or descriptions to errors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \doxymbox{\hyperlink{namespace_alib}{Alib}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{Alib::\+\+AErrors}} :\+ int32\+\_\+t \{ \newline
+\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb}{Alib::\+no\+Error}} = 0
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a026f9bbde1f085ac1e2c9f1cbaca0a4c}{Alib::\+source\+Error}} = 1
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113afc4f92438e44fc08f46f4fb36dd2e389}{Alib::\+allocation\+Error}} = 2
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a6fbf66821cd9ba0f8139d0b9b561df77}{Alib::\+invalid\+Operation}} = 3
+, \newline
+\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113abca6212be6005d4f726c7887e8e557a7}{Alib::\+range\+Error}} = 4
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a24b80e3aa8dce2f2ea17912cf83a9757}{Alib::\+type\+Mismatch}} = 5
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113aff18d1dc8b64abff7c82becd3d7135dd}{Alib::\+not\+Initialized}} = 6
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113ae492e3586c1e8d275b71ef8f4a5e0782}{Alib::\+unsupported\+Feature}} = 7
+, \newline
+\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a4b4c3d08948825f5fe6b51a1087d503e}{Alib::\+io\+Error}} = 8
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a9fa57f2cbf2abeb6f35e80fa0977835f}{Alib::\+parse\+Error}} = 9
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a66c7d43b12156560c61f391dbd82175b}{Alib::\+format\+Error}} = 10
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a36e34147ffd884a31c40739e5371d711}{Alib::\+runtime\+Error}} = 11
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{namespace_alib_a282aa41d627642dc028d48bf33ace72e}{Alib::\+get\+Error\+Name}} (\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}} error) noexcept
+\end{DoxyCompactItemize}

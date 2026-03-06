@@ -1,0 +1,712 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_alib_1_1_a_object" xml:lang="en-US">
+<title>Alib::AObject Class Reference</title>
+<indexterm><primary>Alib::AObject</primary></indexterm>
+<para>
+<computeroutput>#include &lt;AObject.h&gt;</computeroutput>
+</para>
+Inheritance diagram for Alib::AObject:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for Alib::AObject:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> () noexcept</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_class_alib_1_1_a_object_1ac723c4bcf276feb48adcc87077ea0de8">~AObject</link> ()=default</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_object_1a0db7dc0be0c2fbe34bbffd95853a141d">AObject</link> (const AObject &amp;other)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_object_1ad9e702854546fef4e8a7347c5a2d6a86">AObject</link> (AObject &amp;&amp;other) noexcept</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp; <link linkend="_class_alib_1_1_a_object_1a5b4dee833b31de7d6e1a7f7808ac1b45">operator=</link> (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;other)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp; <link linkend="_class_alib_1_1_a_object_1aca672cd0b61929e5b60083f4a089aafd">operator=</link> (<link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;&amp;other) noexcept</para>
+</listitem>
+            <listitem><para>virtual std::unique_ptr&lt; <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &gt; <link linkend="_class_alib_1_1_a_object_1a0875bc6b828ff392098c63fdadb84cd4">clone</link> () const =0</para>
+</listitem>
+            <listitem><para>virtual std::size_t <link linkend="_class_alib_1_1_a_object_1a98f76b97beb59c02ebb43141d78cac20">hash</link> () const</para>
+</listitem>
+            <listitem><para>const std::string &amp; <link linkend="_class_alib_1_1_a_object_1a6b0671bc3462a3536c4e279c5b4fd93f">Oid</link> () const noexcept</para>
+</listitem>
+            <listitem><para>virtual std::string <link linkend="_class_alib_1_1_a_object_1aceccb1d3f3f60bb11ad98b93aa5f1906">getClassName</link> () const</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_alib_1_1_a_object_1a9969a8ea96a00b22b9de8b06462f4eb9">valid</link> () const noexcept</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_object_1adb1385c39f5bf60b7a4fbb1513d4bc5b">setValid</link> (bool <link linkend="_class_alib_1_1_a_object_1a9969a8ea96a00b22b9de8b06462f4eb9">valid</link>) noexcept</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_object_1a0c40319f8296948048e37df11553ec8e">validate</link> () noexcept</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_object_1a40bfa5d840372cce4d7b772a90206d35">invalidate</link> () noexcept</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> <link linkend="_class_alib_1_1_a_object_1a7ba3e1e64c499eb6a0efbab5f6099fca">getError</link> () const noexcept</para>
+</listitem>
+            <listitem><para>const char * <link linkend="_class_alib_1_1_a_object_1abdd30056ff9f5968b5031889224369ba">errorName</link> () const noexcept</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_object_1ad7356b6df001d5b314b04b36cf4fa7f5">setError</link> (<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> err) noexcept</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_object_1a4c9dd3270e06a201f4cca9f065b224e8">resetError</link> () noexcept</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_alib_1_1_a_object_1a46c3df806c0533c56be892e56b9419e0">operator==</link> (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;other) const noexcept</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_alib_1_1_a_object_1a82d7acccc676586f360d1f896ee8cdc0">operator!=</link> (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;other) const noexcept</para>
+</listitem>
+            <listitem><para>virtual std::ostream &amp; <link linkend="_class_alib_1_1_a_object_1a369041e84f52063acc82eb237be2dcd5">toStream</link> (std::ostream &amp;os) const</para>
+</listitem>
+            <listitem><para>virtual std::istream &amp; <link linkend="_class_alib_1_1_a_object_1a3e2ab1a54a6528f483f28623c51129a1">fromStream</link> (std::istream &amp;is)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_alib_1_1_a_object_1a069a31d72ffd5eedd15a52d428d7e8e4">write</link> (const std::string &amp;fileName) const</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_alib_1_1_a_object_1aabd29a08609906615a9fd0663ccfae09">read</link> (const std::string &amp;fileName)</para>
+</listitem>
+            <listitem><para>virtual std::ostream &amp; <link linkend="_class_alib_1_1_a_object_1abc6c17077f8ff798aceb27e68e3c2b1b">printDescription</link> (std::ostream &amp;os) const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual void <link linkend="_class_alib_1_1_a_object_1a1a2f9c0d738fc4f33efa114f1703d034">m_copy</link> (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;other)</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_alib_1_1_a_object_1a92fdfbddabf57a97a9a8dc6d6840dbd8">m_move</link> (<link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;&amp;other) noexcept</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_alib_1_1_a_object_1a6f91bd7daa1f2c6fa33aaf95dd0bf19b">m_compare</link> (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;other) const noexcept</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_alib_1_1_a_object_1a11ed93be939a787f0f1ea7ad494ca0ba">m_isValid</link> () const noexcept</para>
+</listitem>
+            <listitem><para>virtual std::ostream &amp; <link linkend="_class_alib_1_1_a_object_1a65d79973964589936144d6aa03802621">m_printDescription</link> (std::ostream &amp;os) const</para>
+</listitem>
+            <listitem><para>virtual std::ostream &amp; <link linkend="_class_alib_1_1_a_object_1addd7e0ab6cb1fee7ce0b658408d5dfec">m_printStatus</link> (std::ostream &amp;os) const</para>
+</listitem>
+            <listitem><para>virtual std::ostream &amp; <link linkend="_class_alib_1_1_a_object_1abf0c61976ad65f1e86e524f1f97c408b">m_print</link> (std::ostream &amp;os) const</para>
+</listitem>
+            <listitem><para>virtual std::istream &amp; <link linkend="_class_alib_1_1_a_object_1a93c2eaa4518e566fa43570e0365186fb">m_parse</link> (std::istream &amp;is)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_alib_1_1_a_object_1a857be61132f8e01db3cd7081eba0ea99">m_write</link> (std::ostream &amp;os) const</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_alib_1_1_a_object_1acde72c6cb28b5e6529b489adf4bff915">m_read</link> (std::istream &amp;is)</para>
+</listitem>
+            <listitem><para>virtual std::ostream &amp; <link linkend="_class_alib_1_1_a_object_1a05dca6d0d494116b5b8d6608325a3eff">m_toStream</link> (std::ostream &amp;os) const</para>
+</listitem>
+            <listitem><para>virtual std::istream &amp; <link linkend="_class_alib_1_1_a_object_1a553936a2f6615ec73a37ff400d027060">m_fromStream</link> (std::istream &amp;is)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Protected Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static std::string <link linkend="_class_alib_1_1_a_object_1aa217b46538114a6174adde75ee5ce8ec">generateOID</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para>uint32_t <link linkend="_class_alib_1_1_a_object_1a4e6a3513fe12e6a2fb2b6930f1e7fcb4">p_magic</link> {<link linkend="__a_l_i_b_h_8h_1a6d1fb27924334faab61d1c742624bf9b">AOBJ_MAGIC</link>}</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_class_alib_1_1_a_object_1ae39af73e0cacbcd47314682ff32e7fbb">p_version</link> {<link linkend="__a_l_i_b_h_8h_1a4804ce7577ca74460aef7ad99a904620">AOBJ_VERSION</link>}</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_class_alib_1_1_a_object_1a09de3cb0891834a66640f968be346b18">p_oid</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_alib_1_1_a_object_1a65a568e47ebb0f29c2625420c2f8d64e">p_valid</link> {true}</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> <link linkend="_class_alib_1_1_a_object_1ae0a972382d9f91260e9ccce4868adabc">p_error</link> {<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb">AErrors::noError</link>}</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Friends    </title>
+        <itemizedlist>
+            <listitem><para>std::ostream &amp; <link linkend="_class_alib_1_1_a_object_1a6d1d13289882d1ed2dbea8eb09f8e89c">operator&lt;&lt;</link> (std::ostream &amp;os, const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;obj)</para>
+</listitem>
+            <listitem><para>std::istream &amp; <link linkend="_class_alib_1_1_a_object_1a5dd87564b261ef1e3d7c366ab7c942c5">operator&gt;&gt;</link> (std::istream &amp;is, <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;obj)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6"/><section>
+    <title>AObject()<computeroutput>[1/3]</computeroutput></title>
+<indexterm><primary>AObject</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>AObject</secondary></indexterm>
+<para><computeroutput>Alib::AObject::AObject ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00030 :&#32;<link linkend="_class_alib_1_1_a_object_1a09de3cb0891834a66640f968be346b18">p_oid</link>(<link linkend="_class_alib_1_1_a_object_1aa217b46538114a6174adde75ee5ce8ec">generateOID</link>())&#32;{}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1ac723c4bcf276feb48adcc87077ea0de8"/><section>
+    <title>~AObject()</title>
+<indexterm><primary>~AObject</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>~AObject</secondary></indexterm>
+<para><computeroutput>virtual Alib::AObject::~AObject ( )<computeroutput>[virtual]</computeroutput>, <computeroutput>[default]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_alib_1_1_a_object_1a0db7dc0be0c2fbe34bbffd95853a141d"/><section>
+    <title>AObject()<computeroutput>[2/3]</computeroutput></title>
+<indexterm><primary>AObject</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>AObject</secondary></indexterm>
+<para><computeroutput>Alib::AObject::AObject (const AObject &amp; other)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00033 {&#32;<link linkend="_class_alib_1_1_a_object_1a1a2f9c0d738fc4f33efa114f1703d034">m_copy</link>(other);&#32;}
+</programlisting><para>
+References <link linkend="_l00108">m_copy()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object_a0db7dc0be0c2fbe34bbffd95853a141d_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1ad9e702854546fef4e8a7347c5a2d6a86"/><section>
+    <title>AObject()<computeroutput>[3/3]</computeroutput></title>
+<indexterm><primary>AObject</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>AObject</secondary></indexterm>
+<para><computeroutput>Alib::AObject::AObject (AObject &amp;&amp; other)<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00034 {&#32;<link linkend="_class_alib_1_1_a_object_1a92fdfbddabf57a97a9a8dc6d6840dbd8">m_move</link>(std::move(other));&#32;}
+</programlisting><para>
+References <link linkend="_l00114">m_move()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object_ad9e702854546fef4e8a7347c5a2d6a86_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_object_1a0875bc6b828ff392098c63fdadb84cd4"/><section>
+    <title>clone()</title>
+<indexterm><primary>clone</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>clone</secondary></indexterm>
+<para><computeroutput>virtual std::unique_ptr&lt; <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &gt; Alib::AObject::clone ( ) const<computeroutput>[nodiscard]</computeroutput>, <computeroutput>[pure virtual]</computeroutput></computeroutput></para><para>
+Implemented in <link linkend="_class_alib_1_1_a_array_1a959e0d253e5d5c83f83950e4de590a70">Alib::AArray&lt; T &gt;</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1abdd30056ff9f5968b5031889224369ba"/><section>
+    <title>errorName()</title>
+<indexterm><primary>errorName</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>errorName</secondary></indexterm>
+<para><computeroutput>const char * Alib::AObject::errorName ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[nodiscard]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00055 {&#32;return&#32;::Alib::getErrorName(<link linkend="_class_alib_1_1_a_object_1ae0a972382d9f91260e9ccce4868adabc">p_error</link>);&#32;}
+</programlisting><para>
+References <link linkend="_l00012">Alib::getErrorName()</link>, and <link linkend="_l00091">p_error</link>.</para>
+<para>
+Referenced by <link linkend="_l00131">m_printStatus()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object_abdd30056ff9f5968b5031889224369ba_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object_abdd30056ff9f5968b5031889224369ba_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a3e2ab1a54a6528f483f28623c51129a1"/><section>
+    <title>fromStream()</title>
+<indexterm><primary>fromStream</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>fromStream</secondary></indexterm>
+<para><computeroutput>virtual std::istream &amp; Alib::AObject::fromStream (std::istream &amp; is)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00068 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1a553936a2f6615ec73a37ff400d027060">m_fromStream</link>(is);&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1aa217b46538114a6174adde75ee5ce8ec"/><section>
+    <title>generateOID()</title>
+<indexterm><primary>generateOID</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>generateOID</secondary></indexterm>
+<para><computeroutput>std::string Alib::AObject::generateOID ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">thread_local</emphasis>&#32;std::mt19937_64&#32;rng(
+00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::chrono::high_resolution_clock::now().time_since_epoch().count()
+00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);
+00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::uniform_int_distribution&lt;uint64_t&gt;&#32;dist(0,&#32;9999999999ULL);
+00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::ostringstream&#32;oss;
+00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;3;&#32;++i)&#32;{
+00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;oss&#32;&lt;&lt;&#32;std::setw(10)&#32;&lt;&lt;&#32;std::setfill(<emphasis role="charliteral">&apos;0&apos;</emphasis>)&#32;&lt;&lt;&#32;dist(rng);
+00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(i&#32;!=&#32;2)&#32;oss&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.&quot;</emphasis>;
+00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;oss.str();
+00105 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1aceccb1d3f3f60bb11ad98b93aa5f1906"/><section>
+    <title>getClassName()</title>
+<indexterm><primary>getClassName</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>getClassName</secondary></indexterm>
+<para><computeroutput>virtual std::string Alib::AObject::getClassName ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00046 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;AObject&quot;</emphasis>;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1a7ba3e1e64c499eb6a0efbab5f6099fca"/><section>
+    <title>getError()</title>
+<indexterm><primary>getError</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>getError</secondary></indexterm>
+<para><computeroutput><link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> Alib::AObject::getError ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[nodiscard]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00054 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1ae0a972382d9f91260e9ccce4868adabc">p_error</link>;&#32;}
+</programlisting><para>
+References <link linkend="_l00091">p_error</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a98f76b97beb59c02ebb43141d78cac20"/><section>
+    <title>hash()</title>
+<indexterm><primary>hash</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>hash</secondary></indexterm>
+<para><computeroutput>virtual std::size_t Alib::AObject::hash ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[nodiscard]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented in <link linkend="_class_alib_1_1_a_array_1aa77147c9010f0e1eb618f37b008bc03c">Alib::AArray&lt; T &gt;</link>.</para>
+<programlisting linenumbering="unnumbered">00042 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::hash&lt;std::string&gt;{}(<link linkend="_class_alib_1_1_a_object_1a09de3cb0891834a66640f968be346b18">p_oid</link>);&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1a40bfa5d840372cce4d7b772a90206d35"/><section>
+    <title>invalidate()</title>
+<indexterm><primary>invalidate</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>invalidate</secondary></indexterm>
+<para><computeroutput>void Alib::AObject::invalidate ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00051 {&#32;<link linkend="_class_alib_1_1_a_object_1a65a568e47ebb0f29c2625420c2f8d64e">p_valid</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;}
+</programlisting><para>
+References <link linkend="_l00090">p_valid</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a6f91bd7daa1f2c6fa33aaf95dd0bf19b"/><section>
+    <title>m_compare()</title>
+<indexterm><primary>m_compare</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>m_compare</secondary></indexterm>
+<para><computeroutput>virtual bool Alib::AObject::m_compare (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp; other) const<computeroutput>[inline]</computeroutput>, <computeroutput>[nodiscard]</computeroutput>, <computeroutput>[protected]</computeroutput>, <computeroutput>[virtual]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1a09de3cb0891834a66640f968be346b18">p_oid</link>&#32;==&#32;other.p_oid;
+00122 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_l00060">operator==()</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object_a6f91bd7daa1f2c6fa33aaf95dd0bf19b_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a1a2f9c0d738fc4f33efa114f1703d034"/><section>
+    <title>m_copy()</title>
+<indexterm><primary>m_copy</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>m_copy</secondary></indexterm>
+<para><computeroutput>virtual void Alib::AObject::m_copy (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp; other)<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1a09de3cb0891834a66640f968be346b18">p_oid</link>&#32;=&#32;other.p_oid;
+00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1a65a568e47ebb0f29c2625420c2f8d64e">p_valid</link>&#32;=&#32;other.p_valid;
+00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1ae0a972382d9f91260e9ccce4868adabc">p_error</link>&#32;=&#32;other.p_error;
+00112 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+References <link linkend="_l00091">p_error</link>, and <link linkend="_l00090">p_valid</link>.</para>
+<para>
+Referenced by <link linkend="_l00033">AObject()</link>, <link linkend="_l00190">Alib::AArray&lt; T &gt;::m_copy()</link>, and <link linkend="_l00037">operator=()</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object_a1a2f9c0d738fc4f33efa114f1703d034_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a553936a2f6615ec73a37ff400d027060"/><section>
+    <title>m_fromStream()</title>
+<indexterm><primary>m_fromStream</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>m_fromStream</secondary></indexterm>
+<para><computeroutput>virtual std::istream &amp; Alib::AObject::m_fromStream (std::istream &amp; is)<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00211 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1a93c2eaa4518e566fa43570e0365186fb">m_parse</link>(is);&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1a11ed93be939a787f0f1ea7ad494ca0ba"/><section>
+    <title>m_isValid()</title>
+<indexterm><primary>m_isValid</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>m_isValid</secondary></indexterm>
+<para><computeroutput>virtual bool Alib::AObject::m_isValid ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[nodiscard]</computeroutput>, <computeroutput>[protected]</computeroutput>, <computeroutput>[virtual]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00124 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1a65a568e47ebb0f29c2625420c2f8d64e">p_valid</link>;&#32;}
+</programlisting><para>
+References <link linkend="_l00090">p_valid</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a92fdfbddabf57a97a9a8dc6d6840dbd8"/><section>
+    <title>m_move()</title>
+<indexterm><primary>m_move</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>m_move</secondary></indexterm>
+<para><computeroutput>virtual void Alib::AObject::m_move (<link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;&amp; other)<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput>, <computeroutput>[virtual]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1a09de3cb0891834a66640f968be346b18">p_oid</link>&#32;=&#32;std::move(other.p_oid);
+00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1a65a568e47ebb0f29c2625420c2f8d64e">p_valid</link>&#32;=&#32;other.p_valid;
+00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1ae0a972382d9f91260e9ccce4868adabc">p_error</link>&#32;=&#32;other.p_error;
+00118 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+References <link linkend="_l00091">p_error</link>, and <link linkend="_l00090">p_valid</link>.</para>
+<para>
+Referenced by <link linkend="_l00034">AObject()</link>, <link linkend="_l00195">Alib::AArray&lt; T &gt;::m_move()</link>, and <link linkend="_l00038">operator=()</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object_a92fdfbddabf57a97a9a8dc6d6840dbd8_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a93c2eaa4518e566fa43570e0365186fb"/><section>
+    <title>m_parse()</title>
+<indexterm><primary>m_parse</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>m_parse</secondary></indexterm>
+<para><computeroutput>virtual std::istream &amp; Alib::AObject::m_parse (std::istream &amp; is)<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;oid;
+00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1a9969a8ea96a00b22b9de8b06462f4eb9">valid</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;errInt&#32;=&#32;0;
+00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;version&#32;=&#32;0;
+00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;is&#32;&gt;&gt;&#32;version&#32;&gt;&gt;&#32;oid&#32;&gt;&gt;&#32;<link linkend="_class_alib_1_1_a_object_1a9969a8ea96a00b22b9de8b06462f4eb9">valid</link>&#32;&gt;&gt;&#32;errInt;
+00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(is.good())&#32;{
+00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1ae39af73e0cacbcd47314682ff32e7fbb">p_version</link>&#32;=&#32;version;
+00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1a09de3cb0891834a66640f968be346b18">p_oid</link>&#32;=&#32;std::move(oid);
+00151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1a65a568e47ebb0f29c2625420c2f8d64e">p_valid</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_object_1a9969a8ea96a00b22b9de8b06462f4eb9">valid</link>;
+00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1ae0a972382d9f91260e9ccce4868adabc">p_error</link>&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis><link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link><emphasis role="keyword">&gt;</emphasis>(errInt);
+00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;is;
+00155 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+References <link linkend="_l00091">p_error</link>, and <link linkend="_l00090">p_valid</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1abf0c61976ad65f1e86e524f1f97c408b"/><section>
+    <title>m_print()</title>
+<indexterm><primary>m_print</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>m_print</secondary></indexterm>
+<para><computeroutput>virtual std::ostream &amp; Alib::AObject::m_print (std::ostream &amp; os) const<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;os&#32;&lt;&lt;&#32;p_version&#32;&lt;&lt;&#32;std::endl&#32;&lt;&lt;&#32;p_oid&#32;&lt;&lt;&#32;std::endl&#32;&lt;&lt;&#32;p_valid&#32;&lt;&lt;&#32;std::endl&#32;&lt;&lt;&#32;static_cast&lt;int&gt;(<link linkend="_class_alib_1_1_a_object_1ae0a972382d9f91260e9ccce4868adabc">p_error</link>);
+00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;os;
+00140 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1a65d79973964589936144d6aa03802621"/><section>
+    <title>m_printDescription()</title>
+<indexterm><primary>m_printDescription</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>m_printDescription</secondary></indexterm>
+<para><computeroutput>virtual std::ostream &amp; Alib::AObject::m_printDescription (std::ostream &amp; os) const<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;os&#32;&lt;&lt;&#32;<link linkend="_class_alib_1_1_a_object_1aceccb1d3f3f60bb11ad98b93aa5f1906">getClassName</link>()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;[OID=&quot;</emphasis>&#32;&lt;&lt;&#32;<link linkend="_class_alib_1_1_a_object_1a09de3cb0891834a66640f968be346b18">p_oid</link>&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;]&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1addd7e0ab6cb1fee7ce0b658408d5dfec">m_printStatus</link>(os);
+00129 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1addd7e0ab6cb1fee7ce0b658408d5dfec"/><section>
+    <title>m_printStatus()</title>
+<indexterm><primary>m_printStatus</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>m_printStatus</secondary></indexterm>
+<para><computeroutput>virtual std::ostream &amp; Alib::AObject::m_printStatus (std::ostream &amp; os) const<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;os&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Valid=&quot;</emphasis>&#32;&lt;&lt;&#32;<link linkend="_class_alib_1_1_a_object_1a65a568e47ebb0f29c2625420c2f8d64e">p_valid</link>&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;Error=&quot;</emphasis>&#32;&lt;&lt;&#32;<link linkend="_class_alib_1_1_a_object_1abdd30056ff9f5968b5031889224369ba">errorName</link>();
+00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;os;
+00134 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+References <link linkend="_l00055">errorName()</link>, and <link linkend="_l00090">p_valid</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object_addd7e0ab6cb1fee7ce0b658408d5dfec_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1acde72c6cb28b5e6529b489adf4bff915"/><section>
+    <title>m_read()</title>
+<indexterm><primary>m_read</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>m_read</secondary></indexterm>
+<para><computeroutput>virtual bool Alib::AObject::m_read (std::istream &amp; is)<computeroutput>[inline]</computeroutput>, <computeroutput>[nodiscard]</computeroutput>, <computeroutput>[protected]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;magic&#32;=&#32;0;
+00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;is.read(<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keywordtype">char</emphasis>*<emphasis role="keyword">&gt;</emphasis>(&amp;magic),&#32;<emphasis role="keyword">sizeof</emphasis>(magic));
+00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(magic&#32;!=&#32;<link linkend="__a_l_i_b_h_8h_1a6d1fb27924334faab61d1c742624bf9b">AOBJ_MAGIC</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+00179 
+00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;version&#32;=&#32;0;
+00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;is.read(<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keywordtype">char</emphasis>*<emphasis role="keyword">&gt;</emphasis>(&amp;version),&#32;<emphasis role="keyword">sizeof</emphasis>(version));
+00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!is.good())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1ae39af73e0cacbcd47314682ff32e7fbb">p_version</link>&#32;=&#32;version;
+00184 
+00185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;oidLen&#32;=&#32;0;
+00186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;is.read(<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keywordtype">char</emphasis>*<emphasis role="keyword">&gt;</emphasis>(&amp;oidLen),&#32;<emphasis role="keyword">sizeof</emphasis>(oidLen));
+00187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!is.good())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+00188 
+00189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;oid;&#32;oid.resize(oidLen);
+00190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(oidLen&#32;&gt;&#32;0)&#32;{
+00191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;is.read(oid.data(),&#32;oidLen);
+00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!is.good())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00194 
+00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;validByte&#32;=&#32;0;
+00196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;is.read(<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keywordtype">char</emphasis>*<emphasis role="keyword">&gt;</emphasis>(&amp;validByte),&#32;<emphasis role="keyword">sizeof</emphasis>(validByte));
+00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!is.good())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+00198 
+00199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;int32_t&#32;err&#32;=&#32;0;
+00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;is.read(<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keywordtype">char</emphasis>*<emphasis role="keyword">&gt;</emphasis>(&amp;err),&#32;<emphasis role="keyword">sizeof</emphasis>(err));
+00201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!is.good())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+00202 
+00203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1a09de3cb0891834a66640f968be346b18">p_oid</link>&#32;=&#32;std::move(oid);
+00204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1a65a568e47ebb0f29c2625420c2f8d64e">p_valid</link>&#32;=&#32;(validByte&#32;!=&#32;0);
+00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1ae0a972382d9f91260e9ccce4868adabc">p_error</link>&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis><link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link><emphasis role="keyword">&gt;</emphasis>(err);
+00206 
+00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+00208 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+References <link linkend="_l00091">p_error</link>, and <link linkend="_l00090">p_valid</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a05dca6d0d494116b5b8d6608325a3eff"/><section>
+    <title>m_toStream()</title>
+<indexterm><primary>m_toStream</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>m_toStream</secondary></indexterm>
+<para><computeroutput>virtual std::ostream &amp; Alib::AObject::m_toStream (std::ostream &amp; os) const<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00210 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1abf0c61976ad65f1e86e524f1f97c408b">m_print</link>(os);&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1a857be61132f8e01db3cd7081eba0ea99"/><section>
+    <title>m_write()</title>
+<indexterm><primary>m_write</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>m_write</secondary></indexterm>
+<para><computeroutput>virtual bool Alib::AObject::m_write (std::ostream &amp; os) const<computeroutput>[inline]</computeroutput>, <computeroutput>[nodiscard]</computeroutput>, <computeroutput>[protected]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;os.write(<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keyword">const&#32;</emphasis><emphasis role="keywordtype">char</emphasis>*<emphasis role="keyword">&gt;</emphasis>(&amp;<link linkend="_class_alib_1_1_a_object_1a4e6a3513fe12e6a2fb2b6930f1e7fcb4">p_magic</link>),&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_class_alib_1_1_a_object_1a4e6a3513fe12e6a2fb2b6930f1e7fcb4">p_magic</link>));
+00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;os.write(<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keyword">const&#32;</emphasis><emphasis role="keywordtype">char</emphasis>*<emphasis role="keyword">&gt;</emphasis>(&amp;<link linkend="_class_alib_1_1_a_object_1ae39af73e0cacbcd47314682ff32e7fbb">p_version</link>),&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_class_alib_1_1_a_object_1ae39af73e0cacbcd47314682ff32e7fbb">p_version</link>));
+00161 
+00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint32_t&#32;oidLen&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis>uint32_t<emphasis role="keyword">&gt;</emphasis>(<link linkend="_class_alib_1_1_a_object_1a09de3cb0891834a66640f968be346b18">p_oid</link>.size());
+00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;os.write(<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keyword">const&#32;</emphasis><emphasis role="keywordtype">char</emphasis>*<emphasis role="keyword">&gt;</emphasis>(&amp;oidLen),&#32;<emphasis role="keyword">sizeof</emphasis>(oidLen));
+00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(oidLen&#32;&gt;&#32;0)&#32;os.write(<link linkend="_class_alib_1_1_a_object_1a09de3cb0891834a66640f968be346b18">p_oid</link>.data(),&#32;oidLen);
+00165 
+00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;validByte&#32;=&#32;<link linkend="_class_alib_1_1_a_object_1a65a568e47ebb0f29c2625420c2f8d64e">p_valid</link>&#32;?&#32;1u&#32;:&#32;0u;
+00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;os.write(<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keyword">const&#32;</emphasis><emphasis role="keywordtype">char</emphasis>*<emphasis role="keyword">&gt;</emphasis>(&amp;validByte),&#32;<emphasis role="keyword">sizeof</emphasis>(validByte));
+00168 
+00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;int32_t&#32;err&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis>int32_t<emphasis role="keyword">&gt;</emphasis>(<link linkend="_class_alib_1_1_a_object_1ae0a972382d9f91260e9ccce4868adabc">p_error</link>);
+00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;os.write(<emphasis role="keyword">reinterpret_cast&lt;</emphasis><emphasis role="keyword">const&#32;</emphasis><emphasis role="keywordtype">char</emphasis>*<emphasis role="keyword">&gt;</emphasis>(&amp;err),&#32;<emphasis role="keyword">sizeof</emphasis>(err));
+00171 
+00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;os.good();
+00173 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+References <link linkend="_l00091">p_error</link>, and <link linkend="_l00090">p_valid</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a6b0671bc3462a3536c4e279c5b4fd93f"/><section>
+    <title>Oid()</title>
+<indexterm><primary>Oid</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>Oid</secondary></indexterm>
+<para><computeroutput>const std::string &amp; Alib::AObject::Oid ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[nodiscard]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00045 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1a09de3cb0891834a66640f968be346b18">p_oid</link>;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1a82d7acccc676586f360d1f896ee8cdc0"/><section>
+    <title>operator!=()</title>
+<indexterm><primary>operator!=</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>operator!=</secondary></indexterm>
+<para><computeroutput>bool Alib::AObject::operator!= (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp; other) const<computeroutput>[inline]</computeroutput>, <computeroutput>[nodiscard]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00061 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;!(*<emphasis role="keyword">this</emphasis>&#32;==&#32;other);&#32;}
+</programlisting><para>
+References <link linkend="_l00060">operator==()</link>.</para>
+<para>
+Referenced by <link linkend="_l00038">operator=()</link>, and <link linkend="_l00037">operator=()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object_a82d7acccc676586f360d1f896ee8cdc0_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object_a82d7acccc676586f360d1f896ee8cdc0_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1aca672cd0b61929e5b60083f4a089aafd"/><section>
+    <title>operator=()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>operator=</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>operator=</secondary></indexterm>
+<para><computeroutput><link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp; Alib::AObject::operator= (<link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;&amp; other)<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00038 {&#32;<emphasis role="keywordflow">if</emphasis>&#32;(*<emphasis role="keyword">this</emphasis>&#32;!=&#32;other)&#32;<link linkend="_class_alib_1_1_a_object_1a92fdfbddabf57a97a9a8dc6d6840dbd8">m_move</link>(std::move(other));&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;&#32;}
+</programlisting><para>
+References <link linkend="_l00114">m_move()</link>, and <link linkend="_l00061">operator!=()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object_aca672cd0b61929e5b60083f4a089aafd_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a5b4dee833b31de7d6e1a7f7808ac1b45"/><section>
+    <title>operator=()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>operator=</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>operator=</secondary></indexterm>
+<para><computeroutput><link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp; Alib::AObject::operator= (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp; other)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00037 {&#32;<emphasis role="keywordflow">if</emphasis>&#32;(*<emphasis role="keyword">this</emphasis>&#32;!=&#32;other)&#32;<link linkend="_class_alib_1_1_a_object_1a1a2f9c0d738fc4f33efa114f1703d034">m_copy</link>(other);&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;&#32;}
+</programlisting><para>
+References <link linkend="_l00108">m_copy()</link>, and <link linkend="_l00061">operator!=()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object_a5b4dee833b31de7d6e1a7f7808ac1b45_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a46c3df806c0533c56be892e56b9419e0"/><section>
+    <title>operator==()</title>
+<indexterm><primary>operator==</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>operator==</secondary></indexterm>
+<para><computeroutput>bool Alib::AObject::operator== (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp; other) const<computeroutput>[inline]</computeroutput>, <computeroutput>[nodiscard]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00060 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1a6f91bd7daa1f2c6fa33aaf95dd0bf19b">m_compare</link>(other);&#32;}
+</programlisting><para>
+References <link linkend="_l00120">m_compare()</link>.</para>
+<para>
+Referenced by <link linkend="_l00061">operator!=()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object_a46c3df806c0533c56be892e56b9419e0_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_object_a46c3df806c0533c56be892e56b9419e0_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1abc6c17077f8ff798aceb27e68e3c2b1b"/><section>
+    <title>printDescription()</title>
+<indexterm><primary>printDescription</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>printDescription</secondary></indexterm>
+<para><computeroutput>virtual std::ostream &amp; Alib::AObject::printDescription (std::ostream &amp; os) const<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00083 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1a65d79973964589936144d6aa03802621">m_printDescription</link>(os);&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1aabd29a08609906615a9fd0663ccfae09"/><section>
+    <title>read()</title>
+<indexterm><primary>read</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>read</secondary></indexterm>
+<para><computeroutput>virtual bool Alib::AObject::read (const std::string &amp; fileName)<computeroutput>[inline]</computeroutput>, <computeroutput>[nodiscard]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00077 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00078 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::ifstream&#32;is(fileName,&#32;std::ios::binary);
+00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!is.good())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1acde72c6cb28b5e6529b489adf4bff915">m_read</link>(is);
+00081 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1a4c9dd3270e06a201f4cca9f065b224e8"/><section>
+    <title>resetError()</title>
+<indexterm><primary>resetError</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>resetError</secondary></indexterm>
+<para><computeroutput>void Alib::AObject::resetError ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00057 {&#32;<link linkend="_class_alib_1_1_a_object_1ae0a972382d9f91260e9ccce4868adabc">p_error</link>&#32;=&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb">AErrors::noError</link>;&#32;}
+</programlisting><para>
+References <link linkend="_l00020">Alib::noError</link>, and <link linkend="_l00091">p_error</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1ad7356b6df001d5b314b04b36cf4fa7f5"/><section>
+    <title>setError()</title>
+<indexterm><primary>setError</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>setError</secondary></indexterm>
+<para><computeroutput>void Alib::AObject::setError (<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> err)<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00056 {&#32;<link linkend="_class_alib_1_1_a_object_1ae0a972382d9f91260e9ccce4868adabc">p_error</link>&#32;=&#32;err;&#32;}
+</programlisting><para>
+References <link linkend="_l00091">p_error</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1adb1385c39f5bf60b7a4fbb1513d4bc5b"/><section>
+    <title>setValid()</title>
+<indexterm><primary>setValid</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>setValid</secondary></indexterm>
+<para><computeroutput>void Alib::AObject::setValid (bool valid)<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00049 {&#32;<link linkend="_class_alib_1_1_a_object_1a65a568e47ebb0f29c2625420c2f8d64e">p_valid</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_object_1a9969a8ea96a00b22b9de8b06462f4eb9">valid</link>;&#32;}
+</programlisting><para>
+References <link linkend="_l00090">p_valid</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a369041e84f52063acc82eb237be2dcd5"/><section>
+    <title>toStream()</title>
+<indexterm><primary>toStream</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>toStream</secondary></indexterm>
+<para><computeroutput>virtual std::ostream &amp; Alib::AObject::toStream (std::ostream &amp; os) const<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00067 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1a05dca6d0d494116b5b8d6608325a3eff">m_toStream</link>(os);&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1a9969a8ea96a00b22b9de8b06462f4eb9"/><section>
+    <title>valid()</title>
+<indexterm><primary>valid</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>valid</secondary></indexterm>
+<para><computeroutput>bool Alib::AObject::valid ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[nodiscard]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00048 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1a65a568e47ebb0f29c2625420c2f8d64e">p_valid</link>;&#32;}
+</programlisting><para>
+References <link linkend="_l00090">p_valid</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a0c40319f8296948048e37df11553ec8e"/><section>
+    <title>validate()</title>
+<indexterm><primary>validate</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>validate</secondary></indexterm>
+<para><computeroutput>void Alib::AObject::validate ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00050 {&#32;<link linkend="_class_alib_1_1_a_object_1a65a568e47ebb0f29c2625420c2f8d64e">p_valid</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;&#32;}
+</programlisting><para>
+References <link linkend="_l00090">p_valid</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a069a31d72ffd5eedd15a52d428d7e8e4"/><section>
+    <title>write()</title>
+<indexterm><primary>write</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>write</secondary></indexterm>
+<para><computeroutput>virtual bool Alib::AObject::write (const std::string &amp; fileName) const<computeroutput>[inline]</computeroutput>, <computeroutput>[nodiscard]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::ofstream&#32;os(fileName,&#32;std::ios::binary);
+00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!os.good())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_object_1a857be61132f8e01db3cd7081eba0ea99">m_write</link>(os);
+00075 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+</section>
+<section>
+<title>Friends And Related Symbol Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_object_1a6d1d13289882d1ed2dbea8eb09f8e89c"/><section>
+    <title>operator&lt;&lt;</title>
+<indexterm><primary>operator&lt;&lt;</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>operator&lt;&lt;</secondary></indexterm>
+<para><computeroutput>std::ostream &amp; operator&lt;&lt; (std::ostream &amp; os, const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp; obj)<computeroutput>[friend]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00064 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;obj.toStream(os);&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1a5dd87564b261ef1e3d7c366ab7c942c5"/><section>
+    <title>operator&gt;&gt;</title>
+<indexterm><primary>operator&gt;&gt;</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>operator&gt;&gt;</secondary></indexterm>
+<para><computeroutput>std::istream &amp; operator&gt;&gt; (std::istream &amp; is, <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp; obj)<computeroutput>[friend]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00065 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;obj.fromStream(is);&#32;}
+</programlisting></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_object_1ae0a972382d9f91260e9ccce4868adabc"/><section>
+    <title>p_error</title>
+<indexterm><primary>p_error</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>p_error</secondary></indexterm>
+<para><computeroutput><link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> Alib::AObject::p_error {<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb">AErrors::noError</link>}<computeroutput>[protected]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00091 {<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb">AErrors::noError</link>};
+</programlisting><para>
+Referenced by <link linkend="_l00055">errorName()</link>, <link linkend="_l00054">getError()</link>, <link linkend="_l00108">m_copy()</link>, <link linkend="_l00114">m_move()</link>, <link linkend="_l00142">m_parse()</link>, <link linkend="_l00175">m_read()</link>, <link linkend="_l00158">m_write()</link>, <link linkend="_l00057">resetError()</link>, and <link linkend="_l00056">setError()</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1a4e6a3513fe12e6a2fb2b6930f1e7fcb4"/><section>
+    <title>p_magic</title>
+<indexterm><primary>p_magic</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>p_magic</secondary></indexterm>
+<para><computeroutput>uint32_t Alib::AObject::p_magic {<link linkend="__a_l_i_b_h_8h_1a6d1fb27924334faab61d1c742624bf9b">AOBJ_MAGIC</link>}<computeroutput>[protected]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00087 {<link linkend="__a_l_i_b_h_8h_1a6d1fb27924334faab61d1c742624bf9b">AOBJ_MAGIC</link>};
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_object_1a09de3cb0891834a66640f968be346b18"/><section>
+    <title>p_oid</title>
+<indexterm><primary>p_oid</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>p_oid</secondary></indexterm>
+<para><computeroutput>std::string Alib::AObject::p_oid<computeroutput>[protected]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_alib_1_1_a_object_1a65a568e47ebb0f29c2625420c2f8d64e"/><section>
+    <title>p_valid</title>
+<indexterm><primary>p_valid</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>p_valid</secondary></indexterm>
+<para><computeroutput>bool Alib::AObject::p_valid {true}<computeroutput>[protected]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00090 {<emphasis role="keyword">true</emphasis>};
+</programlisting><para>
+Referenced by <link linkend="_l00051">invalidate()</link>, <link linkend="_l00108">m_copy()</link>, <link linkend="_l00124">m_isValid()</link>, <link linkend="_l00114">m_move()</link>, <link linkend="_l00142">m_parse()</link>, <link linkend="_l00131">m_printStatus()</link>, <link linkend="_l00175">m_read()</link>, <link linkend="_l00158">m_write()</link>, <link linkend="_l00049">setValid()</link>, <link linkend="_l00048">valid()</link>, and <link linkend="_l00050">validate()</link>.</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_object_1ae39af73e0cacbcd47314682ff32e7fbb"/><section>
+    <title>p_version</title>
+<indexterm><primary>p_version</primary><secondary>Alib::AObject</secondary></indexterm>
+<indexterm><primary>Alib::AObject</primary><secondary>p_version</secondary></indexterm>
+<para><computeroutput>uint32_t Alib::AObject::p_version {<link linkend="__a_l_i_b_h_8h_1a4804ce7577ca74460aef7ad99a904620">AOBJ_VERSION</link>}<computeroutput>[protected]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00088 {<link linkend="__a_l_i_b_h_8h_1a4804ce7577ca74460aef7ad99a904620">AOBJ_VERSION</link>};
+</programlisting></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+ALib/<link linkend="__a_object_8h">AObject.h</link></section>
+</section>

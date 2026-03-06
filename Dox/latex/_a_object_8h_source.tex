@@ -1,0 +1,222 @@
+\doxysection{AObject.\+h}
+\hypertarget{_a_object_8h_source}{}\label{_a_object_8h_source}\index{ALib/AObject.h@{ALib/AObject.h}}
+\doxymbox{\hyperlink{_a_object_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ GArray.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ ALib}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Giuseppe\ Coppini\ on\ 25/02/26.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ Revised\ with\ extended\ error\ handling\ and\ versioned\ binary\ I/O}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ AObject.h}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ AOBJECT\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ AOBJECT\_H}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_a_errors_8h}{AErrors.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_a_l_i_b_h_8h}{ALIBH.h}}"{}}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\doxymbox{\hyperlink{namespace_alib}{Alib}}\ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}\ \{}
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Constructors\ /\ destructor}}
+\DoxyCodeLine{00030\ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}()\ noexcept\ :\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\_oid}}(\doxymbox{\hyperlink{class_alib_1_1_a_object_aa217b46538114a6174adde75ee5ce8ec}{generateOID}}())\ \{\}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_ac723c4bcf276feb48adcc87077ea0de8}{\string~AObject}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_a0db7dc0be0c2fbe34bbffd95853a141d}{AObject}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}\&\ other)\ \{\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a1a2f9c0d738fc4f33efa114f1703d034}{m\_copy}}(other);\ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_ad9e702854546fef4e8a7347c5a2d6a86}{AObject}}(\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}\&\&\ other)\ \textcolor{keyword}{noexcept}\ \{\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a92fdfbddabf57a97a9a8dc6d6840dbd8}{m\_move}}(std::move(other));\ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Assignment}}
+\DoxyCodeLine{00037\ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}\&\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a5b4dee833b31de7d6e1a7f7808ac1b45}{operator=}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}\&\ other)\ \{\ \textcolor{keywordflow}{if}\ (*\textcolor{keyword}{this}\ !=\ other)\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a1a2f9c0d738fc4f33efa114f1703d034}{m\_copy}}(other);\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};\ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}\&\ \doxymbox{\hyperlink{class_alib_1_1_a_object_aca672cd0b61929e5b60083f4a089aafd}{operator=}}(\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}\&\&\ other)\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{if}\ (*\textcolor{keyword}{this}\ !=\ other)\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a92fdfbddabf57a97a9a8dc6d6840dbd8}{m\_move}}(std::move(other));\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};\ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Polymorphism\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00041\ \ \ \ \ [[nodiscard(\textcolor{stringliteral}{"{}AObject\ clone"{}})]]\ \textcolor{keyword}{virtual}\ std::unique\_ptr<AObject>\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a0875bc6b828ff392098c63fdadb84cd4}{clone}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00042\ \ \ \ \ [[nodiscard(\textcolor{stringliteral}{"{}AObject\ hash"{}})]]\ \textcolor{keyword}{virtual}\ std::size\_t\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a98f76b97beb59c02ebb43141d78cac20}{hash}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ std::hash<std::string>\{\}(\doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\_oid}});\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Identity\ \&\ validity\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00045\ \ \ \ \ [[nodiscard(\textcolor{stringliteral}{"{}AObject\ Oid"{}})]]\ \textcolor{keyword}{const}\ std::string\&\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a6b0671bc3462a3536c4e279c5b4fd93f}{Oid}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\_oid}};\ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \doxymbox{\hyperlink{class_alib_1_1_a_object_aceccb1d3f3f60bb11ad98b93aa5f1906}{getClassName}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}AObject"{}};\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ [[nodiscard(\textcolor{stringliteral}{"{}AObject\ valid"{}})]]\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a9969a8ea96a00b22b9de8b06462f4eb9}{valid}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\_valid}};\ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_adb1385c39f5bf60b7a4fbb1513d4bc5b}{setValid}}(\textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a9969a8ea96a00b22b9de8b06462f4eb9}{valid}})\ \textcolor{keyword}{noexcept}\ \{\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\_valid}}\ =\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a9969a8ea96a00b22b9de8b06462f4eb9}{valid}};\ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a0c40319f8296948048e37df11553ec8e}{validate}}()\ noexcept\ \{\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\_valid}}\ =\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a40bfa5d840372cce4d7b772a90206d35}{invalidate}}()\ noexcept\ \{\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\_valid}}\ =\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Error\ management\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00054\ \ \ \ \ [[nodiscard(\textcolor{stringliteral}{"{}AObject\ getError"{}})]]\ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a7ba3e1e64c499eb6a0efbab5f6099fca}{getError}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}{p\_error}};\ \}}
+\DoxyCodeLine{00055\ \ \ \ \ [[nodiscard(\textcolor{stringliteral}{"{}AObject\ errorName"{}})]]\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{class_alib_1_1_a_object_abdd30056ff9f5968b5031889224369ba}{errorName}}()\ const\ noexcept\ \{\ return\ ::Alib::getErrorName(\doxymbox{\hyperlink{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}{p\_error}});\ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_ad7356b6df001d5b314b04b36cf4fa7f5}{setError}}(\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}}\ err)\ \textcolor{keyword}{noexcept}\ \{\ \doxymbox{\hyperlink{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}{p\_error}}\ =\ err;\ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a4c9dd3270e06a201f4cca9f065b224e8}{resetError}}()\ noexcept\ \{\ \doxymbox{\hyperlink{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}{p\_error}}\ =\ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb}{AErrors::noError}};\ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Comparison\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00060\ \ \ \ \ [[nodiscard(\textcolor{stringliteral}{"{}AObject\ operator=="{}})]]\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a46c3df806c0533c56be892e56b9419e0}{operator==}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}\&\ other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a6f91bd7daa1f2c6fa33aaf95dd0bf19b}{m\_compare}}(other);\ \}}
+\DoxyCodeLine{00061\ \ \ \ \ [[nodiscard(\textcolor{stringliteral}{"{}AObject\ operator!="{}})]]\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a82d7acccc676586f360d1f896ee8cdc0}{operator!=}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}\&\ other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ !(*\textcolor{keyword}{this}\ ==\ other);\ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Stream\ operators\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a6d1d13289882d1ed2dbea8eb09f8e89c}{operator<<}}(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}\&\ obj)\ \{\ \textcolor{keywordflow}{return}\ obj.\doxymbox{\hyperlink{class_alib_1_1_a_object_a369041e84f52063acc82eb237be2dcd5}{toStream}}(os);\ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{friend}\ std::istream\&\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a5dd87564b261ef1e3d7c366ab7c942c5}{operator>>}}(std::istream\&\ is,\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}\&\ obj)\ \{\ \textcolor{keywordflow}{return}\ obj.\doxymbox{\hyperlink{class_alib_1_1_a_object_a3e2ab1a54a6528f483f28623c51129a1}{fromStream}}(is);\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{virtual}\ std::ostream\&\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a369041e84f52063acc82eb237be2dcd5}{toStream}}(std::ostream\&\ os)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a05dca6d0d494116b5b8d6608325a3eff}{m\_toStream}}(os);\ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{virtual}\ std::istream\&\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a3e2ab1a54a6528f483f28623c51129a1}{fromStream}}(std::istream\&\ is)\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a553936a2f6615ec73a37ff400d027060}{m\_fromStream}}(is);\ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Binary\ I/O\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00071\ \ \ \ \ [[nodiscard(\textcolor{stringliteral}{"{}AObject\ write"{}})]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a069a31d72ffd5eedd15a52d428d7e8e4}{write}}(\textcolor{keyword}{const}\ std::string\&\ fileName)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ std::ofstream\ os(fileName,\ std::ios::binary);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!os.good())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a857be61132f8e01db3cd7081eba0ea99}{m\_write}}(os);}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ [[nodiscard(\textcolor{stringliteral}{"{}AObject\ read"{}})]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_aabd29a08609906615a9fd0663ccfae09}{read}}(\textcolor{keyword}{const}\ std::string\&\ fileName)\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ std::ifstream\ is(fileName,\ std::ios::binary);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is.good())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_acde72c6cb28b5e6529b489adf4bff915}{m\_read}}(is);}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{virtual}\ std::ostream\&\ \doxymbox{\hyperlink{class_alib_1_1_a_object_abc6c17077f8ff798aceb27e68e3c2b1b}{printDescription}}(std::ostream\&\ os)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a65d79973964589936144d6aa03802621}{m\_printDescription}}(os);\ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//\ Internal\ data}}
+\DoxyCodeLine{00087\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a4e6a3513fe12e6a2fb2b6930f1e7fcb4}{p\_magic}}\{\doxymbox{\hyperlink{_a_l_i_b_h_8h_a6d1fb27924334faab61d1c742624bf9b}{AOBJ\_MAGIC}}\};}
+\DoxyCodeLine{00088\ \ \ \ \ uint32\_t\ \doxymbox{\hyperlink{class_alib_1_1_a_object_ae39af73e0cacbcd47314682ff32e7fbb}{p\_version}}\{\doxymbox{\hyperlink{_a_l_i_b_h_8h_a4804ce7577ca74460aef7ad99a904620}{AOBJ\_VERSION}}\};}
+\DoxyCodeLine{00089\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\_oid}};}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\_valid}}\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{00091\ \ \ \ \ \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}{p\_error}}\{\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb}{AErrors::noError}}\};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Utilities\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \doxymbox{\hyperlink{class_alib_1_1_a_object_aa217b46538114a6174adde75ee5ce8ec}{generateOID}}()\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{thread\_local}\ std::mt19937\_64\ rng(}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ std::chrono::high\_resolution\_clock::now().time\_since\_epoch().count()}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ std::uniform\_int\_distribution<uint64\_t>\ dist(0,\ 9999999999ULL);}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ std::ostringstream\ oss;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 3;\ ++i)\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ oss\ <<\ std::setw(10)\ <<\ std::setfill(\textcolor{charliteral}{'0'})\ <<\ dist(rng);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ !=\ 2)\ oss\ <<\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ oss.str();}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Virtual\ protected\ methods\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a1a2f9c0d738fc4f33efa114f1703d034}{m\_copy}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}\&\ other)\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\_oid}}\ =\ other.\doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\_oid}};}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\_valid}}\ =\ other.\doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\_valid}};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}{p\_error}}\ =\ other.\doxymbox{\hyperlink{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}{p\_error}};}
+\DoxyCodeLine{00112\ \ \ \ \ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a92fdfbddabf57a97a9a8dc6d6840dbd8}{m\_move}}(\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}\&\&\ other)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\_oid}}\ =\ std::move(other.p\_oid);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\_valid}}\ =\ other.p\_valid;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}{p\_error}}\ =\ other.p\_error;}
+\DoxyCodeLine{00118\ \ \ \ \ \}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ [[nodiscard(\textcolor{stringliteral}{"{}AObject\ m\_compare"{}})]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a6f91bd7daa1f2c6fa33aaf95dd0bf19b}{m\_compare}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}}\&\ other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\_oid}}\ ==\ other.p\_oid;}
+\DoxyCodeLine{00122\ \ \ \ \ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ [[nodiscard(\textcolor{stringliteral}{"{}AObject\ m\_isValid"{}})]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a11ed93be939a787f0f1ea7ad494ca0ba}{m\_isValid}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\_valid}};\ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{virtual}\ std::ostream\&\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a65d79973964589936144d6aa03802621}{m\_printDescription}}(std::ostream\&\ os)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ os\ <<\ \doxymbox{\hyperlink{class_alib_1_1_a_object_aceccb1d3f3f60bb11ad98b93aa5f1906}{getClassName}}()\ <<\ \textcolor{stringliteral}{"{}\ [OID="{}}\ <<\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\_oid}}\ <<\ \textcolor{stringliteral}{"{}]"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_addd7e0ab6cb1fee7ce0b658408d5dfec}{m\_printStatus}}(os);}
+\DoxyCodeLine{00129\ \ \ \ \ \}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{virtual}\ std::ostream\&\ \doxymbox{\hyperlink{class_alib_1_1_a_object_addd7e0ab6cb1fee7ce0b658408d5dfec}{m\_printStatus}}(std::ostream\&\ os)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Valid="{}}\ <<\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\_valid}}\ <<\ \textcolor{stringliteral}{"{}\ Error="{}}\ <<\ \doxymbox{\hyperlink{class_alib_1_1_a_object_abdd30056ff9f5968b5031889224369ba}{errorName}}();}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00134\ \ \ \ \ \}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Text\ I/O\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keyword}{virtual}\ std::ostream\&\ \doxymbox{\hyperlink{class_alib_1_1_a_object_abf0c61976ad65f1e86e524f1f97c408b}{m\_print}}(std::ostream\&\ os)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ os\ <<\ p\_version\ <<\ std::endl\ <<\ p\_oid\ <<\ std::endl\ <<\ p\_valid\ <<\ std::endl\ <<\ static\_cast<int>(\doxymbox{\hyperlink{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}{p\_error}});}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00140\ \ \ \ \ \}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{virtual}\ std::istream\&\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a93c2eaa4518e566fa43570e0365186fb}{m\_parse}}(std::istream\&\ is)\ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ std::string\ oid;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a9969a8ea96a00b22b9de8b06462f4eb9}{valid}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ errInt\ =\ 0;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ uint32\_t\ version\ =\ 0;}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ is\ >>\ version\ >>\ oid\ >>\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a9969a8ea96a00b22b9de8b06462f4eb9}{valid}}\ >>\ errInt;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is.good())\ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_ae39af73e0cacbcd47314682ff32e7fbb}{p\_version}}\ =\ version;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\_oid}}\ =\ std::move(oid);}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\_valid}}\ =\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a9969a8ea96a00b22b9de8b06462f4eb9}{valid}};}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}{p\_error}}\ =\ \textcolor{keyword}{static\_cast<}\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}}\textcolor{keyword}{>}(errInt);}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ is;}
+\DoxyCodeLine{00155\ \ \ \ \ \}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Binary\ I/O\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00158\ \ \ \ \ [[nodiscard(\textcolor{stringliteral}{"{}AObject\ m\_write"{}})]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a857be61132f8e01db3cd7081eba0ea99}{m\_write}}(std::ostream\&\ os)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ os.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&\doxymbox{\hyperlink{class_alib_1_1_a_object_a4e6a3513fe12e6a2fb2b6930f1e7fcb4}{p\_magic}}),\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{class_alib_1_1_a_object_a4e6a3513fe12e6a2fb2b6930f1e7fcb4}{p\_magic}}));}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ os.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&\doxymbox{\hyperlink{class_alib_1_1_a_object_ae39af73e0cacbcd47314682ff32e7fbb}{p\_version}}),\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{class_alib_1_1_a_object_ae39af73e0cacbcd47314682ff32e7fbb}{p\_version}}));}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ uint32\_t\ oidLen\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(\doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\_oid}}.size());}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ os.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&oidLen),\ \textcolor{keyword}{sizeof}(oidLen));}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (oidLen\ >\ 0)\ os.write(\doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\_oid}}.data(),\ oidLen);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ uint8\_t\ validByte\ =\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\_valid}}\ ?\ 1u\ :\ 0u;}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ os.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&validByte),\ \textcolor{keyword}{sizeof}(validByte));}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ int32\_t\ err\ =\ \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(\doxymbox{\hyperlink{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}{p\_error}});}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ os.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&err),\ \textcolor{keyword}{sizeof}(err));}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os.good();}
+\DoxyCodeLine{00173\ \ \ \ \ \}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ [[nodiscard(\textcolor{stringliteral}{"{}AObject\ m\_read"{}})]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_acde72c6cb28b5e6529b489adf4bff915}{m\_read}}(std::istream\&\ is)\ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ uint32\_t\ magic\ =\ 0;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ is.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&magic),\ \textcolor{keyword}{sizeof}(magic));}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (magic\ !=\ \doxymbox{\hyperlink{_a_l_i_b_h_8h_a6d1fb27924334faab61d1c742624bf9b}{AOBJ\_MAGIC}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ uint32\_t\ version\ =\ 0;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ is.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&version),\ \textcolor{keyword}{sizeof}(version));}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is.good())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_ae39af73e0cacbcd47314682ff32e7fbb}{p\_version}}\ =\ version;}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ uint32\_t\ oidLen\ =\ 0;}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ is.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&oidLen),\ \textcolor{keyword}{sizeof}(oidLen));}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is.good())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ std::string\ oid;\ oid.resize(oidLen);}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (oidLen\ >\ 0)\ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ is.read(oid.data(),\ oidLen);}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is.good())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ uint8\_t\ validByte\ =\ 0;}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ is.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&validByte),\ \textcolor{keyword}{sizeof}(validByte));}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is.good())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ int32\_t\ err\ =\ 0;}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ is.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&err),\ \textcolor{keyword}{sizeof}(err));}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is.good())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\_oid}}\ =\ std::move(oid);}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\_valid}}\ =\ (validByte\ !=\ 0);}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}{p\_error}}\ =\ \textcolor{keyword}{static\_cast<}\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}}\textcolor{keyword}{>}(err);}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00208\ \ \ \ \ \}}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{virtual}\ std::ostream\&\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a05dca6d0d494116b5b8d6608325a3eff}{m\_toStream}}(std::ostream\&\ os)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_abf0c61976ad65f1e86e524f1f97c408b}{m\_print}}(os);\ \}}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keyword}{virtual}\ std::istream\&\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a553936a2f6615ec73a37ff400d027060}{m\_fromStream}}(std::istream\&\ is)\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_alib_1_1_a_object_a93c2eaa4518e566fa43570e0365186fb}{m\_parse}}(is);\ \}}
+\DoxyCodeLine{00212\ \};}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \}\ \textcolor{comment}{//\ namespace\ Alib}}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ AOBJECT\_H}}
+
+\end{DoxyCode}

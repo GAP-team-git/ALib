@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_alib" xml:lang="en-US">
+<title>Alib Namespace Reference</title>
+<indexterm><primary>Alib</primary></indexterm>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_struct_alib_1_1_a_error_info">AErrorInfo</link></para>
+
+<para>Optional helper structure to attach metadata or descriptions to errors. </para>
+</listitem>
+            <listitem><para>class <link linkend="_class_alib_1_1_a_array">AArray</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_alib_1_1_a_array_proxy">AArrayProxy</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_struct_alib_1_1all__integral">all_integral</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_struct_alib_1_1all__integral_3_4">all_integral&lt;&gt;</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_struct_alib_1_1all__integral_3_01_t_00_01_rest_8_8_8_01_4">all_integral&lt; T, Rest... &gt;</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_alib_1_1_a_object">AObject</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_alib_1_1_a_shape">AShape</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum class <link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> : int32_t { <?linebreak?><link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb">noError</link> = 0
+, <link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a026f9bbde1f085ac1e2c9f1cbaca0a4c">sourceError</link> = 1
+, <link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113afc4f92438e44fc08f46f4fb36dd2e389">allocationError</link> = 2
+, <link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a6fbf66821cd9ba0f8139d0b9b561df77">invalidOperation</link> = 3
+, <?linebreak?><link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113abca6212be6005d4f726c7887e8e557a7">rangeError</link> = 4
+, <link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a24b80e3aa8dce2f2ea17912cf83a9757">typeMismatch</link> = 5
+, <link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113aff18d1dc8b64abff7c82becd3d7135dd">notInitialized</link> = 6
+, <link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113ae492e3586c1e8d275b71ef8f4a5e0782">unsupportedFeature</link> = 7
+, <?linebreak?><link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a4b4c3d08948825f5fe6b51a1087d503e">ioError</link> = 8
+, <link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a9fa57f2cbf2abeb6f35e80fa0977835f">parseError</link> = 9
+, <link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a66c7d43b12156560c61f391dbd82175b">formatError</link> = 10
+, <link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a36e34147ffd884a31c40739e5371d711">runtimeError</link> = 11
+ }</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>const char * <link linkend="_namespace_alib_1a282aa41d627642dc028d48bf33ace72e">getErrorName</link> (<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> error) noexcept</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>--------------&#8212; Error Handling --------------&#8212; <link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> enum with a concise but extensible set of base errors </para>
+</section>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="_namespace_alib_1a4610b2a8834810415533186b20c79113"/><section>
+    <title>AErrors</title>
+<indexterm><primary>AErrors</primary><secondary>Alib</secondary></indexterm>
+<indexterm><primary>Alib</primary><secondary>AErrors</secondary></indexterm>
+<para><computeroutput>enum class <link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">Alib::AErrors</link> : int32_t<computeroutput>[strong]</computeroutput></computeroutput></para><informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="3" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2' align='right'/>
+      <colspec colname='c3'/>
+<tbody>
+<row><entry><indexterm><primary>noError</primary><secondary>Alib</secondary></indexterm>
+<indexterm><primary>Alib</primary><secondary>noError</secondary></indexterm>
+<anchor xml:id="_namespace_alib_1a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb"/>noError</entry><entry>0</entry><entry></entry></row><row><entry><indexterm><primary>sourceError</primary><secondary>Alib</secondary></indexterm>
+<indexterm><primary>Alib</primary><secondary>sourceError</secondary></indexterm>
+<anchor xml:id="_namespace_alib_1a4610b2a8834810415533186b20c79113a026f9bbde1f085ac1e2c9f1cbaca0a4c"/>sourceError</entry><entry>1</entry><entry></entry></row><row><entry><indexterm><primary>allocationError</primary><secondary>Alib</secondary></indexterm>
+<indexterm><primary>Alib</primary><secondary>allocationError</secondary></indexterm>
+<anchor xml:id="_namespace_alib_1a4610b2a8834810415533186b20c79113afc4f92438e44fc08f46f4fb36dd2e389"/>allocationError</entry><entry>2</entry><entry></entry></row><row><entry><indexterm><primary>invalidOperation</primary><secondary>Alib</secondary></indexterm>
+<indexterm><primary>Alib</primary><secondary>invalidOperation</secondary></indexterm>
+<anchor xml:id="_namespace_alib_1a4610b2a8834810415533186b20c79113a6fbf66821cd9ba0f8139d0b9b561df77"/>invalidOperation</entry><entry>3</entry><entry></entry></row><row><entry><indexterm><primary>rangeError</primary><secondary>Alib</secondary></indexterm>
+<indexterm><primary>Alib</primary><secondary>rangeError</secondary></indexterm>
+<anchor xml:id="_namespace_alib_1a4610b2a8834810415533186b20c79113abca6212be6005d4f726c7887e8e557a7"/>rangeError</entry><entry>4</entry><entry></entry></row><row><entry><indexterm><primary>typeMismatch</primary><secondary>Alib</secondary></indexterm>
+<indexterm><primary>Alib</primary><secondary>typeMismatch</secondary></indexterm>
+<anchor xml:id="_namespace_alib_1a4610b2a8834810415533186b20c79113a24b80e3aa8dce2f2ea17912cf83a9757"/>typeMismatch</entry><entry>5</entry><entry></entry></row><row><entry><indexterm><primary>notInitialized</primary><secondary>Alib</secondary></indexterm>
+<indexterm><primary>Alib</primary><secondary>notInitialized</secondary></indexterm>
+<anchor xml:id="_namespace_alib_1a4610b2a8834810415533186b20c79113aff18d1dc8b64abff7c82becd3d7135dd"/>notInitialized</entry><entry>6</entry><entry></entry></row><row><entry><indexterm><primary>unsupportedFeature</primary><secondary>Alib</secondary></indexterm>
+<indexterm><primary>Alib</primary><secondary>unsupportedFeature</secondary></indexterm>
+<anchor xml:id="_namespace_alib_1a4610b2a8834810415533186b20c79113ae492e3586c1e8d275b71ef8f4a5e0782"/>unsupportedFeature</entry><entry>7</entry><entry></entry></row><row><entry><indexterm><primary>ioError</primary><secondary>Alib</secondary></indexterm>
+<indexterm><primary>Alib</primary><secondary>ioError</secondary></indexterm>
+<anchor xml:id="_namespace_alib_1a4610b2a8834810415533186b20c79113a4b4c3d08948825f5fe6b51a1087d503e"/>ioError</entry><entry>8</entry><entry></entry></row><row><entry><indexterm><primary>parseError</primary><secondary>Alib</secondary></indexterm>
+<indexterm><primary>Alib</primary><secondary>parseError</secondary></indexterm>
+<anchor xml:id="_namespace_alib_1a4610b2a8834810415533186b20c79113a9fa57f2cbf2abeb6f35e80fa0977835f"/>parseError</entry><entry>9</entry><entry></entry></row><row><entry><indexterm><primary>formatError</primary><secondary>Alib</secondary></indexterm>
+<indexterm><primary>Alib</primary><secondary>formatError</secondary></indexterm>
+<anchor xml:id="_namespace_alib_1a4610b2a8834810415533186b20c79113a66c7d43b12156560c61f391dbd82175b"/>formatError</entry><entry>10</entry><entry></entry></row><row><entry><indexterm><primary>runtimeError</primary><secondary>Alib</secondary></indexterm>
+<indexterm><primary>Alib</primary><secondary>runtimeError</secondary></indexterm>
+<anchor xml:id="_namespace_alib_1a4610b2a8834810415533186b20c79113a36e34147ffd884a31c40739e5371d711"/>runtimeError</entry><entry>11</entry><entry></entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+<programlisting linenumbering="unnumbered">00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;int32_t&#32;{
+00020 &#32;&#32;&#32;&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb">noError</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0,&#32;&#32;<emphasis role="comment">//&#32;No&#32;error</emphasis>
+00021 &#32;&#32;&#32;&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a026f9bbde1f085ac1e2c9f1cbaca0a4c">sourceError</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;1,&#32;&#32;<emphasis role="comment">//&#32;File/stream&#32;I/O&#32;error</emphasis>
+00022 &#32;&#32;&#32;&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113afc4f92438e44fc08f46f4fb36dd2e389">allocationError</link>&#32;&#32;&#32;&#32;=&#32;2,&#32;&#32;<emphasis role="comment">//&#32;Memory&#32;or&#32;resource&#32;allocation&#32;failure</emphasis>
+00023 &#32;&#32;&#32;&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a6fbf66821cd9ba0f8139d0b9b561df77">invalidOperation</link>&#32;&#32;&#32;=&#32;3,&#32;&#32;<emphasis role="comment">//&#32;Operation&#32;not&#32;allowed</emphasis>
+00024 &#32;&#32;&#32;&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113abca6212be6005d4f726c7887e8e557a7">rangeError</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;4,&#32;&#32;<emphasis role="comment">//&#32;Value&#32;out&#32;of&#32;range&#32;or&#32;invalid&#32;index</emphasis>
+00025 &#32;&#32;&#32;&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a24b80e3aa8dce2f2ea17912cf83a9757">typeMismatch</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;5,&#32;&#32;<emphasis role="comment">//&#32;Incompatible&#32;type</emphasis>
+00026 &#32;&#32;&#32;&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113aff18d1dc8b64abff7c82becd3d7135dd">notInitialized</link>&#32;&#32;&#32;&#32;&#32;=&#32;6,&#32;&#32;<emphasis role="comment">//&#32;Object&#32;not&#32;initialized&#32;or&#32;not&#32;ready</emphasis>
+00027 &#32;&#32;&#32;&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113ae492e3586c1e8d275b71ef8f4a5e0782">unsupportedFeature</link>&#32;=&#32;7,&#32;&#32;<emphasis role="comment">//&#32;Feature&#32;not&#32;implemented</emphasis>
+00028 &#32;&#32;&#32;&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a4b4c3d08948825f5fe6b51a1087d503e">ioError</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;8,&#32;&#32;<emphasis role="comment">//&#32;I/O&#32;error</emphasis>
+00029 &#32;&#32;&#32;&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a9fa57f2cbf2abeb6f35e80fa0977835f">parseError</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;9,&#32;&#32;<emphasis role="comment">//&#32;Parsing&#32;failed</emphasis>
+00030 &#32;&#32;&#32;&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a66c7d43b12156560c61f391dbd82175b">formatError</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;10,&#32;<emphasis role="comment">//&#32;Data&#32;does&#32;not&#32;match&#32;expected&#32;format</emphasis>
+00031 &#32;&#32;&#32;&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a36e34147ffd884a31c40739e5371d711">runtimeError</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;11&#32;&#32;<emphasis role="comment">//&#32;Generic&#32;runtime&#32;error</emphasis>
+00032 };
+</programlisting></section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_namespace_alib_1a282aa41d627642dc028d48bf33ace72e"/><section>
+    <title>getErrorName()</title>
+<indexterm><primary>getErrorName</primary><secondary>Alib</secondary></indexterm>
+<indexterm><primary>Alib</primary><secondary>getErrorName</secondary></indexterm>
+<para><computeroutput>const char * Alib::getErrorName (<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> error)<computeroutput>[nodiscard]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00013 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>(error)&#32;{
+00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb">AErrors::noError</link>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;noError&quot;</emphasis>;
+00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a026f9bbde1f085ac1e2c9f1cbaca0a4c">AErrors::sourceError</link>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;sourceError&quot;</emphasis>;
+00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113afc4f92438e44fc08f46f4fb36dd2e389">AErrors::allocationError</link>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;allocationError&quot;</emphasis>;
+00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a6fbf66821cd9ba0f8139d0b9b561df77">AErrors::invalidOperation</link>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;invalidOperation&quot;</emphasis>;
+00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113abca6212be6005d4f726c7887e8e557a7">AErrors::rangeError</link>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;rangeError&quot;</emphasis>;
+00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a24b80e3aa8dce2f2ea17912cf83a9757">AErrors::typeMismatch</link>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;typeMismatch&quot;</emphasis>;
+00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113aff18d1dc8b64abff7c82becd3d7135dd">AErrors::notInitialized</link>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;notInitialized&quot;</emphasis>;
+00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113ae492e3586c1e8d275b71ef8f4a5e0782">AErrors::unsupportedFeature</link>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;unsupportedFeature&quot;</emphasis>;
+00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a4b4c3d08948825f5fe6b51a1087d503e">AErrors::ioError</link>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;ioError&quot;</emphasis>;
+00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a9fa57f2cbf2abeb6f35e80fa0977835f">AErrors::parseError</link>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;parseError&quot;</emphasis>;
+00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a66c7d43b12156560c61f391dbd82175b">AErrors::formatError</link>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;formatError&quot;</emphasis>;
+00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113a36e34147ffd884a31c40739e5371d711">AErrors::runtimeError</link>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;runtimeError&quot;</emphasis>;
+00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">default</emphasis>:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="stringliteral">&quot;unknownError&quot;</emphasis>;
+00027 &#32;&#32;&#32;&#32;}
+00028 }
+</programlisting><para>
+References <link linkend="_l00022">allocationError</link>, <link linkend="_l00030">formatError</link>, <link linkend="_l00023">invalidOperation</link>, <link linkend="_l00028">ioError</link>, <link linkend="_l00020">noError</link>, <link linkend="_l00026">notInitialized</link>, <link linkend="_l00029">parseError</link>, <link linkend="_l00024">rangeError</link>, <link linkend="_l00031">runtimeError</link>, <link linkend="_l00021">sourceError</link>, <link linkend="_l00025">typeMismatch</link>, and <link linkend="_l00027">unsupportedFeature</link>.</para>
+<para>
+Referenced by <link linkend="_l00055">Alib::AObject::errorName()</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="namespace_alib_a282aa41d627642dc028d48bf33ace72e_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+</section>

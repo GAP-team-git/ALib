@@ -1,0 +1,757 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_alib_1_1_a_array" xml:lang="en-US">
+<title>Alib::AArray&lt; T &gt; Class Template Reference</title>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary></indexterm>
+<para>
+<computeroutput>#include &lt;AArray.h&gt;</computeroutput>
+</para>
+Inheritance diagram for Alib::AArray&lt; T &gt;:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for Alib::AArray&lt; T &gt;:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Types    </title>
+        <itemizedlist>
+            <listitem><para>using <link linkend="_class_alib_1_1_a_array_1a40d1e02a7a7dcc779208ea9a91d5b189">value_type</link> = T</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link> ()=default</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a966a4169848eff6d3eef0fc3de16b8d4">AArray</link> (const std::vector&lt; size_t &gt; &amp;dims)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a607ecc0eac12c0905aaaf18482d3e2c2">AArray</link> (const <link linkend="_class_alib_1_1_a_shape">AShape</link> &amp;<link linkend="_class_alib_1_1_a_array_1a311c89a88ecdeb561b4f71bc9012b74a">shape</link>)</para>
+</listitem>
+            <listitem><para>template&lt;typename... Dims, typename = std::enable_if_t&lt;(std::conjunction_v&lt;std::is_integral&lt;Dims&gt;...&gt;)&gt;&gt; </para><para><link linkend="_class_alib_1_1_a_array_1a8318c3187b8d4845f5ff3977aae90984">AArray</link> (Dims... dims)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a8bc60f8faf29764a83300bdd461bbd0f">AArray</link> (const std::initializer_list&lt; size_t &gt; &amp;dims)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a7c895407dcd77309a4a3ccae0df5e8d1">AArray</link> (const AArray &amp;other)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a216690f3519525f586470bf9bcb874ab">AArray</link> (AArray &amp;&amp;other) noexcept</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link> &amp; <link linkend="_class_alib_1_1_a_array_1a950ab6162ac4c1894fa800a00226e649">operator=</link> (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link> &amp;other)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link> &amp; <link linkend="_class_alib_1_1_a_array_1ad26ea32e0a882af6cf1a695489af0910">operator=</link> (<link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link> &amp;&amp;other) noexcept</para>
+</listitem>
+            <listitem><para>std::unique_ptr&lt; <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &gt; <link linkend="_class_alib_1_1_a_array_1a959e0d253e5d5c83f83950e4de590a70">clone</link> () const override</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_alib_1_1_a_array_1aa77147c9010f0e1eb618f37b008bc03c">hash</link> () const override</para>
+</listitem>
+            <listitem><para>const <link linkend="_class_alib_1_1_a_shape">AShape</link> &amp; <link linkend="_class_alib_1_1_a_array_1a311c89a88ecdeb561b4f71bc9012b74a">shape</link> () const noexcept</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_proxy">AArrayProxy</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array_1a4594756294394addcb2fc95c3b15dd80">operator[]</link> (size_t i)</para>
+</listitem>
+            <listitem><para>const <link linkend="_class_alib_1_1_a_array_proxy">AArrayProxy</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array_1a056a520ac88590aefd1572335a36e51c">operator[]</link> (size_t i) const</para>
+</listitem>
+            <listitem><para>T &amp; <link linkend="_class_alib_1_1_a_array_1ae8a29aaf960a23d8ff71a36089f2f31b">at</link> (const std::vector&lt; size_t &gt; &amp;idx)</para>
+</listitem>
+            <listitem><para>const T &amp; <link linkend="_class_alib_1_1_a_array_1a8e82b2982e8df9d29ee09d1e496a7a10">at</link> (const std::vector&lt; size_t &gt; &amp;idx) const</para>
+</listitem>
+            <listitem><para>template&lt;typename... Idx&gt; </para><para>T &amp; <link linkend="_class_alib_1_1_a_array_1a2cdd3d3e97bd182c98081ffad432af9f">operator()</link> (Idx... idx)</para>
+</listitem>
+            <listitem><para>template&lt;typename... Idx&gt; </para><para>const T &amp; <link linkend="_class_alib_1_1_a_array_1ad297f524948e747f4301336f7a14f093">operator()</link> (Idx... idx) const</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array_1afb6b6c5d95cc72f71ca9a3072c0eda0d">slice</link> (const std::vector&lt; size_t &gt; &amp;start, const std::vector&lt; size_t &gt; &amp;stop, const std::vector&lt; size_t &gt; &amp;step={}) const</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_array_1ade2708d772686f486b09a9ee400c0613">reshape</link> (const std::vector&lt; size_t &gt; &amp;newDims)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array_1af8c8a79285d915b0cd4e1be0a1b98c61">transpose</link> (const std::vector&lt; size_t &gt; &amp;axes={}) const</para>
+</listitem>
+            <listitem><para>template&lt;typename Op&gt; </para><para>void <link linkend="_class_alib_1_1_a_array_1a2b9465c490fdd1aaa20f60040cd60b71">inplaceBinaryOp</link> (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;rhs, Op op)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; <link linkend="_class_alib_1_1_a_array_1a10ea06a5b62c1643b5db7a095f1c6646">operator+=</link> (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;rhs)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; <link linkend="_class_alib_1_1_a_array_1a45b506effa82453a2daee5e94bfe6ec2">operator-=</link> (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;rhs)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; <link linkend="_class_alib_1_1_a_array_1acc070ca79755a49ed377bebaac2eb706">operator*=</link> (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;rhs)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; <link linkend="_class_alib_1_1_a_array_1ae5a00d532f2e1cd5375f137939c28d92">operator/=</link> (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;rhs)</para>
+</listitem>
+            <listitem><para>std::shared_ptr&lt; std::vector&lt; T &gt; &gt; &amp; <link linkend="_class_alib_1_1_a_array_1a9e4b8cc47162dbc15cf36cd8c75d9f04">dataPtr</link> () noexcept</para>
+</listitem>
+            <listitem><para>const std::shared_ptr&lt; std::vector&lt; T &gt; &gt; &amp; <link linkend="_class_alib_1_1_a_array_1ae71ddb5fae9461781cb62c7e6398313f">dataPtr</link> () const noexcept</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_alib_1_1_a_array_1a5101b3d9cd970bdc9aa2543fc37dadcb">size</link> () const noexcept</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_alib_1_1_a_object">Alib::AObject</link>        <itemizedlist>
+            <listitem><para><link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> () noexcept</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_class_alib_1_1_a_object_1ac723c4bcf276feb48adcc87077ea0de8">~AObject</link> ()=default</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_object_1a0db7dc0be0c2fbe34bbffd95853a141d">AObject</link> (const AObject &amp;other)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_object_1ad9e702854546fef4e8a7347c5a2d6a86">AObject</link> (AObject &amp;&amp;other) noexcept</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp; <link linkend="_class_alib_1_1_a_object_1a5b4dee833b31de7d6e1a7f7808ac1b45">operator=</link> (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;other)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp; <link linkend="_class_alib_1_1_a_object_1aca672cd0b61929e5b60083f4a089aafd">operator=</link> (<link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;&amp;other) noexcept</para>
+</listitem>
+            <listitem><para>const std::string &amp; <link linkend="_class_alib_1_1_a_object_1a6b0671bc3462a3536c4e279c5b4fd93f">Oid</link> () const noexcept</para>
+</listitem>
+            <listitem><para>virtual std::string <link linkend="_class_alib_1_1_a_object_1aceccb1d3f3f60bb11ad98b93aa5f1906">getClassName</link> () const</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_alib_1_1_a_object_1a9969a8ea96a00b22b9de8b06462f4eb9">valid</link> () const noexcept</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_object_1adb1385c39f5bf60b7a4fbb1513d4bc5b">setValid</link> (bool <link linkend="_class_alib_1_1_a_object_1a9969a8ea96a00b22b9de8b06462f4eb9">valid</link>) noexcept</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_object_1a0c40319f8296948048e37df11553ec8e">validate</link> () noexcept</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_object_1a40bfa5d840372cce4d7b772a90206d35">invalidate</link> () noexcept</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> <link linkend="_class_alib_1_1_a_object_1a7ba3e1e64c499eb6a0efbab5f6099fca">getError</link> () const noexcept</para>
+</listitem>
+            <listitem><para>const char * <link linkend="_class_alib_1_1_a_object_1abdd30056ff9f5968b5031889224369ba">errorName</link> () const noexcept</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_object_1ad7356b6df001d5b314b04b36cf4fa7f5">setError</link> (<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> err) noexcept</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_object_1a4c9dd3270e06a201f4cca9f065b224e8">resetError</link> () noexcept</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_alib_1_1_a_object_1a46c3df806c0533c56be892e56b9419e0">operator==</link> (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;other) const noexcept</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_alib_1_1_a_object_1a82d7acccc676586f360d1f896ee8cdc0">operator!=</link> (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;other) const noexcept</para>
+</listitem>
+            <listitem><para>virtual std::ostream &amp; <link linkend="_class_alib_1_1_a_object_1a369041e84f52063acc82eb237be2dcd5">toStream</link> (std::ostream &amp;os) const</para>
+</listitem>
+            <listitem><para>virtual std::istream &amp; <link linkend="_class_alib_1_1_a_object_1a3e2ab1a54a6528f483f28623c51129a1">fromStream</link> (std::istream &amp;is)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_alib_1_1_a_object_1a069a31d72ffd5eedd15a52d428d7e8e4">write</link> (const std::string &amp;fileName) const</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_alib_1_1_a_object_1aabd29a08609906615a9fd0663ccfae09">read</link> (const std::string &amp;fileName)</para>
+</listitem>
+            <listitem><para>virtual std::ostream &amp; <link linkend="_class_alib_1_1_a_object_1abc6c17077f8ff798aceb27e68e3c2b1b">printDescription</link> (std::ostream &amp;os) const</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Protected Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_array_1a8e857694514b85d459e51551bd957d01">m_copy</link> (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link> &amp;other)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_array_1abf8c84c7c308a13ec5db4cf87f49a35d">m_move</link> (<link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link> &amp;&amp;other)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Protected Member Functions inherited from <link linkend="_class_alib_1_1_a_object">Alib::AObject</link>        <itemizedlist>
+            <listitem><para>virtual void <link linkend="_class_alib_1_1_a_object_1a1a2f9c0d738fc4f33efa114f1703d034">m_copy</link> (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;other)</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_alib_1_1_a_object_1a92fdfbddabf57a97a9a8dc6d6840dbd8">m_move</link> (<link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;&amp;other) noexcept</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_alib_1_1_a_object_1a6f91bd7daa1f2c6fa33aaf95dd0bf19b">m_compare</link> (const <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &amp;other) const noexcept</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_alib_1_1_a_object_1a11ed93be939a787f0f1ea7ad494ca0ba">m_isValid</link> () const noexcept</para>
+</listitem>
+            <listitem><para>virtual std::ostream &amp; <link linkend="_class_alib_1_1_a_object_1a65d79973964589936144d6aa03802621">m_printDescription</link> (std::ostream &amp;os) const</para>
+</listitem>
+            <listitem><para>virtual std::ostream &amp; <link linkend="_class_alib_1_1_a_object_1addd7e0ab6cb1fee7ce0b658408d5dfec">m_printStatus</link> (std::ostream &amp;os) const</para>
+</listitem>
+            <listitem><para>virtual std::ostream &amp; <link linkend="_class_alib_1_1_a_object_1abf0c61976ad65f1e86e524f1f97c408b">m_print</link> (std::ostream &amp;os) const</para>
+</listitem>
+            <listitem><para>virtual std::istream &amp; <link linkend="_class_alib_1_1_a_object_1a93c2eaa4518e566fa43570e0365186fb">m_parse</link> (std::istream &amp;is)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_alib_1_1_a_object_1a857be61132f8e01db3cd7081eba0ea99">m_write</link> (std::ostream &amp;os) const</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_alib_1_1_a_object_1acde72c6cb28b5e6529b489adf4bff915">m_read</link> (std::istream &amp;is)</para>
+</listitem>
+            <listitem><para>virtual std::ostream &amp; <link linkend="_class_alib_1_1_a_object_1a05dca6d0d494116b5b8d6608325a3eff">m_toStream</link> (std::ostream &amp;os) const</para>
+</listitem>
+            <listitem><para>virtual std::istream &amp; <link linkend="_class_alib_1_1_a_object_1a553936a2f6615ec73a37ff400d027060">m_fromStream</link> (std::istream &amp;is)</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Static Protected Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>template&lt;typename Op&gt; </para><para>static <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array_1a0650ff5af4b7cebb364491876597189f">broadcastBinaryOp</link> (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;lhs, const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;rhs, Op op)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Static Protected Member Functions inherited from <link linkend="_class_alib_1_1_a_object">Alib::AObject</link>        <itemizedlist>
+            <listitem><para>static std::string <link linkend="_class_alib_1_1_a_object_1aa217b46538114a6174adde75ee5ce8ec">generateOID</link> ()</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_alib_1_1_a_shape">AShape</link> <link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link></para>
+</listitem>
+            <listitem><para>std::shared_ptr&lt; std::vector&lt; T &gt; &gt; <link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Protected Attributes inherited from <link linkend="_class_alib_1_1_a_object">Alib::AObject</link>        <itemizedlist>
+            <listitem><para>uint32_t <link linkend="_class_alib_1_1_a_object_1a4e6a3513fe12e6a2fb2b6930f1e7fcb4">p_magic</link> {<link linkend="__a_l_i_b_h_8h_1a6d1fb27924334faab61d1c742624bf9b">AOBJ_MAGIC</link>}</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_class_alib_1_1_a_object_1ae39af73e0cacbcd47314682ff32e7fbb">p_version</link> {<link linkend="__a_l_i_b_h_8h_1a4804ce7577ca74460aef7ad99a904620">AOBJ_VERSION</link>}</para>
+</listitem>
+            <listitem><para>std::string <link linkend="_class_alib_1_1_a_object_1a09de3cb0891834a66640f968be346b18">p_oid</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_alib_1_1_a_object_1a65a568e47ebb0f29c2625420c2f8d64e">p_valid</link> {true}</para>
+</listitem>
+            <listitem><para><link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> <link linkend="_class_alib_1_1_a_object_1ae0a972382d9f91260e9ccce4868adabc">p_error</link> {<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb">AErrors::noError</link>}</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Friends    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array_1afafea1ad9d2a80402d1fb5a65591385b">operator+</link> (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;lhs, const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;rhs)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array_1a01488c0cb2ed0a5e70c7f3c981f5159b">operator-</link> (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;lhs, const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;rhs)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array_1a633eca656c48f61ad3665f6038130732">operator*</link> (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;lhs, const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;rhs)</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array_1a66ba1cecf65e2afef5576057be380377">operator/</link> (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;lhs, const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;rhs)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;typename T&gt;<?linebreak?>class Alib::AArray&lt; T &gt;</title></simplesect>
+</section>
+<section>
+<title>Member Typedef Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_array_1a40d1e02a7a7dcc779208ea9a91d5b189"/><section>
+    <title>value_type</title>
+<indexterm><primary>value_type</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>value_type</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>using <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::value_type = T</computeroutput></para></section>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370"/><section>
+    <title>AArray()<computeroutput>[1/7]</computeroutput></title>
+<indexterm><primary>AArray</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>AArray</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::AArray ( )<computeroutput>[default]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_alib_1_1_a_array_1a966a4169848eff6d3eef0fc3de16b8d4"/><section>
+    <title>AArray()<computeroutput>[2/7]</computeroutput></title>
+<indexterm><primary>AArray</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>AArray</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::AArray (const std::vector&lt; size_t &gt; &amp; dims)<computeroutput>[inline]</computeroutput>, <computeroutput>[explicit]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>(<link linkend="_class_alib_1_1_a_array">dims</link>),&#32;<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>(<link linkend="_class_alib_1_1_a_array">std::make_shared</link>&lt;<link linkend="_class_alib_1_1_a_array">std::vector&lt;T&gt;</link>&gt;(<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.totalSize()))&#32;{}
+</programlisting><para>
+References <link linkend="_l00059">AArray()</link>.</para>
+<para>
+Referenced by <link linkend="_l00069">AArray()</link>, and <link linkend="_l00059">AArray()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_a966a4169848eff6d3eef0fc3de16b8d4_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_a966a4169848eff6d3eef0fc3de16b8d4_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_array_1a607ecc0eac12c0905aaaf18482d3e2c2"/><section>
+    <title>AArray()<computeroutput>[3/7]</computeroutput></title>
+<indexterm><primary>AArray</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>AArray</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::AArray (const <link linkend="_class_alib_1_1_a_shape">AShape</link> &amp; shape)<computeroutput>[inline]</computeroutput>, <computeroutput>[explicit]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>(<link linkend="_class_alib_1_1_a_array_1a311c89a88ecdeb561b4f71bc9012b74a">shape</link>),&#32;<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>(<link linkend="_class_alib_1_1_a_array">std::make_shared</link>&lt;<link linkend="_class_alib_1_1_a_array">std::vector&lt;T&gt;</link>&gt;(<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.totalSize()))&#32;{}
+</programlisting><para>
+References <link linkend="_l00061">AArray()</link>.</para>
+<para>
+Referenced by <link linkend="_l00061">AArray()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_a607ecc0eac12c0905aaaf18482d3e2c2_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_a607ecc0eac12c0905aaaf18482d3e2c2_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_array_1a8318c3187b8d4845f5ff3977aae90984"/><section>
+    <title>AArray()<computeroutput>[4/7]</computeroutput></title>
+<indexterm><primary>AArray</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>AArray</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><computeroutput>template&lt;typename... Dims, typename = std::enable_if_t&lt;(std::conjunction_v&lt;std::is_integral&lt;Dims&gt;...&gt;)&gt;&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::AArray (Dims... dims)<computeroutput>[inline]</computeroutput>, <computeroutput>[explicit]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>(<link linkend="_class_alib_1_1_a_array">std::vector&lt;size_t&gt;</link>{<emphasis role="keyword">static_cast&lt;</emphasis><emphasis role="keywordtype">size_t</emphasis><emphasis role="keyword">&gt;</emphasis>(<link linkend="_class_alib_1_1_a_array">dims</link>)...}),
+00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>(<link linkend="_class_alib_1_1_a_array">std::make_shared</link>&lt;<link linkend="_class_alib_1_1_a_array">std::vector&lt;T&gt;</link>&gt;(<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.totalSize()))&#32;{}
+</programlisting><para>
+References <link linkend="_l00065">AArray()</link>.</para>
+<para>
+Referenced by <link linkend="_l00065">AArray()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_a8318c3187b8d4845f5ff3977aae90984_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_a8318c3187b8d4845f5ff3977aae90984_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_array_1a8bc60f8faf29764a83300bdd461bbd0f"/><section>
+    <title>AArray()<computeroutput>[5/7]</computeroutput></title>
+<indexterm><primary>AArray</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>AArray</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::AArray (const std::initializer_list&lt; size_t &gt; &amp; dims)<computeroutput>[inline]</computeroutput>, <computeroutput>[explicit]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>(<link linkend="_class_alib_1_1_a_array">dims</link>),&#32;<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>(<link linkend="_class_alib_1_1_a_array">std::make_shared</link>&lt;<link linkend="_class_alib_1_1_a_array">std::vector&lt;T&gt;</link>&gt;(<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.totalSize()))&#32;{}
+</programlisting><para>
+References <link linkend="_l00059">AArray()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_a8bc60f8faf29764a83300bdd461bbd0f_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_array_1a7c895407dcd77309a4a3ccae0df5e8d1"/><section>
+    <title>AArray()<computeroutput>[6/7]</computeroutput></title>
+<indexterm><primary>AArray</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>AArray</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::AArray (const AArray&lt; T &gt; &amp; other)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00075 {&#32;<link linkend="_class_alib_1_1_a_array_1a8e857694514b85d459e51551bd957d01">m_copy</link>(<link linkend="_class_alib_1_1_a_array">other</link>);&#32;}
+</programlisting><para>
+References <link linkend="_l00190">m_copy()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_a7c895407dcd77309a4a3ccae0df5e8d1_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_array_1a216690f3519525f586470bf9bcb874ab"/><section>
+    <title>AArray()<computeroutput>[7/7]</computeroutput></title>
+<indexterm><primary>AArray</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>AArray</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::AArray (AArray&lt; T &gt; &amp;&amp; other)<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00076 {&#32;<link linkend="_class_alib_1_1_a_array_1abf8c84c7c308a13ec5db4cf87f49a35d">m_move</link>(<link linkend="_class_alib_1_1_a_array">std::move</link>(<link linkend="_class_alib_1_1_a_array">other</link>));&#32;}
+</programlisting><para>
+References <link linkend="_l00195">m_move()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_a216690f3519525f586470bf9bcb874ab_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_array_1ae8a29aaf960a23d8ff71a36089f2f31b"/><section>
+    <title>at()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>at</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>at</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>T &amp; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::at (const std::vector&lt; size_t &gt; &amp; idx)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_alib_1_1_a_array">idx</link>.<link linkend="_class_alib_1_1_a_array_1a5101b3d9cd970bdc9aa2543fc37dadcb">size</link>()!=<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.rank())&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">std::invalid_argument</link>(<emphasis role="stringliteral">&quot;at:&#32;rank&#32;mismatch&quot;</emphasis>);
+00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>-&gt;at(<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.flatIndex(<link linkend="_class_alib_1_1_a_array">idx</link>));
+00104 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1a8e82b2982e8df9d29ee09d1e496a7a10"/><section>
+    <title>at()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>at</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>at</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>const T &amp; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::at (const std::vector&lt; size_t &gt; &amp; idx) const<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_alib_1_1_a_array">idx</link>.<link linkend="_class_alib_1_1_a_array_1a5101b3d9cd970bdc9aa2543fc37dadcb">size</link>()!=<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.rank())&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">std::invalid_argument</link>(<emphasis role="stringliteral">&quot;at:&#32;rank&#32;mismatch&quot;</emphasis>);
+00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>-&gt;at(<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.flatIndex(<link linkend="_class_alib_1_1_a_array">idx</link>));
+00108 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1a0650ff5af4b7cebb364491876597189f"/><section>
+    <title>broadcastBinaryOp()</title>
+<indexterm><primary>broadcastBinaryOp</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>broadcastBinaryOp</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><computeroutput>template&lt;typename Op&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::broadcastBinaryOp (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; lhs, const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; rhs, Op op)<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array">AShape</link>&#32;<link linkend="_class_alib_1_1_a_array">resultShape</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_shape_1aeaa3f10a3b90334f219d1f81318087bf">AShape::broadcast</link>(<link linkend="_class_alib_1_1_a_array">lhs</link>.<link linkend="_class_alib_1_1_a_array_1a311c89a88ecdeb561b4f71bc9012b74a">shape</link>(),<link linkend="_class_alib_1_1_a_array">rhs</link>.<link linkend="_class_alib_1_1_a_array_1a311c89a88ecdeb561b4f71bc9012b74a">shape</link>());
+00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray&lt;T&gt;</link>&#32;<link linkend="_class_alib_1_1_a_array">result</link>(<link linkend="_class_alib_1_1_a_array">resultShape</link>);
+00208 
+00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;<link linkend="_class_alib_1_1_a_array">lhsDims</link>=<link linkend="_class_alib_1_1_a_array">lhs</link>.<link linkend="_class_alib_1_1_a_array_1a311c89a88ecdeb561b4f71bc9012b74a">shape</link>().<link linkend="_class_alib_1_1_a_shape_1a0f2f573d4bf903b32af4dc9b466b9a21">dims</link>();
+00210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;<link linkend="_class_alib_1_1_a_array">rhsDims</link>=<link linkend="_class_alib_1_1_a_array">rhs</link>.<link linkend="_class_alib_1_1_a_array_1a311c89a88ecdeb561b4f71bc9012b74a">shape</link>().<link linkend="_class_alib_1_1_a_shape_1a0f2f573d4bf903b32af4dc9b466b9a21">dims</link>();
+00211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;<link linkend="_class_alib_1_1_a_array">lhsStrides</link>=<link linkend="_class_alib_1_1_a_array">lhs</link>.<link linkend="_class_alib_1_1_a_array_1a311c89a88ecdeb561b4f71bc9012b74a">shape</link>().<link linkend="_class_alib_1_1_a_shape_1ac07a2c196c619d2066d298e9d1d9d9cd">strides</link>();
+00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;<link linkend="_class_alib_1_1_a_array">rhsStrides</link>=<link linkend="_class_alib_1_1_a_array">rhs</link>.<link linkend="_class_alib_1_1_a_array_1a311c89a88ecdeb561b4f71bc9012b74a">shape</link>().<link linkend="_class_alib_1_1_a_shape_1ac07a2c196c619d2066d298e9d1d9d9cd">strides</link>();
+00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;<link linkend="_class_alib_1_1_a_array">resDims</link>=<link linkend="_class_alib_1_1_a_array">resultShape</link>.dims();
+00214 
+00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;<link linkend="_class_alib_1_1_a_array">resData</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_array">result</link>.<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>;
+00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;<link linkend="_class_alib_1_1_a_array">lhsData</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_array">lhs</link>.<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>;
+00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;<link linkend="_class_alib_1_1_a_array">rhsData</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_array">rhs</link>.<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>;
+00218 
+00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">rankRes</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_array">resultShape</link>.rank();
+00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">rankL</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_array">lhs</link>.<link linkend="_class_alib_1_1_a_array_1a311c89a88ecdeb561b4f71bc9012b74a">shape</link>().<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>();
+00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">rankR</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_array">rhs</link>.<link linkend="_class_alib_1_1_a_array_1a311c89a88ecdeb561b4f71bc9012b74a">shape</link>().<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>();
+00222 
+00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">i</link>=0;<link linkend="_class_alib_1_1_a_array">i</link>&lt;<link linkend="_class_alib_1_1_a_array">resultShape</link>.totalSize();++<link linkend="_class_alib_1_1_a_array">i</link>){
+00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">idx</link>=<link linkend="_class_alib_1_1_a_array">i</link>;
+00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">lhsIdx</link>=0,&#32;<link linkend="_class_alib_1_1_a_array">rhsIdx</link>=0;
+00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">d</link>=<emphasis role="keywordtype">int</emphasis>(<link linkend="_class_alib_1_1_a_array">rankRes</link>)-1;<link linkend="_class_alib_1_1_a_array">d</link>&gt;=0;--<link linkend="_class_alib_1_1_a_array">d</link>){
+00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">cur</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_array">idx</link>&#32;%&#32;<link linkend="_class_alib_1_1_a_array">resDims</link>[<link linkend="_class_alib_1_1_a_array">d</link>];
+00228 
+00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">ldim</link>&#32;=&#32;(<link linkend="_class_alib_1_1_a_array">d</link>&gt;=<link linkend="_class_alib_1_1_a_array">rankRes</link>-<link linkend="_class_alib_1_1_a_array">rankL</link>)?<link linkend="_class_alib_1_1_a_array">lhsDims</link>[<link linkend="_class_alib_1_1_a_array">d</link>-(<link linkend="_class_alib_1_1_a_array">rankRes</link>-<link linkend="_class_alib_1_1_a_array">rankL</link>)]:1;
+00230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">rdim</link>&#32;=&#32;(<link linkend="_class_alib_1_1_a_array">d</link>&gt;=<link linkend="_class_alib_1_1_a_array">rankRes</link>-<link linkend="_class_alib_1_1_a_array">rankR</link>)?<link linkend="_class_alib_1_1_a_array">rhsDims</link>[<link linkend="_class_alib_1_1_a_array">d</link>-(<link linkend="_class_alib_1_1_a_array">rankRes</link>-<link linkend="_class_alib_1_1_a_array">rankR</link>)]:1;
+00231 
+00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">lstride</link>=(<link linkend="_class_alib_1_1_a_array">d</link>&gt;=<link linkend="_class_alib_1_1_a_array">rankRes</link>-<link linkend="_class_alib_1_1_a_array">rankL</link>)?<link linkend="_class_alib_1_1_a_array">lhsStrides</link>[<link linkend="_class_alib_1_1_a_array">d</link>-(<link linkend="_class_alib_1_1_a_array">rankRes</link>-<link linkend="_class_alib_1_1_a_array">rankL</link>)]:0;
+00233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">rstride</link>=(<link linkend="_class_alib_1_1_a_array">d</link>&gt;=<link linkend="_class_alib_1_1_a_array">rankRes</link>-<link linkend="_class_alib_1_1_a_array">rankR</link>)?<link linkend="_class_alib_1_1_a_array">rhsStrides</link>[<link linkend="_class_alib_1_1_a_array">d</link>-(<link linkend="_class_alib_1_1_a_array">rankRes</link>-<link linkend="_class_alib_1_1_a_array">rankR</link>)]:0;
+00234 
+00235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array">lhsIdx</link>&#32;+=&#32;(<link linkend="_class_alib_1_1_a_array">ldim</link>==1?0:<link linkend="_class_alib_1_1_a_array">cur</link>*<link linkend="_class_alib_1_1_a_array">lstride</link>);
+00236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array">rhsIdx</link>&#32;+=&#32;(<link linkend="_class_alib_1_1_a_array">rdim</link>==1?0:<link linkend="_class_alib_1_1_a_array">cur</link>*<link linkend="_class_alib_1_1_a_array">rstride</link>);
+00237 
+00238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array">idx</link>/=<link linkend="_class_alib_1_1_a_array">resDims</link>[<link linkend="_class_alib_1_1_a_array">d</link>];
+00239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*resData)[<link linkend="_class_alib_1_1_a_array">i</link>]&#32;=&#32;<link linkend="_class_alib_1_1_a_array">op</link>((*<link linkend="_class_alib_1_1_a_array">lhsData</link>)[<link linkend="_class_alib_1_1_a_array">lhsIdx</link>],&#32;(*<link linkend="_class_alib_1_1_a_array">rhsData</link>)[<link linkend="_class_alib_1_1_a_array">rhsIdx</link>]);
+00241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00242 
+00243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">result</link>;
+00244 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+References <link linkend="_l00090">Alib::AShape::broadcast()</link>, and <link linkend="_l00093">shape()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_a0650ff5af4b7cebb364491876597189f_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_array_1a959e0d253e5d5c83f83950e4de590a70"/><section>
+    <title>clone()</title>
+<indexterm><primary>clone</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>clone</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>std::unique_ptr&lt; <link linkend="_class_alib_1_1_a_object_1a69d08cc3794ac46e9bfffecab571c0e6">AObject</link> &gt; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::clone ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_alib_1_1_a_object_1a0875bc6b828ff392098c63fdadb84cd4">Alib::AObject</link>.</para>
+<programlisting linenumbering="unnumbered">00083 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">std::make_unique&lt;AArray&lt;T&gt;</link>&gt;(*this);&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1ae71ddb5fae9461781cb62c7e6398313f"/><section>
+    <title>dataPtr()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>dataPtr</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>dataPtr</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>const std::shared_ptr&lt; std::vector&lt; T &gt; &gt; &amp; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::dataPtr ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00183 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1a9e4b8cc47162dbc15cf36cd8c75d9f04"/><section>
+    <title>dataPtr()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>dataPtr</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>dataPtr</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>std::shared_ptr&lt; std::vector&lt; T &gt; &gt; &amp; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::dataPtr ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00182 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1aa77147c9010f0e1eb618f37b008bc03c"/><section>
+    <title>hash()</title>
+<indexterm><primary>hash</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>hash</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>size_t <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::hash ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_alib_1_1_a_object_1a98f76b97beb59c02ebb43141d78cac20">Alib::AObject</link>.</para>
+<programlisting linenumbering="unnumbered">00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">h</link>=0;
+00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;<link linkend="_class_alib_1_1_a_array">v</link>:*<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>)&#32;<link linkend="_class_alib_1_1_a_array">h</link>&#32;^=&#32;<link linkend="_class_alib_1_1_a_array">std::hash&lt;T&gt;</link>{}(<link linkend="_class_alib_1_1_a_array">v</link>)+0x9e3779b9+(<link linkend="_class_alib_1_1_a_array">h</link>&lt;&lt;6)+(<link linkend="_class_alib_1_1_a_array">h</link>&gt;&gt;2);
+00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">h</link>;
+00088 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1a2b9465c490fdd1aaa20f60040cd60b71"/><section>
+    <title>inplaceBinaryOp()</title>
+<indexterm><primary>inplaceBinaryOp</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>inplaceBinaryOp</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><computeroutput>template&lt;typename Op&gt; </computeroutput><para><computeroutput>void <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::inplaceBinaryOp (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; rhs, Op op)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">result</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_array_1a0650ff5af4b7cebb364491876597189f">broadcastBinaryOp</link>(*<emphasis role="keyword">this</emphasis>,<link linkend="_class_alib_1_1_a_array">rhs</link>,<link linkend="_class_alib_1_1_a_array">op</link>);
+00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*<emphasis role="keyword">this</emphasis>&#32;=&#32;<link linkend="_class_alib_1_1_a_array">std::move</link>(<link linkend="_class_alib_1_1_a_array">result</link>);
+00167 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1a8e857694514b85d459e51551bd957d01"/><section>
+    <title>m_copy()</title>
+<indexterm><primary>m_copy</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>m_copy</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>void <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::m_copy (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; other)<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1a1a2f9c0d738fc4f33efa114f1703d034">AObject::m_copy</link>(<link linkend="_class_alib_1_1_a_array">other</link>);
+00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>=<link linkend="_class_alib_1_1_a_array">other</link>.<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>;
+00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>=<link linkend="_class_alib_1_1_a_array">std::make_shared&lt;std::vector&lt;T&gt;</link>&gt;(*<link linkend="_class_alib_1_1_a_array">other</link>.<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>);
+00194 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+References <link linkend="_l00108">Alib::AObject::m_copy()</link>.</para>
+<para>
+Referenced by <link linkend="_l00075">AArray()</link>, and <link linkend="_l00077">operator=()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_a8e857694514b85d459e51551bd957d01_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_a8e857694514b85d459e51551bd957d01_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_array_1abf8c84c7c308a13ec5db4cf87f49a35d"/><section>
+    <title>m_move()</title>
+<indexterm><primary>m_move</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>m_move</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>void <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::m_move (<link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;&amp; other)<computeroutput>[inline]</computeroutput>, <computeroutput>[protected]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_object_1a92fdfbddabf57a97a9a8dc6d6840dbd8">AObject::m_move</link>(<link linkend="_class_alib_1_1_a_array">std::move</link>(<link linkend="_class_alib_1_1_a_array">other</link>));
+00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>=<link linkend="_class_alib_1_1_a_array">std::move</link>(<link linkend="_class_alib_1_1_a_array">other</link>.<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>);
+00198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>=<link linkend="_class_alib_1_1_a_array">std::move</link>(<link linkend="_class_alib_1_1_a_array">other</link>.<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>);
+00199 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+References <link linkend="_l00114">Alib::AObject::m_move()</link>.</para>
+<para>
+Referenced by <link linkend="_l00076">AArray()</link>, and <link linkend="_l00078">operator=()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_abf8c84c7c308a13ec5db4cf87f49a35d_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_abf8c84c7c308a13ec5db4cf87f49a35d_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_array_1a2cdd3d3e97bd182c98081ffad432af9f"/><section>
+    <title>operator()()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>operator()</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>operator()</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><computeroutput>template&lt;typename... Idx&gt; </computeroutput><para><computeroutput>T &amp; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::operator() (Idx... idx)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_1ae8a29aaf960a23d8ff71a36089f2f31b">at</link>(<link linkend="_class_alib_1_1_a_array">std::vector&lt;size_t&gt;</link>{<emphasis role="keyword">static_cast&lt;</emphasis><emphasis role="keywordtype">size_t</emphasis><emphasis role="keyword">&gt;</emphasis>(<link linkend="_class_alib_1_1_a_array">idx</link>)...});
+00113 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1ad297f524948e747f4301336f7a14f093"/><section>
+    <title>operator()()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>operator()</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>operator()</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><computeroutput>template&lt;typename... Idx&gt; </computeroutput><para><computeroutput>const T &amp; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::operator() (Idx... idx) const<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_1ae8a29aaf960a23d8ff71a36089f2f31b">at</link>(<link linkend="_class_alib_1_1_a_array">std::vector&lt;size_t&gt;</link>{<emphasis role="keyword">static_cast&lt;</emphasis><emphasis role="keywordtype">size_t</emphasis><emphasis role="keyword">&gt;</emphasis>(<link linkend="_class_alib_1_1_a_array">idx</link>)...});
+00117 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1acc070ca79755a49ed377bebaac2eb706"/><section>
+    <title>operator*=()</title>
+<indexterm><primary>operator*=</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>operator*=</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::operator*= (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; rhs)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00171 {&#32;<link linkend="_class_alib_1_1_a_array_1a2b9465c490fdd1aaa20f60040cd60b71">inplaceBinaryOp</link>(<link linkend="_class_alib_1_1_a_array">rhs</link>,[](<link linkend="_class_alib_1_1_a_array">T</link>&#32;<link linkend="_class_alib_1_1_a_array">x</link>,<link linkend="_class_alib_1_1_a_array">T</link>&#32;<link linkend="_class_alib_1_1_a_array">y</link>){<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">x</link>*<link linkend="_class_alib_1_1_a_array">y</link>;});&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1a10ea06a5b62c1643b5db7a095f1c6646"/><section>
+    <title>operator+=()</title>
+<indexterm><primary>operator+=</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>operator+=</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::operator+= (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; rhs)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00169 {&#32;<link linkend="_class_alib_1_1_a_array_1a2b9465c490fdd1aaa20f60040cd60b71">inplaceBinaryOp</link>(<link linkend="_class_alib_1_1_a_array">rhs</link>,[](<link linkend="_class_alib_1_1_a_array">T</link>&#32;<link linkend="_class_alib_1_1_a_array">x</link>,<link linkend="_class_alib_1_1_a_array">T</link>&#32;<link linkend="_class_alib_1_1_a_array">y</link>){<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">x</link>+<link linkend="_class_alib_1_1_a_array">y</link>;});&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1a45b506effa82453a2daee5e94bfe6ec2"/><section>
+    <title>operator-=()</title>
+<indexterm><primary>operator-=</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>operator-=</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::operator-= (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; rhs)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00170 {&#32;<link linkend="_class_alib_1_1_a_array_1a2b9465c490fdd1aaa20f60040cd60b71">inplaceBinaryOp</link>(<link linkend="_class_alib_1_1_a_array">rhs</link>,[](<link linkend="_class_alib_1_1_a_array">T</link>&#32;<link linkend="_class_alib_1_1_a_array">x</link>,<link linkend="_class_alib_1_1_a_array">T</link>&#32;<link linkend="_class_alib_1_1_a_array">y</link>){<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">x</link>-<link linkend="_class_alib_1_1_a_array">y</link>;});&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1ae5a00d532f2e1cd5375f137939c28d92"/><section>
+    <title>operator/=()</title>
+<indexterm><primary>operator/=</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>operator/=</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::operator/= (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; rhs)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00172 {&#32;<link linkend="_class_alib_1_1_a_array_1a2b9465c490fdd1aaa20f60040cd60b71">inplaceBinaryOp</link>(<link linkend="_class_alib_1_1_a_array">rhs</link>,[](<link linkend="_class_alib_1_1_a_array">T</link>&#32;<link linkend="_class_alib_1_1_a_array">x</link>,<link linkend="_class_alib_1_1_a_array">T</link>&#32;<link linkend="_class_alib_1_1_a_array">y</link>){<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">x</link>/<link linkend="_class_alib_1_1_a_array">y</link>;});&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1ad26ea32e0a882af6cf1a695489af0910"/><section>
+    <title>operator=()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>operator=</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>operator=</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link> &amp; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::operator= (<link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp;&amp; other)<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00078 {&#32;<emphasis role="keywordflow">if</emphasis>(<emphasis role="keyword">this</emphasis>!=&amp;<link linkend="_class_alib_1_1_a_array">other</link>)&#32;<link linkend="_class_alib_1_1_a_array_1abf8c84c7c308a13ec5db4cf87f49a35d">m_move</link>(<link linkend="_class_alib_1_1_a_array">std::move</link>(<link linkend="_class_alib_1_1_a_array">other</link>));&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;&#32;}
+</programlisting><para>
+References <link linkend="_l00195">m_move()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_ad26ea32e0a882af6cf1a695489af0910_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_array_1a950ab6162ac4c1894fa800a00226e649"/><section>
+    <title>operator=()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>operator=</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>operator=</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link> &amp; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::operator= (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; other)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00077 {&#32;<emphasis role="keywordflow">if</emphasis>(<emphasis role="keyword">this</emphasis>!=&amp;<link linkend="_class_alib_1_1_a_array">other</link>)&#32;<link linkend="_class_alib_1_1_a_array_1a8e857694514b85d459e51551bd957d01">m_copy</link>(<link linkend="_class_alib_1_1_a_array">other</link>);&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;&#32;}
+</programlisting><para>
+References <link linkend="_l00190">m_copy()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_a950ab6162ac4c1894fa800a00226e649_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_array_1a4594756294394addcb2fc95c3b15dd80"/><section>
+    <title>operator[]()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>operator[]</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>operator[]</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_proxy">AArrayProxy</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::operator[] (size_t i)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00098 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">AArrayProxy&lt;T&gt;</link>(<emphasis role="keyword">this</emphasis>,{<link linkend="_class_alib_1_1_a_array">i</link>});&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1a056a520ac88590aefd1572335a36e51c"/><section>
+    <title>operator[]()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>operator[]</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>operator[]</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>const <link linkend="_class_alib_1_1_a_array_proxy">AArrayProxy</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::operator[] (size_t i) const<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00099 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">AArrayProxy&lt;T&gt;</link>(<emphasis role="keyword">const_cast&lt;</emphasis><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray&lt;T&gt;</link>*<emphasis role="keyword">&gt;</emphasis>(<emphasis role="keyword">this</emphasis>),{<link linkend="_class_alib_1_1_a_array">i</link>});&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1ade2708d772686f486b09a9ee400c0613"/><section>
+    <title>reshape()</title>
+<indexterm><primary>reshape</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>reshape</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>void <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::reshape (const std::vector&lt; size_t &gt; &amp; newDims)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">newTotal</link>=<link linkend="_class_alib_1_1_a_array">std::accumulate</link>(<link linkend="_class_alib_1_1_a_array">newDims</link>.begin(),<link linkend="_class_alib_1_1_a_array">newDims</link>.end(),1ULL,<link linkend="_class_alib_1_1_a_array">std::multiplies&lt;size_t&gt;</link>());
+00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_alib_1_1_a_array">newTotal</link>&#32;!=&#32;<link linkend="_class_alib_1_1_a_array_1a5101b3d9cd970bdc9aa2543fc37dadcb">size</link>())&#32;<emphasis role="keywordflow">throw</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">std::invalid_argument</link>(<emphasis role="stringliteral">&quot;reshape:&#32;total&#32;mismatch&quot;</emphasis>);
+00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.setDims(<link linkend="_class_alib_1_1_a_array">newDims</link>);
+00142 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1a311c89a88ecdeb561b4f71bc9012b74a"/><section>
+    <title>shape()</title>
+<indexterm><primary>shape</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>shape</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>const <link linkend="_class_alib_1_1_a_shape">AShape</link> &amp; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::shape ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00093 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_l00205">broadcastBinaryOp()</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_array_a311c89a88ecdeb561b4f71bc9012b74a_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_array_1a5101b3d9cd970bdc9aa2543fc37dadcb"/><section>
+    <title>size()</title>
+<indexterm><primary>size</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>size</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>size_t <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::size ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00184 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>-&gt;size();&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1afb6b6c5d95cc72f71ca9a3072c0eda0d"/><section>
+    <title>slice()</title>
+<indexterm><primary>slice</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>slice</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::slice (const std::vector&lt; size_t &gt; &amp; start, const std::vector&lt; size_t &gt; &amp; stop, const std::vector&lt; size_t &gt; &amp; step = <computeroutput>{}</computeroutput>
+) const<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array">std::vector&lt;size_t&gt;</link>&#32;<link linkend="_class_alib_1_1_a_array">sstep</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_array">step</link>.empty()?&#32;<link linkend="_class_alib_1_1_a_array">std::vector&lt;size_t&gt;</link>(<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.rank(),1):<link linkend="_class_alib_1_1_a_array">step</link>;
+00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array">AShape</link>&#32;<link linkend="_class_alib_1_1_a_array">newShape</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.sliceShape(<link linkend="_class_alib_1_1_a_array">start</link>,<link linkend="_class_alib_1_1_a_array">stop</link>,<link linkend="_class_alib_1_1_a_array">sstep</link>);
+00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray&lt;T&gt;</link>&#32;<link linkend="_class_alib_1_1_a_array">result</link>(<link linkend="_class_alib_1_1_a_array">newShape</link>);
+00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">i</link>=0;<link linkend="_class_alib_1_1_a_array">i</link>&lt;<link linkend="_class_alib_1_1_a_array">result</link>.<link linkend="_class_alib_1_1_a_array_1a5101b3d9cd970bdc9aa2543fc37dadcb">size</link>();++<link linkend="_class_alib_1_1_a_array">i</link>){
+00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">srcIdx</link>=<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.flatIndexFromSlice(<link linkend="_class_alib_1_1_a_array">i</link>,<link linkend="_class_alib_1_1_a_array">start</link>,<link linkend="_class_alib_1_1_a_array">sstep</link>);
+00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*<link linkend="_class_alib_1_1_a_array">result</link>.<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>)[<link linkend="_class_alib_1_1_a_array">i</link>]=(*<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>)[<link linkend="_class_alib_1_1_a_array">srcIdx</link>];
+00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">result</link>;
+00133 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1af8c8a79285d915b0cd4e1be0a1b98c61"/><section>
+    <title>transpose()</title>
+<indexterm><primary>transpose</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>transpose</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::transpose (const std::vector&lt; size_t &gt; &amp; axes = <computeroutput>{}</computeroutput>
+) const<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array">AShape</link>&#32;<link linkend="_class_alib_1_1_a_array">tshape</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>;
+00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_alib_1_1_a_array">axes</link>.empty()){
+00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array">std::vector&lt;size_t&gt;</link>&#32;<link linkend="_class_alib_1_1_a_array">perm</link>(<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.rank());
+00151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">size_t</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">i</link>=0;<link linkend="_class_alib_1_1_a_array">i</link>&lt;<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.rank();++<link linkend="_class_alib_1_1_a_array">i</link>)&#32;<link linkend="_class_alib_1_1_a_array">perm</link>[<link linkend="_class_alib_1_1_a_array">i</link>]=<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>.rank()-1-<link linkend="_class_alib_1_1_a_array">i</link>;
+00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array">tshape</link>.<link linkend="_class_alib_1_1_a_array_1af8c8a79285d915b0cd4e1be0a1b98c61">transpose</link>(<link linkend="_class_alib_1_1_a_array">perm</link>);
+00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">tshape</link>.<link linkend="_class_alib_1_1_a_array_1af8c8a79285d915b0cd4e1be0a1b98c61">transpose</link>(<link linkend="_class_alib_1_1_a_array">axes</link>);
+00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray&lt;T&gt;</link>&#32;<link linkend="_class_alib_1_1_a_array">result</link>;
+00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array">result</link>.<link linkend="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b">p_shape</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_array">tshape</link>;
+00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_array">result</link>.<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f">p_dataPtr</link>;&#32;<emphasis role="comment">//&#32;shared&#32;view</emphasis>
+00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array">result</link>;
+00158 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+</section>
+<section>
+<title>Friends And Related Symbol Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_array_1a633eca656c48f61ad3665f6038130732"/><section>
+    <title>operator*</title>
+<indexterm><primary>operator*</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>operator*</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; operator* (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; lhs, const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; rhs)<computeroutput>[friend]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00176 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_1a0650ff5af4b7cebb364491876597189f">broadcastBinaryOp</link>(<link linkend="_class_alib_1_1_a_array">lhs</link>,<link linkend="_class_alib_1_1_a_array">rhs</link>,<link linkend="_class_alib_1_1_a_array">std::multiplies&lt;T&gt;</link>());&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1afafea1ad9d2a80402d1fb5a65591385b"/><section>
+    <title>operator+</title>
+<indexterm><primary>operator+</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>operator+</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; operator+ (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; lhs, const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; rhs)<computeroutput>[friend]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00174 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_1a0650ff5af4b7cebb364491876597189f">broadcastBinaryOp</link>(<link linkend="_class_alib_1_1_a_array">lhs</link>,<link linkend="_class_alib_1_1_a_array">rhs</link>,<link linkend="_class_alib_1_1_a_array">std::plus&lt;T&gt;</link>());&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1a01488c0cb2ed0a5e70c7f3c981f5159b"/><section>
+    <title>operator-</title>
+<indexterm><primary>operator-</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>operator-</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; operator- (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; lhs, const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; rhs)<computeroutput>[friend]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00175 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_1a0650ff5af4b7cebb364491876597189f">broadcastBinaryOp</link>(<link linkend="_class_alib_1_1_a_array">lhs</link>,<link linkend="_class_alib_1_1_a_array">rhs</link>,<link linkend="_class_alib_1_1_a_array">std::minus&lt;T&gt;</link>());&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_array_1a66ba1cecf65e2afef5576057be380377"/><section>
+    <title>operator/</title>
+<indexterm><primary>operator/</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>operator/</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; operator/ (const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; lhs, const <link linkend="_class_alib_1_1_a_array_1a576d8d20b90da46562b7387fe508b370">AArray</link>&lt; T &gt; &amp; rhs)<computeroutput>[friend]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00177 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_array_1a0650ff5af4b7cebb364491876597189f">broadcastBinaryOp</link>(<link linkend="_class_alib_1_1_a_array">lhs</link>,<link linkend="_class_alib_1_1_a_array">rhs</link>,<link linkend="_class_alib_1_1_a_array">std::divides&lt;T&gt;</link>());&#32;}
+</programlisting></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_array_1ab8050477f13c0777cf07b44a4097a89f"/><section>
+    <title>p_dataPtr</title>
+<indexterm><primary>p_dataPtr</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>p_dataPtr</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput>std::shared_ptr&lt;std::vector&lt;T&gt; &gt; <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::p_dataPtr<computeroutput>[protected]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_alib_1_1_a_array_1ab0018b30674d14f609db7f1a6ff9442b"/><section>
+    <title>p_shape</title>
+<indexterm><primary>p_shape</primary><secondary>Alib::AArray&lt; T &gt;</secondary></indexterm>
+<indexterm><primary>Alib::AArray&lt; T &gt;</primary><secondary>p_shape</secondary></indexterm>
+<computeroutput>template&lt;typename T&gt; </computeroutput><para><computeroutput><link linkend="_class_alib_1_1_a_shape">AShape</link> <link linkend="_class_alib_1_1_a_array">Alib::AArray</link>&lt; T &gt;::p_shape<computeroutput>[protected]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+ALib/<link linkend="__a_array_8h">AArray.h</link></section>
+</section>

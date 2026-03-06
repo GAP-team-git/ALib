@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dirs" xml:lang="en-US">
+<title>Directories</title>
+
+<para>ALib </para>
+
+<para>AArray.h </para>
+
+<para>AErrors.cpp </para>
+
+<para>AErrors.h </para>
+
+<para>Alib.h </para>
+
+<para>ALIBH.h </para>
+
+<para>AObject.cpp </para>
+
+<para>AObject.h </para>
+
+<para>AShape.h </para>
+
+<para>templatesetget.h </para>
+</section>

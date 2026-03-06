@@ -1,0 +1,418 @@
+\doxysection{Alib::\+AObject Class Reference}
+\hypertarget{class_alib_1_1_a_object}{}\label{class_alib_1_1_a_object}\index{Alib::AObject@{Alib::AObject}}
+
+
+{\ttfamily \+\#include $<$AObject.\+h$>$}
+
+
+
+Inheritance diagram for Alib::\+AObject:\+
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} () noexcept
+\item 
+virtual \doxymbox{\hyperlink{class_alib_1_1_a_object_ac723c4bcf276feb48adcc87077ea0de8}{\texorpdfstring{$\sim$}{\string~}\+AObject}} ()=default
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_object_a0db7dc0be0c2fbe34bbffd95853a141d}{AObject}} (const AObject \&other)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_object_ad9e702854546fef4e8a7347c5a2d6a86}{AObject}} (AObject \&\&other) noexcept
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a5b4dee833b31de7d6e1a7f7808ac1b45}{operator=}} (const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&other)
+\item 
+\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \& \doxymbox{\hyperlink{class_alib_1_1_a_object_aca672cd0b61929e5b60083f4a089aafd}{operator=}} (\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&\&other) noexcept
+\item 
+virtual std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} $>$ \doxymbox{\hyperlink{class_alib_1_1_a_object_a0875bc6b828ff392098c63fdadb84cd4}{clone}} () const =0
+\item 
+virtual std::\+size\+\_\+t \doxymbox{\hyperlink{class_alib_1_1_a_object_a98f76b97beb59c02ebb43141d78cac20}{hash}} () const
+\item 
+const std::\+string \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a6b0671bc3462a3536c4e279c5b4fd93f}{Oid}} () const noexcept
+\item 
+virtual std::\+string \doxymbox{\hyperlink{class_alib_1_1_a_object_aceccb1d3f3f60bb11ad98b93aa5f1906}{get\+Class\+Name}} () const
+\item 
+bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a9969a8ea96a00b22b9de8b06462f4eb9}{valid}} () const noexcept
+\item 
+void \doxymbox{\hyperlink{class_alib_1_1_a_object_adb1385c39f5bf60b7a4fbb1513d4bc5b}{set\+Valid}} (bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a9969a8ea96a00b22b9de8b06462f4eb9}{valid}}) noexcept
+\item 
+void \doxymbox{\hyperlink{class_alib_1_1_a_object_a0c40319f8296948048e37df11553ec8e}{validate}} () noexcept
+\item 
+void \doxymbox{\hyperlink{class_alib_1_1_a_object_a40bfa5d840372cce4d7b772a90206d35}{invalidate}} () noexcept
+\item 
+\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}} \doxymbox{\hyperlink{class_alib_1_1_a_object_a7ba3e1e64c499eb6a0efbab5f6099fca}{get\+Error}} () const noexcept
+\item 
+const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_alib_1_1_a_object_abdd30056ff9f5968b5031889224369ba}{error\+Name}} () const noexcept
+\item 
+void \doxymbox{\hyperlink{class_alib_1_1_a_object_ad7356b6df001d5b314b04b36cf4fa7f5}{set\+Error}} (\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}} err) noexcept
+\item 
+void \doxymbox{\hyperlink{class_alib_1_1_a_object_a4c9dd3270e06a201f4cca9f065b224e8}{reset\+Error}} () noexcept
+\item 
+bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a46c3df806c0533c56be892e56b9419e0}{operator==}} (const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&other) const noexcept
+\item 
+bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a82d7acccc676586f360d1f896ee8cdc0}{operator!=}} (const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&other) const noexcept
+\item 
+virtual std::\+ostream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a369041e84f52063acc82eb237be2dcd5}{to\+Stream}} (std::\+ostream \&os) const
+\item 
+virtual std::\+istream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a3e2ab1a54a6528f483f28623c51129a1}{from\+Stream}} (std::\+istream \&is)
+\item 
+virtual bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a069a31d72ffd5eedd15a52d428d7e8e4}{write}} (const std::\+string \&file\+Name) const
+\item 
+virtual bool \doxymbox{\hyperlink{class_alib_1_1_a_object_aabd29a08609906615a9fd0663ccfae09}{read}} (const std::\+string \&file\+Name)
+\item 
+virtual std::\+ostream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_abc6c17077f8ff798aceb27e68e3c2b1b}{print\+Description}} (std::\+ostream \&os) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_alib_1_1_a_object_a1a2f9c0d738fc4f33efa114f1703d034}{m\+\_\+copy}} (const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&other)
+\item 
+virtual void \doxymbox{\hyperlink{class_alib_1_1_a_object_a92fdfbddabf57a97a9a8dc6d6840dbd8}{m\+\_\+move}} (\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&\&other) noexcept
+\item 
+virtual bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a6f91bd7daa1f2c6fa33aaf95dd0bf19b}{m\+\_\+compare}} (const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&other) const noexcept
+\item 
+virtual bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a11ed93be939a787f0f1ea7ad494ca0ba}{m\+\_\+is\+Valid}} () const noexcept
+\item 
+virtual std::\+ostream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a65d79973964589936144d6aa03802621}{m\+\_\+print\+Description}} (std::\+ostream \&os) const
+\item 
+virtual std::\+ostream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_addd7e0ab6cb1fee7ce0b658408d5dfec}{m\+\_\+print\+Status}} (std::\+ostream \&os) const
+\item 
+virtual std::\+ostream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_abf0c61976ad65f1e86e524f1f97c408b}{m\+\_\+print}} (std::\+ostream \&os) const
+\item 
+virtual std::\+istream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a93c2eaa4518e566fa43570e0365186fb}{m\+\_\+parse}} (std::\+istream \&is)
+\item 
+virtual bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a857be61132f8e01db3cd7081eba0ea99}{m\+\_\+write}} (std::\+ostream \&os) const
+\item 
+virtual bool \doxymbox{\hyperlink{class_alib_1_1_a_object_acde72c6cb28b5e6529b489adf4bff915}{m\+\_\+read}} (std::\+istream \&is)
+\item 
+virtual std::\+ostream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a05dca6d0d494116b5b8d6608325a3eff}{m\+\_\+to\+Stream}} (std::\+ostream \&os) const
+\item 
+virtual std::\+istream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a553936a2f6615ec73a37ff400d027060}{m\+\_\+from\+Stream}} (std::\+istream \&is)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std::\+string \doxymbox{\hyperlink{class_alib_1_1_a_object_aa217b46538114a6174adde75ee5ce8ec}{generate\+OID}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{class_alib_1_1_a_object_a4e6a3513fe12e6a2fb2b6930f1e7fcb4}{p\+\_\+magic}} \{\doxymbox{\hyperlink{_a_l_i_b_h_8h_a6d1fb27924334faab61d1c742624bf9b}{AOBJ\+\_\+\+MAGIC}}\}
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{class_alib_1_1_a_object_ae39af73e0cacbcd47314682ff32e7fbb}{p\+\_\+version}} \{\doxymbox{\hyperlink{_a_l_i_b_h_8h_a4804ce7577ca74460aef7ad99a904620}{AOBJ\+\_\+\+VERSION}}\}
+\item 
+std::\+string \doxymbox{\hyperlink{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}{p\+\_\+oid}}
+\item 
+bool \doxymbox{\hyperlink{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}{p\+\_\+valid}} \{true\}
+\item 
+\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}} \doxymbox{\hyperlink{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}{p\+\_\+error}} \{\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb}{AErrors::\+no\+Error}}\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std::\+ostream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a6d1d13289882d1ed2dbea8eb09f8e89c}{operator$<$$<$}} (std::\+ostream \&os, const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&obj)
+\item 
+std::\+istream \& \doxymbox{\hyperlink{class_alib_1_1_a_object_a5dd87564b261ef1e3d7c366ab7c942c5}{operator$>$$>$}} (std::\+istream \&is, \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&obj)
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_alib_1_1_a_object_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}\index{Alib::AObject@{Alib::AObject}!AObject@{AObject}}
+\index{AObject@{AObject}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{AObject()}{AObject()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6} 
+Alib::\+\+AObject::\+\+AObject (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_ac723c4bcf276feb48adcc87077ea0de8}\index{Alib::AObject@{Alib::AObject}!````~AObject@{\texorpdfstring{$\sim$}{\string~}AObject}}
+\index{````~AObject@{\texorpdfstring{$\sim$}{\string~}AObject}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}AObject()}{\string~AObject()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_ac723c4bcf276feb48adcc87077ea0de8} 
+virtual Alib::\+\+AObject::\+\texorpdfstring{$\sim$}{\string~}\+AObject (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+\Hypertarget{class_alib_1_1_a_object_a0db7dc0be0c2fbe34bbffd95853a141d}\index{Alib::AObject@{Alib::AObject}!AObject@{AObject}}
+\index{AObject@{AObject}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{AObject()}{AObject()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a0db7dc0be0c2fbe34bbffd95853a141d} 
+Alib::\+\+AObject::\+\+AObject (\begin{DoxyParamCaption}\item[{const AObject \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_object_ad9e702854546fef4e8a7347c5a2d6a86}\index{Alib::AObject@{Alib::AObject}!AObject@{AObject}}
+\index{AObject@{AObject}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{AObject()}{AObject()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_ad9e702854546fef4e8a7347c5a2d6a86} 
+Alib::\+\+AObject::\+\+AObject (\begin{DoxyParamCaption}\item[{AObject \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_alib_1_1_a_object_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_alib_1_1_a_object_a0875bc6b828ff392098c63fdadb84cd4}\index{Alib::AObject@{Alib::AObject}!clone@{clone}}
+\index{clone@{clone}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a0875bc6b828ff392098c63fdadb84cd4} 
+virtual std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} $>$ Alib::\+\+AObject::\+clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \doxymbox{\hyperlink{class_alib_1_1_a_array_a959e0d253e5d5c83f83950e4de590a70}{Alib::\+\+AArray$<$ T $>$}}.
+
+\Hypertarget{class_alib_1_1_a_object_abdd30056ff9f5968b5031889224369ba}\index{Alib::AObject@{Alib::AObject}!errorName@{errorName}}
+\index{errorName@{errorName}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{errorName()}{errorName()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_abdd30056ff9f5968b5031889224369ba} 
+const char \texorpdfstring{$\ast$}{*} Alib::\+\+AObject::\+error\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_a3e2ab1a54a6528f483f28623c51129a1}\index{Alib::AObject@{Alib::AObject}!fromStream@{fromStream}}
+\index{fromStream@{fromStream}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{fromStream()}{fromStream()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a3e2ab1a54a6528f483f28623c51129a1} 
+virtual std::\+istream \& Alib::\+\+AObject::\+from\+Stream (\begin{DoxyParamCaption}\item[{std::\+istream \&}]{is}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_alib_1_1_a_object_aa217b46538114a6174adde75ee5ce8ec}\index{Alib::AObject@{Alib::AObject}!generateOID@{generateOID}}
+\index{generateOID@{generateOID}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{generateOID()}{generateOID()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_aa217b46538114a6174adde75ee5ce8ec} 
+std::\+string Alib::\+\+AObject::\+generate\+OID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_alib_1_1_a_object_aceccb1d3f3f60bb11ad98b93aa5f1906}\index{Alib::AObject@{Alib::AObject}!getClassName@{getClassName}}
+\index{getClassName@{getClassName}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{getClassName()}{getClassName()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_aceccb1d3f3f60bb11ad98b93aa5f1906} 
+virtual std::\+string Alib::\+\+AObject::\+get\+Class\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_alib_1_1_a_object_a7ba3e1e64c499eb6a0efbab5f6099fca}\index{Alib::AObject@{Alib::AObject}!getError@{getError}}
+\index{getError@{getError}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{getError()}{getError()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a7ba3e1e64c499eb6a0efbab5f6099fca} 
+\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}} Alib::\+\+AObject::\+get\+Error (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_a98f76b97beb59c02ebb43141d78cac20}\index{Alib::AObject@{Alib::AObject}!hash@{hash}}
+\index{hash@{hash}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{hash()}{hash()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a98f76b97beb59c02ebb43141d78cac20} 
+virtual std::\+size\+\_\+t Alib::\+\+AObject::\+hash (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \doxymbox{\hyperlink{class_alib_1_1_a_array_aa77147c9010f0e1eb618f37b008bc03c}{Alib::\+\+AArray$<$ T $>$}}.
+
+\Hypertarget{class_alib_1_1_a_object_a40bfa5d840372cce4d7b772a90206d35}\index{Alib::AObject@{Alib::AObject}!invalidate@{invalidate}}
+\index{invalidate@{invalidate}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{invalidate()}{invalidate()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a40bfa5d840372cce4d7b772a90206d35} 
+void Alib::\+\+AObject::\+invalidate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_a6f91bd7daa1f2c6fa33aaf95dd0bf19b}\index{Alib::AObject@{Alib::AObject}!m\_compare@{m\_compare}}
+\index{m\_compare@{m\_compare}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{m\_compare()}{m\_compare()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a6f91bd7daa1f2c6fa33aaf95dd0bf19b} 
+virtual bool Alib::\+\+AObject::\+m\+\_\+compare (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [protected]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_a1a2f9c0d738fc4f33efa114f1703d034}\index{Alib::AObject@{Alib::AObject}!m\_copy@{m\_copy}}
+\index{m\_copy@{m\_copy}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{m\_copy()}{m\_copy()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a1a2f9c0d738fc4f33efa114f1703d034} 
+virtual void Alib::\+\+AObject::\+m\+\_\+copy (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_alib_1_1_a_object_a553936a2f6615ec73a37ff400d027060}\index{Alib::AObject@{Alib::AObject}!m\_fromStream@{m\_fromStream}}
+\index{m\_fromStream@{m\_fromStream}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{m\_fromStream()}{m\_fromStream()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a553936a2f6615ec73a37ff400d027060} 
+virtual std::\+istream \& Alib::\+\+AObject::\+m\+\_\+from\+Stream (\begin{DoxyParamCaption}\item[{std::\+istream \&}]{is}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_alib_1_1_a_object_a11ed93be939a787f0f1ea7ad494ca0ba}\index{Alib::AObject@{Alib::AObject}!m\_isValid@{m\_isValid}}
+\index{m\_isValid@{m\_isValid}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{m\_isValid()}{m\_isValid()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a11ed93be939a787f0f1ea7ad494ca0ba} 
+virtual bool Alib::\+\+AObject::\+m\+\_\+is\+Valid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [protected]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_a92fdfbddabf57a97a9a8dc6d6840dbd8}\index{Alib::AObject@{Alib::AObject}!m\_move@{m\_move}}
+\index{m\_move@{m\_move}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{m\_move()}{m\_move()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a92fdfbddabf57a97a9a8dc6d6840dbd8} 
+virtual void Alib::\+\+AObject::\+m\+\_\+move (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_a93c2eaa4518e566fa43570e0365186fb}\index{Alib::AObject@{Alib::AObject}!m\_parse@{m\_parse}}
+\index{m\_parse@{m\_parse}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{m\_parse()}{m\_parse()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a93c2eaa4518e566fa43570e0365186fb} 
+virtual std::\+istream \& Alib::\+\+AObject::\+m\+\_\+parse (\begin{DoxyParamCaption}\item[{std::\+istream \&}]{is}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_alib_1_1_a_object_abf0c61976ad65f1e86e524f1f97c408b}\index{Alib::AObject@{Alib::AObject}!m\_print@{m\_print}}
+\index{m\_print@{m\_print}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{m\_print()}{m\_print()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_abf0c61976ad65f1e86e524f1f97c408b} 
+virtual std::\+ostream \& Alib::\+\+AObject::\+m\+\_\+print (\begin{DoxyParamCaption}\item[{std::\+ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_alib_1_1_a_object_a65d79973964589936144d6aa03802621}\index{Alib::AObject@{Alib::AObject}!m\_printDescription@{m\_printDescription}}
+\index{m\_printDescription@{m\_printDescription}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{m\_printDescription()}{m\_printDescription()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a65d79973964589936144d6aa03802621} 
+virtual std::\+ostream \& Alib::\+\+AObject::\+m\+\_\+print\+Description (\begin{DoxyParamCaption}\item[{std::\+ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_alib_1_1_a_object_addd7e0ab6cb1fee7ce0b658408d5dfec}\index{Alib::AObject@{Alib::AObject}!m\_printStatus@{m\_printStatus}}
+\index{m\_printStatus@{m\_printStatus}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{m\_printStatus()}{m\_printStatus()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_addd7e0ab6cb1fee7ce0b658408d5dfec} 
+virtual std::\+ostream \& Alib::\+\+AObject::\+m\+\_\+print\+Status (\begin{DoxyParamCaption}\item[{std::\+ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_alib_1_1_a_object_acde72c6cb28b5e6529b489adf4bff915}\index{Alib::AObject@{Alib::AObject}!m\_read@{m\_read}}
+\index{m\_read@{m\_read}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{m\_read()}{m\_read()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_acde72c6cb28b5e6529b489adf4bff915} 
+virtual bool Alib::\+\+AObject::\+m\+\_\+read (\begin{DoxyParamCaption}\item[{std::\+istream \&}]{is}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_alib_1_1_a_object_a05dca6d0d494116b5b8d6608325a3eff}\index{Alib::AObject@{Alib::AObject}!m\_toStream@{m\_toStream}}
+\index{m\_toStream@{m\_toStream}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{m\_toStream()}{m\_toStream()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a05dca6d0d494116b5b8d6608325a3eff} 
+virtual std::\+ostream \& Alib::\+\+AObject::\+m\+\_\+to\+Stream (\begin{DoxyParamCaption}\item[{std::\+ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_alib_1_1_a_object_a857be61132f8e01db3cd7081eba0ea99}\index{Alib::AObject@{Alib::AObject}!m\_write@{m\_write}}
+\index{m\_write@{m\_write}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{m\_write()}{m\_write()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a857be61132f8e01db3cd7081eba0ea99} 
+virtual bool Alib::\+\+AObject::\+m\+\_\+write (\begin{DoxyParamCaption}\item[{std::\+ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_alib_1_1_a_object_a6b0671bc3462a3536c4e279c5b4fd93f}\index{Alib::AObject@{Alib::AObject}!Oid@{Oid}}
+\index{Oid@{Oid}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{Oid()}{Oid()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a6b0671bc3462a3536c4e279c5b4fd93f} 
+const std::\+string \& Alib::\+\+AObject::\+\+Oid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_a82d7acccc676586f360d1f896ee8cdc0}\index{Alib::AObject@{Alib::AObject}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a82d7acccc676586f360d1f896ee8cdc0} 
+bool Alib::\+\+AObject::\+operator!= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_aca672cd0b61929e5b60083f4a089aafd}\index{Alib::AObject@{Alib::AObject}!operator=@{operator=}}
+\index{operator=@{operator=}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_aca672cd0b61929e5b60083f4a089aafd} 
+\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \& Alib::\+\+AObject::\+operator= (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_a5b4dee833b31de7d6e1a7f7808ac1b45}\index{Alib::AObject@{Alib::AObject}!operator=@{operator=}}
+\index{operator=@{operator=}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a5b4dee833b31de7d6e1a7f7808ac1b45} 
+\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \& Alib::\+\+AObject::\+operator= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_alib_1_1_a_object_a46c3df806c0533c56be892e56b9419e0}\index{Alib::AObject@{Alib::AObject}!operator==@{operator==}}
+\index{operator==@{operator==}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a46c3df806c0533c56be892e56b9419e0} 
+bool Alib::\+\+AObject::\+operator== (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_abc6c17077f8ff798aceb27e68e3c2b1b}\index{Alib::AObject@{Alib::AObject}!printDescription@{printDescription}}
+\index{printDescription@{printDescription}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{printDescription()}{printDescription()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_abc6c17077f8ff798aceb27e68e3c2b1b} 
+virtual std::\+ostream \& Alib::\+\+AObject::\+print\+Description (\begin{DoxyParamCaption}\item[{std::\+ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_alib_1_1_a_object_aabd29a08609906615a9fd0663ccfae09}\index{Alib::AObject@{Alib::AObject}!read@{read}}
+\index{read@{read}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_aabd29a08609906615a9fd0663ccfae09} 
+virtual bool Alib::\+\+AObject::\+read (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{file\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_alib_1_1_a_object_a4c9dd3270e06a201f4cca9f065b224e8}\index{Alib::AObject@{Alib::AObject}!resetError@{resetError}}
+\index{resetError@{resetError}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{resetError()}{resetError()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a4c9dd3270e06a201f4cca9f065b224e8} 
+void Alib::\+\+AObject::\+reset\+Error (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_ad7356b6df001d5b314b04b36cf4fa7f5}\index{Alib::AObject@{Alib::AObject}!setError@{setError}}
+\index{setError@{setError}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{setError()}{setError()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_ad7356b6df001d5b314b04b36cf4fa7f5} 
+void Alib::\+\+AObject::\+set\+Error (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}}}]{err}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_adb1385c39f5bf60b7a4fbb1513d4bc5b}\index{Alib::AObject@{Alib::AObject}!setValid@{setValid}}
+\index{setValid@{setValid}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{setValid()}{setValid()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_adb1385c39f5bf60b7a4fbb1513d4bc5b} 
+void Alib::\+\+AObject::\+set\+Valid (\begin{DoxyParamCaption}\item[{bool}]{valid}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_a369041e84f52063acc82eb237be2dcd5}\index{Alib::AObject@{Alib::AObject}!toStream@{toStream}}
+\index{toStream@{toStream}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{toStream()}{toStream()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a369041e84f52063acc82eb237be2dcd5} 
+virtual std::\+ostream \& Alib::\+\+AObject::\+to\+Stream (\begin{DoxyParamCaption}\item[{std::\+ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_alib_1_1_a_object_a9969a8ea96a00b22b9de8b06462f4eb9}\index{Alib::AObject@{Alib::AObject}!valid@{valid}}
+\index{valid@{valid}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{valid()}{valid()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a9969a8ea96a00b22b9de8b06462f4eb9} 
+bool Alib::\+\+AObject::\+valid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_a0c40319f8296948048e37df11553ec8e}\index{Alib::AObject@{Alib::AObject}!validate@{validate}}
+\index{validate@{validate}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{validate()}{validate()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a0c40319f8296948048e37df11553ec8e} 
+void Alib::\+\+AObject::\+validate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{class_alib_1_1_a_object_a069a31d72ffd5eedd15a52d428d7e8e4}\index{Alib::AObject@{Alib::AObject}!write@{write}}
+\index{write@{write}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a069a31d72ffd5eedd15a52d428d7e8e4} 
+virtual bool Alib::\+\+AObject::\+write (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{file\+Name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [virtual]}}
+
+
+
+\label{doc-related-members}
+\Hypertarget{class_alib_1_1_a_object_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_alib_1_1_a_object_a6d1d13289882d1ed2dbea8eb09f8e89c}\index{Alib::AObject@{Alib::AObject}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a6d1d13289882d1ed2dbea8eb09f8e89c} 
+std::\+ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std::\+ostream \&}]{os}{, }\item[{const \doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&}]{obj}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+\Hypertarget{class_alib_1_1_a_object_a5dd87564b261ef1e3d7c366ab7c942c5}\index{Alib::AObject@{Alib::AObject}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$}{operator>>}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a5dd87564b261ef1e3d7c366ab7c942c5} 
+std::\+istream \& operator$>$$>$ (\begin{DoxyParamCaption}\item[{std::\+istream \&}]{is}{, }\item[{\doxymbox{\hyperlink{class_alib_1_1_a_object_a69d08cc3794ac46e9bfffecab571c0e6}{AObject}} \&}]{obj}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_alib_1_1_a_object_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc}\index{Alib::AObject@{Alib::AObject}!p\_error@{p\_error}}
+\index{p\_error@{p\_error}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{p\_error}{p\_error}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_ae0a972382d9f91260e9ccce4868adabc} 
+\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}} Alib::\+\+AObject::\+p\+\_\+error \{\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb}{AErrors::\+no\+Error}}\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_alib_1_1_a_object_a4e6a3513fe12e6a2fb2b6930f1e7fcb4}\index{Alib::AObject@{Alib::AObject}!p\_magic@{p\_magic}}
+\index{p\_magic@{p\_magic}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{p\_magic}{p\_magic}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a4e6a3513fe12e6a2fb2b6930f1e7fcb4} 
+uint32\+\_\+t Alib::\+\+AObject::\+p\+\_\+magic \{\doxymbox{\hyperlink{_a_l_i_b_h_8h_a6d1fb27924334faab61d1c742624bf9b}{AOBJ\+\_\+\+MAGIC}}\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18}\index{Alib::AObject@{Alib::AObject}!p\_oid@{p\_oid}}
+\index{p\_oid@{p\_oid}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{p\_oid}{p\_oid}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a09de3cb0891834a66640f968be346b18} 
+std::\+string Alib::\+\+AObject::\+p\+\_\+oid\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e}\index{Alib::AObject@{Alib::AObject}!p\_valid@{p\_valid}}
+\index{p\_valid@{p\_valid}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{p\_valid}{p\_valid}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_a65a568e47ebb0f29c2625420c2f8d64e} 
+bool Alib::\+\+AObject::\+p\+\_\+valid \{true\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_alib_1_1_a_object_ae39af73e0cacbcd47314682ff32e7fbb}\index{Alib::AObject@{Alib::AObject}!p\_version@{p\_version}}
+\index{p\_version@{p\_version}!Alib::AObject@{Alib::AObject}}
+\doxysubsubsection{\texorpdfstring{p\_version}{p\_version}}
+{\footnotesize\ttfamily \label{class_alib_1_1_a_object_ae39af73e0cacbcd47314682ff32e7fbb} 
+uint32\+\_\+t Alib::\+\+AObject::\+p\+\_\+version \{\doxymbox{\hyperlink{_a_l_i_b_h_8h_a4804ce7577ca74460aef7ad99a904620}{AOBJ\+\_\+\+VERSION}}\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+ALib/\+\doxymbox{\hyperlink{_a_object_8h}{AObject.\+h}}\end{DoxyCompactItemize}

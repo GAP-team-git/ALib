@@ -1,0 +1,322 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_alib_1_1_a_shape" xml:lang="en-US">
+<title>Alib::AShape Class Reference</title>
+<indexterm><primary>Alib::AShape</primary></indexterm>
+<para>
+<computeroutput>#include &lt;AShape.h&gt;</computeroutput>
+</para>
+Collaboration diagram for Alib::AShape:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_shape__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link> ()=default</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_shape_1ab22715fb9cd8afe985c648b1bc3e9164">AShape</link> (const std::vector&lt; size_t &gt; &amp;<link linkend="_class_alib_1_1_a_shape_1a0f2f573d4bf903b32af4dc9b466b9a21">dims</link>)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link> () const noexcept</para>
+</listitem>
+            <listitem><para>const std::vector&lt; size_t &gt; &amp; <link linkend="_class_alib_1_1_a_shape_1a0f2f573d4bf903b32af4dc9b466b9a21">dims</link> () const noexcept</para>
+</listitem>
+            <listitem><para>const std::vector&lt; size_t &gt; &amp; <link linkend="_class_alib_1_1_a_shape_1ac07a2c196c619d2066d298e9d1d9d9cd">strides</link> () const noexcept</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_shape_1a2b2a5a997ffff653a84101c9320fc1ee">setDims</link> (const std::vector&lt; size_t &gt; &amp;<link linkend="_class_alib_1_1_a_shape_1a0f2f573d4bf903b32af4dc9b466b9a21">dims</link>)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_shape_1a5d751715fcc67d13d5187c5695c378f0">setStrides</link> (const std::vector&lt; size_t &gt; &amp;s)</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_alib_1_1_a_shape_1a97249860aac1e57144e593d7f3273bc0">totalSize</link> () const</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_alib_1_1_a_shape_1aa935b8fa7e57011fb1092ea247b58988">flatIndex</link> (const std::vector&lt; size_t &gt; &amp;idx) const</para>
+</listitem>
+            <listitem><para><link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link> <link linkend="_class_alib_1_1_a_shape_1a45acfa80c53aaa8843246bb551c580cf">sliceShape</link> (const std::vector&lt; size_t &gt; &amp;start, const std::vector&lt; size_t &gt; &amp;stop, const std::vector&lt; size_t &gt; &amp;step) const</para>
+</listitem>
+            <listitem><para>size_t <link linkend="_class_alib_1_1_a_shape_1a1bfc1937c7af3201e0411d2ad0f652e6">flatIndexFromSlice</link> (size_t idx, const std::vector&lt; size_t &gt; &amp;start, const std::vector&lt; size_t &gt; &amp;step) const</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_shape_1a529c5032ae69717fa065e1e47b238c1c">transpose</link> (const std::vector&lt; size_t &gt; &amp;axes)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_alib_1_1_a_shape_1a3641c1d011ebdf9f90ff272f01c6dafe">operator==</link> (const <link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link> &amp;other) const</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_alib_1_1_a_shape_1a49cc8a657a79d6f9c5f12a916fd91233">operator!=</link> (const <link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link> &amp;other) const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Static Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>static <link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link> <link linkend="_class_alib_1_1_a_shape_1aeaa3f10a3b90334f219d1f81318087bf">broadcast</link> (const <link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link> &amp;a, const <link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link> &amp;b)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_alib_1_1_a_shape_1af5b6234d498cd2177fc7a94ddbf9ac08">calcStrides</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para>std::vector&lt; size_t &gt; <link linkend="_class_alib_1_1_a_shape_1ab9eba8ddf0a8fb6d107cb8b63eead0a9">p_dims</link></para>
+</listitem>
+            <listitem><para>std::vector&lt; size_t &gt; <link linkend="_class_alib_1_1_a_shape_1a6c0dbc3def5c58700f062bfc592d517e">p_strides</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e"/><section>
+    <title>AShape()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>AShape</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>AShape</secondary></indexterm>
+<para><computeroutput>Alib::AShape::AShape ( )<computeroutput>[default]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_alib_1_1_a_shape_1ab22715fb9cd8afe985c648b1bc3e9164"/><section>
+    <title>AShape()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>AShape</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>AShape</secondary></indexterm>
+<para><computeroutput>Alib::AShape::AShape (const std::vector&lt; size_t &gt; &amp; dims)<computeroutput>[inline]</computeroutput>, <computeroutput>[explicit]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00024 :&#32;<link linkend="_class_alib_1_1_a_shape_1ab9eba8ddf0a8fb6d107cb8b63eead0a9">p_dims</link>(<link linkend="_class_alib_1_1_a_shape_1a0f2f573d4bf903b32af4dc9b466b9a21">dims</link>)&#32;{&#32;<link linkend="_class_alib_1_1_a_shape_1af5b6234d498cd2177fc7a94ddbf9ac08">calcStrides</link>();&#32;}
+</programlisting><para>
+References <link linkend="_l00110">calcStrides()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_shape_ab22715fb9cd8afe985c648b1bc3e9164_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_shape_1aeaa3f10a3b90334f219d1f81318087bf"/><section>
+    <title>broadcast()</title>
+<indexterm><primary>broadcast</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>broadcast</secondary></indexterm>
+<para><computeroutput><link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link> Alib::AShape::broadcast (const <link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link> &amp; a, const <link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link> &amp; b)<computeroutput>[inline]</computeroutput>, <computeroutput>[static]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;r1=a.rank(),&#32;r2=b.rank();
+00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;rmax=std::max(r1,r2);
+00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;size_t&gt;&#32;<link linkend="_class_alib_1_1_a_shape_1a0f2f573d4bf903b32af4dc9b466b9a21">dims</link>(rmax,1);
+00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">size_t</emphasis>&#32;i=0;i&lt;rmax;++i){
+00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;da=(i&lt;rmax-r1?1:a.p_dims[i-(rmax-r1)]);
+00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;db=(i&lt;rmax-r2?1:b.p_dims[i-(rmax-r2)]);
+00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(da!=db&#32;&amp;&amp;&#32;da!=1&#32;&amp;&amp;&#32;db!=1)&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::invalid_argument(<emphasis role="stringliteral">&quot;broadcast:&#32;incompatible&#32;shapes&quot;</emphasis>);
+00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_shape_1a0f2f573d4bf903b32af4dc9b466b9a21">dims</link>[i]=std::max(da,db);
+00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link>(<link linkend="_class_alib_1_1_a_shape_1a0f2f573d4bf903b32af4dc9b466b9a21">dims</link>);
+00101 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_l00205">Alib::AArray&lt; T &gt;::broadcastBinaryOp()</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_shape_aeaa3f10a3b90334f219d1f81318087bf_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_shape_1af5b6234d498cd2177fc7a94ddbf9ac08"/><section>
+    <title>calcStrides()</title>
+<indexterm><primary>calcStrides</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>calcStrides</secondary></indexterm>
+<para><computeroutput>void Alib::AShape::calcStrides ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_shape_1a6c0dbc3def5c58700f062bfc592d517e">p_strides</link>.resize(<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>());
+00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>()==0)&#32;<emphasis role="keywordflow">return</emphasis>;
+00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_shape_1a6c0dbc3def5c58700f062bfc592d517e">p_strides</link>[<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>()-1]=1;
+00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=<emphasis role="keywordtype">int</emphasis>(<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>())-2;i&gt;=0;--i)
+00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_shape_1a6c0dbc3def5c58700f062bfc592d517e">p_strides</link>[i]&#32;=&#32;<link linkend="_class_alib_1_1_a_shape_1a6c0dbc3def5c58700f062bfc592d517e">p_strides</link>[i+1]*<link linkend="_class_alib_1_1_a_shape_1ab9eba8ddf0a8fb6d107cb8b63eead0a9">p_dims</link>[i+1];
+00116 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_l00024">AShape()</link>, <link linkend="_l00030">setDims()</link>, and <link linkend="_l00079">transpose()</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_shape_af5b6234d498cd2177fc7a94ddbf9ac08_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_shape_1a0f2f573d4bf903b32af4dc9b466b9a21"/><section>
+    <title>dims()</title>
+<indexterm><primary>dims</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>dims</secondary></indexterm>
+<para><computeroutput>const std::vector&lt; size_t &gt; &amp; Alib::AShape::dims ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00027 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_shape_1ab9eba8ddf0a8fb6d107cb8b63eead0a9">p_dims</link>;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_shape_1aa935b8fa7e57011fb1092ea247b58988"/><section>
+    <title>flatIndex()</title>
+<indexterm><primary>flatIndex</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>flatIndex</secondary></indexterm>
+<para><computeroutput>size_t Alib::AShape::flatIndex (const std::vector&lt; size_t &gt; &amp; idx) const<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(idx.size()&#32;!=&#32;<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>())
+00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::runtime_error(<emphasis role="stringliteral">&quot;AShape::flatIndex&#32;rank&#32;mismatch&quot;</emphasis>);
+00040 
+00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;offset&#32;=&#32;0;
+00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">size_t</emphasis>&#32;i=0;i&lt;<link linkend="_class_alib_1_1_a_shape_1ab9eba8ddf0a8fb6d107cb8b63eead0a9">p_dims</link>.size();++i){
+00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(idx[i]&#32;&gt;=&#32;<link linkend="_class_alib_1_1_a_shape_1ab9eba8ddf0a8fb6d107cb8b63eead0a9">p_dims</link>[i])
+00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::out_of_range(<emphasis role="stringliteral">&quot;AShape::flatIndex&#32;index&#32;out&#32;of&#32;bounds&quot;</emphasis>);
+00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;offset&#32;+=&#32;idx[i]*<link linkend="_class_alib_1_1_a_shape_1a6c0dbc3def5c58700f062bfc592d517e">p_strides</link>[i];
+00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;offset;
+00048 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_shape_1a1bfc1937c7af3201e0411d2ad0f652e6"/><section>
+    <title>flatIndexFromSlice()</title>
+<indexterm><primary>flatIndexFromSlice</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>flatIndexFromSlice</secondary></indexterm>
+<para><computeroutput>size_t Alib::AShape::flatIndexFromSlice (size_t idx, const std::vector&lt; size_t &gt; &amp; start, const std::vector&lt; size_t &gt; &amp; step) const<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;linear&#32;=&#32;0;
+00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;d=<emphasis role="keywordtype">int</emphasis>(<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>())-1;&#32;d&gt;=0;&#32;--d){
+00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;cur&#32;=&#32;idx&#32;%&#32;<link linkend="_class_alib_1_1_a_shape_1a0f2f573d4bf903b32af4dc9b466b9a21">dims</link>()[d];
+00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;linear&#32;+=&#32;(start[d]&#32;+&#32;cur*step[d])*<link linkend="_class_alib_1_1_a_shape_1ac07a2c196c619d2066d298e9d1d9d9cd">strides</link>()[d];
+00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;idx&#32;/=&#32;<link linkend="_class_alib_1_1_a_shape_1a0f2f573d4bf903b32af4dc9b466b9a21">dims</link>()[d];
+00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;linear;
+00074 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_shape_1a49cc8a657a79d6f9c5f12a916fd91233"/><section>
+    <title>operator!=()</title>
+<indexterm><primary>operator!=</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>operator!=</secondary></indexterm>
+<para><computeroutput>bool Alib::AShape::operator!= (const <link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link> &amp; other) const<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00104 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;!(*<emphasis role="keyword">this</emphasis>==other);&#32;}
+</programlisting><para>
+References <link linkend="_l00103">operator==()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_shape_a49cc8a657a79d6f9c5f12a916fd91233_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_shape_1a3641c1d011ebdf9f90ff272f01c6dafe"/><section>
+    <title>operator==()</title>
+<indexterm><primary>operator==</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>operator==</secondary></indexterm>
+<para><computeroutput>bool Alib::AShape::operator== (const <link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link> &amp; other) const<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00103 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_shape_1ab9eba8ddf0a8fb6d107cb8b63eead0a9">p_dims</link>==other.p_dims;&#32;}
+</programlisting><para>
+Referenced by <link linkend="_l00104">operator!=()</link>.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_shape_a3641c1d011ebdf9f90ff272f01c6dafe_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59"/><section>
+    <title>rank()</title>
+<indexterm><primary>rank</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>rank</secondary></indexterm>
+<para><computeroutput>size_t Alib::AShape::rank ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00026 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_shape_1ab9eba8ddf0a8fb6d107cb8b63eead0a9">p_dims</link>.size();&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_shape_1a2b2a5a997ffff653a84101c9320fc1ee"/><section>
+    <title>setDims()</title>
+<indexterm><primary>setDims</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>setDims</secondary></indexterm>
+<para><computeroutput>void Alib::AShape::setDims (const std::vector&lt; size_t &gt; &amp; dims)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00030 {&#32;<link linkend="_class_alib_1_1_a_shape_1ab9eba8ddf0a8fb6d107cb8b63eead0a9">p_dims</link>&#32;=&#32;<link linkend="_class_alib_1_1_a_shape_1a0f2f573d4bf903b32af4dc9b466b9a21">dims</link>;&#32;<link linkend="_class_alib_1_1_a_shape_1af5b6234d498cd2177fc7a94ddbf9ac08">calcStrides</link>();&#32;}
+</programlisting><para>
+References <link linkend="_l00110">calcStrides()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_shape_a2b2a5a997ffff653a84101c9320fc1ee_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_alib_1_1_a_shape_1a5d751715fcc67d13d5187c5695c378f0"/><section>
+    <title>setStrides()</title>
+<indexterm><primary>setStrides</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>setStrides</secondary></indexterm>
+<para><computeroutput>void Alib::AShape::setStrides (const std::vector&lt; size_t &gt; &amp; s)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00031 {&#32;<link linkend="_class_alib_1_1_a_shape_1a6c0dbc3def5c58700f062bfc592d517e">p_strides</link>&#32;=&#32;s;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_shape_1a45acfa80c53aaa8843246bb551c580cf"/><section>
+    <title>sliceShape()</title>
+<indexterm><primary>sliceShape</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>sliceShape</secondary></indexterm>
+<para><computeroutput><link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link> Alib::AShape::sliceShape (const std::vector&lt; size_t &gt; &amp; start, const std::vector&lt; size_t &gt; &amp; stop, const std::vector&lt; size_t &gt; &amp; step) const<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(start.size()!=<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>()&#32;||&#32;stop.size()!=<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>()&#32;||&#32;step.size()!=<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>())
+00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::invalid_argument(<emphasis role="stringliteral">&quot;sliceShape:&#32;size&#32;mismatch&quot;</emphasis>);
+00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;size_t&gt;&#32;newDims(<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>());
+00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">size_t</emphasis>&#32;i=0;i&lt;<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>();++i){
+00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(step[i]==0)&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::invalid_argument(<emphasis role="stringliteral">&quot;sliceShape:&#32;step=0&quot;</emphasis>);
+00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;newDims[i]&#32;=&#32;(stop[i]&lt;=start[i]?0:(stop[i]-start[i]+step[i]-1)/step[i]);
+00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_shape_1ab0a80968559a93df8e9290341380b04e">AShape</link>(newDims);
+00064 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_shape_1ac07a2c196c619d2066d298e9d1d9d9cd"/><section>
+    <title>strides()</title>
+<indexterm><primary>strides</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>strides</secondary></indexterm>
+<para><computeroutput>const std::vector&lt; size_t &gt; &amp; Alib::AShape::strides ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[noexcept]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00028 {&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_alib_1_1_a_shape_1a6c0dbc3def5c58700f062bfc592d517e">p_strides</link>;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_shape_1a97249860aac1e57144e593d7f3273bc0"/><section>
+    <title>totalSize()</title>
+<indexterm><primary>totalSize</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>totalSize</secondary></indexterm>
+<para><computeroutput>size_t Alib::AShape::totalSize ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::accumulate(<link linkend="_class_alib_1_1_a_shape_1ab9eba8ddf0a8fb6d107cb8b63eead0a9">p_dims</link>.begin(),&#32;<link linkend="_class_alib_1_1_a_shape_1ab9eba8ddf0a8fb6d107cb8b63eead0a9">p_dims</link>.end(),&#32;1ULL,&#32;std::multiplies&lt;size_t&gt;());
+00035 &#32;&#32;&#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_class_alib_1_1_a_shape_1a529c5032ae69717fa065e1e47b238c1c"/><section>
+    <title>transpose()</title>
+<indexterm><primary>transpose</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>transpose</secondary></indexterm>
+<para><computeroutput>void Alib::AShape::transpose (const std::vector&lt; size_t &gt; &amp; axes)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00080 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(axes.size()!=<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>())&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::invalid_argument(<emphasis role="stringliteral">&quot;transpose:&#32;axes&#32;mismatch&quot;</emphasis>);
+00081 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;size_t&gt;&#32;newDims(<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>());
+00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">size_t</emphasis>&#32;i=0;i&lt;<link linkend="_class_alib_1_1_a_shape_1a12178157cb3ee878ffbafcec02052f59">rank</link>();++i)&#32;newDims[i]=<link linkend="_class_alib_1_1_a_shape_1ab9eba8ddf0a8fb6d107cb8b63eead0a9">p_dims</link>[axes[i]];
+00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_shape_1ab9eba8ddf0a8fb6d107cb8b63eead0a9">p_dims</link>=newDims;
+00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_alib_1_1_a_shape_1af5b6234d498cd2177fc7a94ddbf9ac08">calcStrides</link>();
+00085 &#32;&#32;&#32;&#32;}
+</programlisting><para>
+References <link linkend="_l00110">calcStrides()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_alib_1_1_a_shape_a529c5032ae69717fa065e1e47b238c1c_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_alib_1_1_a_shape_1ab9eba8ddf0a8fb6d107cb8b63eead0a9"/><section>
+    <title>p_dims</title>
+<indexterm><primary>p_dims</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>p_dims</secondary></indexterm>
+<para><computeroutput>std::vector&lt;size_t&gt; Alib::AShape::p_dims<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_alib_1_1_a_shape_1a6c0dbc3def5c58700f062bfc592d517e"/><section>
+    <title>p_strides</title>
+<indexterm><primary>p_strides</primary><secondary>Alib::AShape</secondary></indexterm>
+<indexterm><primary>Alib::AShape</primary><secondary>p_strides</secondary></indexterm>
+<para><computeroutput>std::vector&lt;size_t&gt; Alib::AShape::p_strides<computeroutput>[private]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following file:</para>
+ALib/<link linkend="__a_shape_8h">AShape.h</link></section>
+</section>

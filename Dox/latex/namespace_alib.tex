@@ -1,0 +1,145 @@
+\doxysection{Alib Namespace Reference}
+\hypertarget{namespace_alib}{}\label{namespace_alib}\index{Alib@{Alib}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_alib_1_1_a_array}{AArray}}
+\item 
+class \doxymbox{\hyperlink{class_alib_1_1_a_array_proxy}{AArray\+Proxy}}
+\item 
+struct \doxymbox{\hyperlink{struct_alib_1_1_a_error_info}{AError\+Info}}
+\begin{DoxyCompactList}\small\item\em Optional helper structure to attach metadata or descriptions to errors. \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{struct_alib_1_1all__integral}{all\+\_\+integral}}
+\item 
+struct \doxymbox{\hyperlink{struct_alib_1_1all__integral_3_4}{all\+\_\+integral$<$$>$}}
+\item 
+struct \doxymbox{\hyperlink{struct_alib_1_1all__integral_3_01_t_00_01_rest_8_8_8_01_4}{all\+\_\+integral$<$ T, Rest... $>$}}
+\item 
+class \doxymbox{\hyperlink{class_alib_1_1_a_object}{AObject}}
+\item 
+class \doxymbox{\hyperlink{class_alib_1_1_a_shape}{AShape}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}} :\+ int32\+\_\+t \{ \newline
+\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb}{no\+Error}} = 0
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a026f9bbde1f085ac1e2c9f1cbaca0a4c}{source\+Error}} = 1
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113afc4f92438e44fc08f46f4fb36dd2e389}{allocation\+Error}} = 2
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a6fbf66821cd9ba0f8139d0b9b561df77}{invalid\+Operation}} = 3
+, \newline
+\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113abca6212be6005d4f726c7887e8e557a7}{range\+Error}} = 4
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a24b80e3aa8dce2f2ea17912cf83a9757}{type\+Mismatch}} = 5
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113aff18d1dc8b64abff7c82becd3d7135dd}{not\+Initialized}} = 6
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113ae492e3586c1e8d275b71ef8f4a5e0782}{unsupported\+Feature}} = 7
+, \newline
+\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a4b4c3d08948825f5fe6b51a1087d503e}{io\+Error}} = 8
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a9fa57f2cbf2abeb6f35e80fa0977835f}{parse\+Error}} = 9
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a66c7d43b12156560c61f391dbd82175b}{format\+Error}} = 10
+, \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113a36e34147ffd884a31c40739e5371d711}{runtime\+Error}} = 11
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{namespace_alib_a282aa41d627642dc028d48bf33ace72e}{get\+Error\+Name}} (\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}} error) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/--- Error Handling -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/--- \doxylink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors} enum with a concise but extensible set of base errors 
+
+\label{doc-enum-members}
+\Hypertarget{namespace_alib_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespace_alib_a4610b2a8834810415533186b20c79113}\index{Alib@{Alib}!AErrors@{AErrors}}
+\index{AErrors@{AErrors}!Alib@{Alib}}
+\doxysubsubsection{\texorpdfstring{AErrors}{AErrors}}
+{\footnotesize\ttfamily \label{namespace_alib_a4610b2a8834810415533186b20c79113} 
+enum class \doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{Alib::\+\+AErrors}} :\+ int32\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{noError@{noError}!Alib@{Alib}}
+\index{Alib@{Alib}!noError@{noError}}
+}\Hypertarget{namespace_alib_a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb}\label{namespace_alib_a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb} 
+no\+Error&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{sourceError@{sourceError}!Alib@{Alib}}
+\index{Alib@{Alib}!sourceError@{sourceError}}
+}\Hypertarget{namespace_alib_a4610b2a8834810415533186b20c79113a026f9bbde1f085ac1e2c9f1cbaca0a4c}\label{namespace_alib_a4610b2a8834810415533186b20c79113a026f9bbde1f085ac1e2c9f1cbaca0a4c} 
+source\+Error&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{allocationError@{allocationError}!Alib@{Alib}}
+\index{Alib@{Alib}!allocationError@{allocationError}}
+}\Hypertarget{namespace_alib_a4610b2a8834810415533186b20c79113afc4f92438e44fc08f46f4fb36dd2e389}\label{namespace_alib_a4610b2a8834810415533186b20c79113afc4f92438e44fc08f46f4fb36dd2e389} 
+allocation\+Error&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{invalidOperation@{invalidOperation}!Alib@{Alib}}
+\index{Alib@{Alib}!invalidOperation@{invalidOperation}}
+}\Hypertarget{namespace_alib_a4610b2a8834810415533186b20c79113a6fbf66821cd9ba0f8139d0b9b561df77}\label{namespace_alib_a4610b2a8834810415533186b20c79113a6fbf66821cd9ba0f8139d0b9b561df77} 
+invalid\+Operation&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{rangeError@{rangeError}!Alib@{Alib}}
+\index{Alib@{Alib}!rangeError@{rangeError}}
+}\Hypertarget{namespace_alib_a4610b2a8834810415533186b20c79113abca6212be6005d4f726c7887e8e557a7}\label{namespace_alib_a4610b2a8834810415533186b20c79113abca6212be6005d4f726c7887e8e557a7} 
+range\+Error&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{typeMismatch@{typeMismatch}!Alib@{Alib}}
+\index{Alib@{Alib}!typeMismatch@{typeMismatch}}
+}\Hypertarget{namespace_alib_a4610b2a8834810415533186b20c79113a24b80e3aa8dce2f2ea17912cf83a9757}\label{namespace_alib_a4610b2a8834810415533186b20c79113a24b80e3aa8dce2f2ea17912cf83a9757} 
+type\+Mismatch&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{notInitialized@{notInitialized}!Alib@{Alib}}
+\index{Alib@{Alib}!notInitialized@{notInitialized}}
+}\Hypertarget{namespace_alib_a4610b2a8834810415533186b20c79113aff18d1dc8b64abff7c82becd3d7135dd}\label{namespace_alib_a4610b2a8834810415533186b20c79113aff18d1dc8b64abff7c82becd3d7135dd} 
+not\+Initialized&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{unsupportedFeature@{unsupportedFeature}!Alib@{Alib}}
+\index{Alib@{Alib}!unsupportedFeature@{unsupportedFeature}}
+}\Hypertarget{namespace_alib_a4610b2a8834810415533186b20c79113ae492e3586c1e8d275b71ef8f4a5e0782}\label{namespace_alib_a4610b2a8834810415533186b20c79113ae492e3586c1e8d275b71ef8f4a5e0782} 
+unsupported\+Feature&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ioError@{ioError}!Alib@{Alib}}
+\index{Alib@{Alib}!ioError@{ioError}}
+}\Hypertarget{namespace_alib_a4610b2a8834810415533186b20c79113a4b4c3d08948825f5fe6b51a1087d503e}\label{namespace_alib_a4610b2a8834810415533186b20c79113a4b4c3d08948825f5fe6b51a1087d503e} 
+io\+Error&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{parseError@{parseError}!Alib@{Alib}}
+\index{Alib@{Alib}!parseError@{parseError}}
+}\Hypertarget{namespace_alib_a4610b2a8834810415533186b20c79113a9fa57f2cbf2abeb6f35e80fa0977835f}\label{namespace_alib_a4610b2a8834810415533186b20c79113a9fa57f2cbf2abeb6f35e80fa0977835f} 
+parse\+Error&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{formatError@{formatError}!Alib@{Alib}}
+\index{Alib@{Alib}!formatError@{formatError}}
+}\Hypertarget{namespace_alib_a4610b2a8834810415533186b20c79113a66c7d43b12156560c61f391dbd82175b}\label{namespace_alib_a4610b2a8834810415533186b20c79113a66c7d43b12156560c61f391dbd82175b} 
+format\+Error&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{runtimeError@{runtimeError}!Alib@{Alib}}
+\index{Alib@{Alib}!runtimeError@{runtimeError}}
+}\Hypertarget{namespace_alib_a4610b2a8834810415533186b20c79113a36e34147ffd884a31c40739e5371d711}\label{namespace_alib_a4610b2a8834810415533186b20c79113a36e34147ffd884a31c40739e5371d711} 
+runtime\+Error&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{namespace_alib_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_alib_a282aa41d627642dc028d48bf33ace72e}\index{Alib@{Alib}!getErrorName@{getErrorName}}
+\index{getErrorName@{getErrorName}!Alib@{Alib}}
+\doxysubsubsection{\texorpdfstring{getErrorName()}{getErrorName()}}
+{\footnotesize\ttfamily \label{namespace_alib_a282aa41d627642dc028d48bf33ace72e} 
+const char \texorpdfstring{$\ast$}{*} Alib::\+get\+Error\+Name (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{namespace_alib_a4610b2a8834810415533186b20c79113}{AErrors}}}]{error}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [noexcept]}}
+

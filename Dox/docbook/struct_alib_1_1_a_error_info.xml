@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_alib_1_1_a_error_info" xml:lang="en-US">
+<title>Alib::AErrorInfo Struct Reference</title>
+<indexterm><primary>Alib::AErrorInfo</primary></indexterm>
+<para>
+
+<para>Optional helper structure to attach metadata or descriptions to errors. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;AErrors.h&gt;</computeroutput>
+</para>
+Collaboration diagram for Alib::AErrorInfo:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="struct_alib_1_1_a_error_info__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_struct_alib_1_1_a_error_info_1a1224cdbd3a8f40ecfcedf2eeceac6580">AErrorInfo</link> (<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> c=<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb">AErrors::noError</link>, std::string desc=&quot;&quot;)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> <link linkend="_struct_alib_1_1_a_error_info_1a88aca24fb0ada839c5ba1d174b0eaeba">code</link></para>
+</listitem>
+            <listitem><para>std::string <link linkend="_struct_alib_1_1_a_error_info_1a1f7b9f439a1493023a53d2407c6e6556">description</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Optional helper structure to attach metadata or descriptions to errors. </para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_struct_alib_1_1_a_error_info_1a1224cdbd3a8f40ecfcedf2eeceac6580"/><section>
+    <title>AErrorInfo()</title>
+<indexterm><primary>AErrorInfo</primary><secondary>Alib::AErrorInfo</secondary></indexterm>
+<indexterm><primary>Alib::AErrorInfo</primary><secondary>AErrorInfo</secondary></indexterm>
+<para><computeroutput>Alib::AErrorInfo::AErrorInfo (<link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> c = <computeroutput><link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113af85f07b4585cce70e6e3bd3407bfa7fb">AErrors::noError</link></computeroutput>
+, std::string desc = <computeroutput>&quot;&quot;</computeroutput>
+)<computeroutput>[inline]</computeroutput></computeroutput></para><programlisting linenumbering="unnumbered">00042 &#32;&#32;&#32;&#32;:&#32;<link linkend="_struct_alib_1_1_a_error_info_1a88aca24fb0ada839c5ba1d174b0eaeba">code</link>(c),&#32;<link linkend="_struct_alib_1_1_a_error_info_1a1f7b9f439a1493023a53d2407c6e6556">description</link>(std::move(desc))&#32;{}
+</programlisting><para>
+References <link linkend="_l00041">AErrorInfo()</link>, and <link linkend="_l00038">code</link>.</para>
+<para>
+Referenced by <link linkend="_l00041">AErrorInfo()</link>.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="struct_alib_1_1_a_error_info_a1224cdbd3a8f40ecfcedf2eeceac6580_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="struct_alib_1_1_a_error_info_a1224cdbd3a8f40ecfcedf2eeceac6580_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_struct_alib_1_1_a_error_info_1a88aca24fb0ada839c5ba1d174b0eaeba"/><section>
+    <title>code</title>
+<indexterm><primary>code</primary><secondary>Alib::AErrorInfo</secondary></indexterm>
+<indexterm><primary>Alib::AErrorInfo</primary><secondary>code</secondary></indexterm>
+<para><computeroutput><link linkend="_namespace_alib_1a4610b2a8834810415533186b20c79113">AErrors</link> Alib::AErrorInfo::code</computeroutput></para><para>
+Referenced by <link linkend="_l00041">AErrorInfo()</link>.</para>
+</section>
+<anchor xml:id="_struct_alib_1_1_a_error_info_1a1f7b9f439a1493023a53d2407c6e6556"/><section>
+    <title>description</title>
+<indexterm><primary>description</primary><secondary>Alib::AErrorInfo</secondary></indexterm>
+<indexterm><primary>Alib::AErrorInfo</primary><secondary>description</secondary></indexterm>
+<para><computeroutput>std::string Alib::AErrorInfo::description</computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+ALib/<link linkend="__a_errors_8h">AErrors.h</link></section>
+</section>
