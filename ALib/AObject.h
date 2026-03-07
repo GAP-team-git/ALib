@@ -24,6 +24,19 @@
 
 namespace Alib {
 
+//
+// Class AObject is the base class in Alibe and implements the interface of main classe.
+// It is and abstract class with one pure virtual function:
+//
+// [[nodiscard("AObject clone")]] virtual std::unique_ptr<AObject> clone() const = 0;
+//
+// That must be implemented in all derived classes.
+// Comparison( ahd hashing) is identity-based and non content-based. Objects with equal OID are return equals.
+// This is safe in data-less object. Derived object my need to reimplement content-based
+// comparison (e.g. AArray).
+// other function conveniently reimplenetd include:
+// virtual std::string getClassName() const { return "AObject"; }
+//
 class AObject {
 public:
     // Constructors / destructor
@@ -38,27 +51,34 @@ public:
     AObject& operator=(AObject&& other) noexcept { if (*this != other) m_move(std::move(other)); return *this; }
 
     // ----------------- Polymorphism -----------------
-    [[nodiscard("AObject clone")]] virtual std::unique_ptr<AObject> clone() const = 0;
-    [[nodiscard("AObject hash")]] virtual std::size_t hash() const { return std::hash<std::string>{}(p_oid); }
+    [[nodiscard]] virtual std::unique_ptr<AObject> clone() const = 0;
+    [[nodiscard]] virtual std::size_t hash() const { return std::hash<std::string>{}(p_oid); }
+    
+    // -------------------
+    // Interfaccia stringa per debug / visualizzazione
+    // -------------------
+    [[nodiscard]] virtual std::string str() const {
+            return "AObject"; // default generico
+    }
 
     // ----------------- Identity & validity -----------------
-    [[nodiscard("AObject Oid")]] const std::string& Oid() const noexcept { return p_oid; }
+    [[nodiscard]] const std::string& Oid() const noexcept { return p_oid; }
     virtual std::string getClassName() const { return "AObject"; }
 
-    [[nodiscard("AObject valid")]] bool valid() const noexcept { return p_valid; }
+    [[nodiscard]] bool valid() const noexcept { return p_valid; }
     void setValid(bool valid) noexcept { p_valid = valid; }
     void validate() noexcept { p_valid = true; }
     void invalidate() noexcept { p_valid = false; }
 
     // ----------------- Error management -----------------
-    [[nodiscard("AObject getError")]] AErrors getError() const noexcept { return p_error; }
-    [[nodiscard("AObject errorName")]] const char* errorName() const noexcept { return ::Alib::getErrorName(p_error); }
+    [[nodiscard]] AErrors getError() const noexcept { return p_error; }
+    [[nodiscard]] const char* errorName() const noexcept { return ::Alib::getErrorName(p_error); }
     void setError(AErrors err) noexcept { p_error = err; }
     void resetError() noexcept { p_error = AErrors::noError; }
 
     // ----------------- Comparison -----------------
-    [[nodiscard("AObject operator==")]] bool operator==(const AObject& other) const noexcept { return m_compare(other); }
-    [[nodiscard("AObject operator!=")]] bool operator!=(const AObject& other) const noexcept { return !(*this == other); }
+    [[nodiscard]] bool operator==(const AObject& other) const noexcept { return m_compare(other); }
+    [[nodiscard]] bool operator!=(const AObject& other) const noexcept { return !(*this == other); }
 
     // ----------------- Stream operators -----------------
     friend std::ostream& operator<<(std::ostream& os, const AObject& obj) { return obj.toStream(os); }
@@ -68,13 +88,13 @@ public:
     virtual std::istream& fromStream(std::istream& is) { return m_fromStream(is); }
 
     // ----------------- Binary I/O -----------------
-    [[nodiscard("AObject write")]] virtual bool write(const std::string& fileName) const {
+    [[nodiscard]] virtual bool write(const std::string& fileName) const {
         std::ofstream os(fileName, std::ios::binary);
         if (!os.good()) return false;
         return m_write(os);
     }
 
-    [[nodiscard("AObject read")]] virtual bool read(const std::string& fileName) {
+    [[nodiscard]] virtual bool read(const std::string& fileName) {
         std::ifstream is(fileName, std::ios::binary);
         if (!is.good()) return false;
         return m_read(is);
@@ -117,11 +137,11 @@ protected:
         p_error = other.p_error;
     }
 
-    [[nodiscard("AObject m_compare")]] virtual bool m_compare(const AObject& other) const noexcept {
+    [[nodiscard]] virtual bool m_compare(const AObject& other) const noexcept {
         return p_oid == other.p_oid;
     }
 
-    [[nodiscard("AObject m_isValid")]] virtual bool m_isValid() const noexcept { return p_valid; }
+    [[nodiscard]] virtual bool m_isValid() const noexcept { return p_valid; }
 
     virtual std::ostream& m_printDescription(std::ostream& os) const {
         os << getClassName() << " [OID=" << p_oid << "]" << std::endl;
@@ -155,7 +175,7 @@ protected:
     }
 
     // ----------------- Binary I/O -----------------
-    [[nodiscard("AObject m_write")]] virtual bool m_write(std::ostream& os) const {
+    [[nodiscard]] virtual bool m_write(std::ostream& os) const {
         os.write(reinterpret_cast<const char*>(&p_magic), sizeof(p_magic));
         os.write(reinterpret_cast<const char*>(&p_version), sizeof(p_version));
 
@@ -172,7 +192,7 @@ protected:
         return os.good();
     }
 
-    [[nodiscard("AObject m_read")]] virtual bool m_read(std::istream& is) {
+    [[nodiscard]] virtual bool m_read(std::istream& is) {
         uint32_t magic = 0;
         is.read(reinterpret_cast<char*>(&magic), sizeof(magic));
         if (magic != AOBJ_MAGIC) return false;
