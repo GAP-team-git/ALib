@@ -7,7 +7,7 @@
 #include <iostream>
 #include "AArray.h"
 #include "AShape.h"
-#include "Aoperators.h"
+
 
 using namespace Alib;
 
@@ -30,7 +30,7 @@ int main() {
     AArray<float> B(3,3);
     for(int i = 0;  i < 3; i++ ){
         for(int j = 0;  j < 3; j++ ){
-            A[i][j] = i*3+j;
+            A[i][j] = 1;
             B[i][j] = i+j;
         }
    }
@@ -52,6 +52,11 @@ int main() {
             std::cout <<  C[i][j] << " ";
         std::cout << std::endl;
     }
+    std::cout << std::endl;
+    std::cout << A.sum() << std::endl;
+    std::cout << B.mean() << std::endl;
+    std::cout << B.max() << std::endl;
+    std::cout << B.min() << std::endl;
     
     if(A==B) std::cout << "A == B" <<std::endl;
     
