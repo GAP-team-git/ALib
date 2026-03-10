@@ -35,14 +35,35 @@ public:
         if (dims.size() != strides.size())
             throw std::runtime_error("AShape:: dims/stride size mismatch");
     }
+    
+    virtual std::string getClassName() const noexcept override { return "AShape"; }
 
+    
+    
     // -------------------
     // Clone / Hash
     // -------------------
     [[nodiscard]] std::unique_ptr<AObject> clone() const override {
         return std::make_unique<AShape>(*this);
     }
+    bool is_contiguous() const noexcept{return p_contiguous;}
 
+    void update_contiguous() noexcept{
+        size_t expected = 1;
+
+            for(long i= p_dims.size()-1;i>=0;i--)
+            {
+                if(p_strides[i] != expected){
+                    p_contiguous = false;
+                    return;
+                }
+                expected *= p_dims[i];
+            }
+
+           p_contiguous = (p_offset == 0);
+          return;
+    }
+    
     size_t hash() const override {
         size_t h = 0;
         for (const auto& v : p_dims) h ^= std::hash<size_t>{}(v) + 0x9e3779b9 + (h << 6) + (h >> 2);
@@ -50,7 +71,12 @@ public:
         h ^= std::hash<size_t>{}(p_offset) + 0x9e3779b9 + (h << 6) + (h >> 2);
         return h;
     }
-
+    
+    [[nodiscard]] size_t type_id() const noexcept override
+    {
+        return type_id_of<AShape>();
+    }
+    
     // -------------------
     // Accessors
     // -------------------
@@ -220,6 +246,7 @@ private:
     std::vector<size_t> p_dims;
     std::vector<size_t> p_strides;
     size_t p_offset = 0;
+    bool p_contiguous = true;
 
     void calcStrides() {
         auto tp_rank = rank();
@@ -230,9 +257,40 @@ private:
             p_strides[i] = p_strides[i + 1] * p_dims[i + 1];
     }
 
-    [[nodiscard("AShape m_compare")]] virtual bool m_compare(const AShape& other) const noexcept {
-        return (p_dims == other.p_dims && p_strides == other.p_strides && p_offset == other.p_offset);
+    [[nodiscard]] bool m_compare(const AObject& other) const noexcept override {
+        if (typeid(*this) != typeid(other))
+            return false;
+
+        const auto& rhs = static_cast<const AShape&>(other);
+
+        return p_dims == rhs.p_dims &&
+               p_strides == rhs.p_strides &&
+               p_offset == rhs.p_offset;
     }
+    
+    [[nodiscard]] virtual bool m_allEqual(const AObject& obj) const noexcept override{
+        return m_compare(obj);
+    }
+    [[nodiscard]] virtual bool m_allClose(const AObject& obj, double eps) const noexcept override {
+        return m_compare(obj);
+    }
+    
+    virtual std::ostream& m_print(std::ostream& os) const override {
+        std::string s = "dims=[";
+        for (size_t i = 0; i < p_dims.size(); ++i) {
+            s += std::to_string(p_dims[i]);
+            if (i + 1 < p_dims.size()) s += ",";
+        }
+        s += "]\nstrides=[";
+        for (size_t i = 0; i < p_strides.size(); ++i) {
+            s += std::to_string(p_strides[i]);
+            if (i + 1 < p_strides.size()) s += ",";
+        }
+        s += "]\noffset=" + std::to_string(p_offset);
+        os << s;
+        return os;
+    }
+    
 };
 
 } // namespace Alib

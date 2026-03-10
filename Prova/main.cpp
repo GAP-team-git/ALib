@@ -5,7 +5,9 @@
 //  Created by Giuseppe Coppini on 25/02/26.
 //
 #include <iostream>
+#include "AArray.h"
 #include "AShape.h"
+#include "Aoperators.h"
 
 using namespace Alib;
 
@@ -23,24 +25,35 @@ void printShapeTable(const AShape& s, const std::string& name) {
 }
 
 int main() {
-    AShape a({2,3});
-    AShape b({1,3});
-    AShape c({2,1});
-
-    std::cout << "a: " << a.numpy_str() << std::endl;
-    std::cout << "b: " << b.numpy_str() << std::endl;
-    std::cout << "c: " << c.numpy_str() << std::endl;
-
-    // Slice
-    AShape a_slice = a.sliceShape({0,1},{2,3},{1,1});
-    std::cout << "a_slice: " << a_slice.numpy_str() << std::endl;
-
-    // Transpose
-    a.transpose({1,0});
-    std::cout << "a_transposed: " << a.numpy_str() << std::endl;
-
-    // Broadcast
-    AShape bcast = AShape::broadcast(b,c);
-    std::cout << "broadcasted: " << bcast.numpy_str() << std::endl;
+    
+    AArray<float> A(3,3);
+    AArray<float> B(3,3);
+    for(int i = 0;  i < 3; i++ ){
+        for(int j = 0;  j < 3; j++ ){
+            A[i][j] = i*3+j;
+            B[i][j] = i+j;
+        }
+   }
+    for(int i = 0;  i < 3; i++ ){
+        for(int j = 0;  j < 3; j++ )
+            std::cout <<  A[i][j] << " ";
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+    for(int i = 0;  i < 3; i++ ){
+        for(int j = 0;  j < 3; j++ )
+            std::cout <<  B[i][j] << " ";
+        std::cout << std::endl;
+    }
+    auto C = A + 5;
+    std::cout << std::endl;
+    for(int i = 0;  i < 3; i++ ){
+        for(int j = 0;  j < 3; j++ )
+            std::cout <<  C[i][j] << " ";
+        std::cout << std::endl;
+    }
+    
+    if(A==B) std::cout << "A == B" <<std::endl;
+    
     return 0;
 }
