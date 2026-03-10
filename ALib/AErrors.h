@@ -2,61 +2,115 @@
 //  AErrors.h
 //  ALib
 //
-//  Created by Giuseppe Coppini on 27/02/26.
+//  Created by Giuseppe Coppini on 10/03/26.
 //
 
 #ifndef AErrors_h
 #define AErrors_h
-/// ----------------- Error Handling -----------------
-/// AErrors enum with a concise but extensible set of base errors
-///
-///
-///
+
+#include <cstdint>
+#include <string>
 #include <iostream>
+#include <exception>
 
 namespace Alib {
 
+/// ----------------- Base Error Codes -----------------
 enum class AErrors : int32_t {
-    noError            = 0,  // No error
-    sourceError        = 1,  // File/stream I/O error
-    allocationError    = 2,  // Memory or resource allocation failure
-    invalidOperation   = 3,  // Operation not allowed
-    rangeError         = 4,  // Value out of range or invalid index
-    typeMismatch       = 5,  // Incompatible type
-    notInitialized     = 6,  // Object not initialized or not ready
-    unsupportedFeature = 7,  // Feature not implemented
-    ioError            = 8,  // I/O error
-    parseError         = 9,  // Parsing failed
-    formatError        = 10, // Data does not match expected format
-    runtimeError       = 11  // Generic runtime error
+    noError            = 0,
+    sourceError        = 1,
+    allocationError    = 2,
+    invalidOperation   = 3,
+    rangeError         = 4,
+    typeMismatch       = 5,
+    notInitialized     = 6,
+    unsupportedFeature = 7,
+    ioError            = 8,
+    parseError         = 9,
+    formatError        = 10,
+    runtimeError       = 11
 };
 
-[[nodiscard]] const char* getErrorName(AErrors error) noexcept;
+/// ----------------- Error Categories -----------------
+enum class AErrorCategory : uint16_t {
+    general = 0x0000,
+    array   = 0x1000,
+    shape   = 0x2000,
+    tensor  = 0x3000,
+    io      = 0x4000,
+    parse   = 0x5000
+};
 
-/// Optional helper structure to attach metadata or descriptions to errors
-struct AErrorInfo {
+/// ----------------- Error Severity -----------------
+enum class AErrorSeverity : uint8_t {
+    warning,
+    recoverable,
+    critical
+};
+
+/// ----------------- Extended Error Info -----------------
+struct AErrorInfoEx {
     AErrors code;
+    AErrorCategory category;
+    AErrorSeverity severity;
     std::string description;
-    
-    AErrorInfo(AErrors c = AErrors::noError, std::string desc = "")
-    : code(c), description(std::move(desc)) {}
+    std::string suggestion;
+
+    AErrorInfoEx(AErrors c = AErrors::noError,
+                 AErrorCategory cat = AErrorCategory::general,
+                 AErrorSeverity sev = AErrorSeverity::recoverable,
+                 std::string desc = "",
+                 std::string sugg = "")
+        : code(c), category(cat), severity(sev),
+          description(std::move(desc)), suggestion(std::move(sugg)) {}
 };
 
-/// ----------------- Memo for future extensibility -----------------
-/// Error handling can be extended by:
-/// 1) Adding new error codes to GErrors enum, with descriptive names.
-/// 2) Using GErrorInfo (or a derived structure) to associate metadata such as:
-///    - Human-readable description
-///    - Severity levels (e.g., warning, critical, recoverable)
-///    - Categories (e.g., userError, systemError, ioError, parseError)
-///    - Recovery hints or suggested actions
-/// 3) Overriding error handling in derived classes for context-specific behavior:
-///    - Logging
-///    - Exception throwing
-///    - UI messages or fallback strategies
-/// 4) Integrating versioned Text I/O or binary I/O to serialize/deserialize
-///    extended error metadata, ensuring backward/forward compatibility.
+/// ----------------- Exception -----------------
+class AException : public std::exception {
+    AErrorInfoEx errorInfo;
+public:
+    explicit AException(AErrorInfoEx info) : errorInfo(std::move(info)) {}
+    [[nodiscard]] const char* what() const noexcept override { return errorInfo.description.c_str(); }
+    [[nodiscard]] const AErrorInfoEx& info() const noexcept { return errorInfo; }
+};
 
-} // ALib namespace end
+/// ----------------- Module-specific aliases -----------------
+namespace ArrayErrors {
+    constexpr AErrors indexOutOfBounds = AErrors::rangeError;
+    constexpr AErrors emptyArray       = AErrors::invalidOperation;
+    constexpr AErrors shapeMismatch    = AErrors::typeMismatch;
+}
 
-#endif // AErrors_h end
+namespace ShapeErrors {
+    constexpr AErrors invalidDim       = AErrors::rangeError;
+    constexpr AErrors uninitialized    = AErrors::notInitialized;
+}
+
+namespace TensorErrors {
+    constexpr AErrors iteratorError    = AErrors::runtimeError;
+    constexpr AErrors sizeMismatch     = AErrors::rangeError;
+}
+
+/// ----------------- Helper functions -----------------
+[[nodiscard]] const char* getErrorName(AErrors error) noexcept;
+[[nodiscard]] const char* getCategoryName(AErrorCategory cat) noexcept;
+
+inline void printError(const AErrorInfoEx& e) {
+    std::cerr << "[" << getCategoryName(e.category) << "] "
+              << getErrorName(e.code) << ": " << e.description;
+    if(!e.suggestion.empty()) std::cerr << " (Hint: " << e.suggestion << ")";
+    std::cerr << "\n";
+}
+
+/// ----------------- Hybrid error handler -----------------
+inline void handleError(const AErrorInfoEx& e) {
+    if(e.severity == AErrorSeverity::critical) {
+        throw AException(e); // blocca il flusso
+    } else {
+        printError(e);       // logga ma continua
+    }
+}
+
+} // namespace Alib
+
+#endif // AErrors_h

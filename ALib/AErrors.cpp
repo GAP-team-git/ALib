@@ -2,12 +2,12 @@
 //  AErrors.cpp
 //  ALib
 //
-//  Created by Giuseppe Coppini on 27/02/26.
+//  Created by Giuseppe Coppini on 10/03/26.
 //
 
 #include "AErrors.h"
 
-namespace Alib{
+namespace Alib {
 
 [[nodiscard]] const char* getErrorName(AErrors error) noexcept {
     switch(error) {
@@ -26,4 +26,17 @@ namespace Alib{
         default: return "unknownError";
     }
 }
-} // Alib namespace end
+
+[[nodiscard]] const char* getCategoryName(AErrorCategory cat) noexcept {
+    switch(cat) {
+        case AErrorCategory::general: return "general";
+        case AErrorCategory::array:   return "array";
+        case AErrorCategory::shape:   return "shape";
+        case AErrorCategory::tensor:  return "tensor";
+        case AErrorCategory::io:      return "io";
+        case AErrorCategory::parse:   return "parse";
+        default: return "unknownCategory";
+    }
+}
+
+} // namespace Alib
