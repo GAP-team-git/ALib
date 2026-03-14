@@ -15,6 +15,7 @@
 #include <functional>
 #include <string>
 #include "AObject.h"
+#include "AAssert.h"
 #include "AErrors.h"
 
 namespace Alib {
@@ -32,8 +33,13 @@ public:
     AShape(const std::vector<size_t>& dims, const std::vector<size_t>& strides, size_t offset = 0)
         : p_dims(dims), p_strides(strides), p_offset(offset)
     {
-        if (dims.size() != strides.size())
-            throw std::runtime_error("AShape:: dims/stride size mismatch");
+        ALIB_SHAPE_ASSERT(dims.size() == strides.size(), AErrorInfoEx(
+                                                                    ShapeErrors::invalidDim,
+                                                                    AErrorCategory::array,
+                                                                    AErrorSeverity::critical,
+                                                                    "dims/stride size mismatch",
+                                                                    "Check stride consistency"
+                                                                    ));
     }
     
     virtual std::string getClassName() const noexcept override { return "AShape"; }
@@ -98,12 +104,22 @@ public:
     // -------------------
     size_t flatIndex(const std::vector<size_t>& idx) const {
         auto tp_rank = rank();
-        if (idx.size() != tp_rank)
-            throw std::runtime_error("AShape::flatIndex rank mismatch");
+        ALIB_SHAPE_ASSERT(idx.size() == tp_rank, AErrorInfoEx(
+                                                              ShapeErrors::invalidDim,
+                                                              AErrorCategory::array,
+                                                              AErrorSeverity::critical,
+                                                              "flatIndex rank mismatch",
+                                                              "Check size consistency"
+                                                              ));
         size_t off = p_offset;
         for (size_t i = 0; i < tp_rank; ++i) {
-            if (idx[i] >= p_dims[i])
-                throw std::out_of_range("AShape::flatIndex index out of bounds");
+            ALIB_SHAPE_ASSERT(idx[i] < p_dims[i], AErrorInfoEx(
+                                                               ShapeErrors::invalidDim,
+                                                               AErrorCategory::array,
+                                                               AErrorSeverity::critical,
+                                                               "flatIndex out of bounds",
+                                                               "Check index value"
+                                                               ));
             off += idx[i] * p_strides[i];
         }
         return off;
@@ -130,15 +146,26 @@ public:
                       const std::vector<size_t>& step) const
     {
         auto tp_rank = rank();
-        if (start.size() != tp_rank || stop.size() != tp_rank || step.size() != tp_rank)
-            throw std::invalid_argument("sliceShape: size mismatch");
-
+        ALIB_SHAPE_ASSERT(start.size() == tp_rank && stop.size() == tp_rank && step.size() == tp_rank,
+                                    AErrorInfoEx(
+                                                 ShapeErrors::invalidDim,
+                                                 AErrorCategory::array,
+                                                 AErrorSeverity::critical,
+                                                 "sliceShape: size mismatch",
+                                                 "Check slicing parameters"
+                                                 ));
         std::vector<size_t> newDims(tp_rank);
         std::vector<size_t> newStrides(tp_rank);
         size_t newOffset = p_offset;
 
         for (size_t i = 0; i < tp_rank; ++i) {
-            if (step[i] == 0) throw std::invalid_argument("sliceShape: step=0");
+            ALIB_SHAPE_ASSERT(step[i] == 0,AErrorInfoEx(
+                                                         AErrors::invalidOperation,
+                                                         AErrorCategory::array,
+                                                         AErrorSeverity::critical,
+                                                         "sliceShape: step = 0",
+                                                         "Check slicing parameters"
+                                                         ));
             newDims[i] = (stop[i] <= start[i] ? 0 : (stop[i] - start[i] + step[i] - 1) / step[i]);
             newStrides[i] = p_strides[i] * step[i];
             newOffset += start[i] * p_strides[i];
@@ -152,9 +179,13 @@ public:
     // -------------------
     void transpose(const std::vector<size_t>& axes) {
         auto tp_rank = rank();
-        if (axes.size() != tp_rank)
-            throw std::invalid_argument("transpose: axes size mismatch");
-
+        ALIB_SHAPE_ASSERT(axes.size() == tp_rank,AErrorInfoEx(
+                                                     ShapeErrors::invalidDim,
+                                                     AErrorCategory::array,
+                                                     AErrorSeverity::critical,
+                                                     "transpose: axes size mismatch",
+                                                     "Check array parameters"
+                                                     ));
         std::vector<size_t> newDims(tp_rank);
         std::vector<size_t> newStrides(tp_rank);
         for (size_t i = 0; i < tp_rank; ++i) {
@@ -182,9 +213,14 @@ public:
             size_t sa = (i >= int(rmax - r1)) ? a.p_strides[i - (rmax - r1)] : 0;
             size_t sb = (i >= int(rmax - r2)) ? b.p_strides[i - (rmax - r2)] : 0;
 
-            if (da != db && da != 1 && db != 1)
-                throw std::invalid_argument("broadcastWithStrides: incompatible shapes");
-
+            
+            ALIB_SHAPE_ASSERT(da == db || da == 1 || db == 1,AErrorInfoEx(
+                                                         ShapeErrors::invalidDim,
+                                                         AErrorCategory::array,
+                                                         AErrorSeverity::critical,
+                                                         "broadcastWithStrides: incompatible shapes",
+                                                         "Check shape parameters"
+                                                         ));
             dims[i] = std::max(da, db);
 
             // stride=0 per dimension broadcasted

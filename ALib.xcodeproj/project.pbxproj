@@ -191,12 +191,12 @@
 			isa = PBXGroup;
 			children = (
 				E3C682582F4F50FD00D17AA8 /* ALib */,
+				E3849AEC2F5B233A00772634 /* MultipleTests */,
+				E3C682572F4F50FD00D17AA8 /* Products */,
 				E37BBCFE2F4F679F00A73A75 /* Prova */,
 				E33199362F59F10B00946DB5 /* Tests */,
-				E3849AEC2F5B233A00772634 /* MultipleTests */,
 				E3849B052F5B409100772634 /* VisualStressTest */,
 				E37BBCF12F4F65AE00A73A75 /* Frameworks */,
-				E3C682572F4F50FD00D17AA8 /* Products */,
 			);
 			sourceTree = "<group>";
 		};

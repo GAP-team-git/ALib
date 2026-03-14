@@ -76,6 +76,7 @@ public:
 
 /// ----------------- Module-specific aliases -----------------
 namespace ArrayErrors {
+    constexpr AErrors rankError        = AErrors::typeMismatch;
     constexpr AErrors indexOutOfBounds = AErrors::rangeError;
     constexpr AErrors emptyArray       = AErrors::invalidOperation;
     constexpr AErrors shapeMismatch    = AErrors::typeMismatch;

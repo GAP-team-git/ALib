@@ -4,12 +4,16 @@
 //
 //  Created by Giuseppe Coppini on 25/02/26.
 //
+
 #include <iostream>
 #include "AArray.h"
 #include "AShape.h"
-
+#include "AConfig.h"
+#include "AAssert.h"
 
 using namespace Alib;
+
+
 
 void printShapeTable(const AShape& s, const std::string& name) {
     std::cout << "Shape " << name << ":\n";
@@ -21,44 +25,61 @@ void printShapeTable(const AShape& s, const std::string& name) {
         if (i == 0) std::cout << "       " << s.offset();
         std::cout << "\n";
     }
+
     std::cout << std::endl;
 }
 
 int main() {
     
-    AArray<float> A(3,3);
-    AArray<float> B(3,3);
-    for(int i = 0;  i < 3; i++ ){
+    AArray<float> A(3);
+    
+    AArray<float> B(2,3);
+    
+    std::cout << std::endl;
+    for(int i = 0;  i < 2; i++ ){
         for(int j = 0;  j < 3; j++ ){
-            A[i][j] = 1;
             B[i][j] = i+j;
+            std::cout <<  B[i][j] << " ";
         }
-   }
+        std::cout << std::endl;
+    }
+    
+    auto a = B.transpose();
+    
+    std::cout << a.shape()<< "\n "<<a<< std::endl;
+    
+    
     for(int i = 0;  i < 3; i++ ){
-        for(int j = 0;  j < 3; j++ )
+        try {
+            A[i] = i+1;
+        } catch (Alib::AException e) {
+            printError(e.info());
+        }
+            
+    }
+    
+    for(int i = 0;  i < 3; i++ ){
+        
+            std::cout <<  A[i] << " ";
+        
+    }
+    std::cout << std::endl;
+    return 0;
+    for(int i = 0;  i < 3; i++ ){
+        for(int j = 0;  j < 2; j++ )
             std::cout <<  A[i][j] << " ";
         std::cout << std::endl;
     }
-    std::cout << std::endl;
-    for(int i = 0;  i < 3; i++ ){
-        for(int j = 0;  j < 3; j++ )
-            std::cout <<  B[i][j] << " ";
-        std::cout << std::endl;
-    }
-    auto C = A + 5;
-    std::cout << std::endl;
-    for(int i = 0;  i < 3; i++ ){
-        for(int j = 0;  j < 3; j++ )
-            std::cout <<  C[i][j] << " ";
-        std::cout << std::endl;
-    }
-    std::cout << std::endl;
-    std::cout << A.sum() << std::endl;
-    std::cout << B.mean() << std::endl;
-    std::cout << B.max() << std::endl;
-    std::cout << B.min() << std::endl;
     
-    if(A==B) std::cout << "A == B" <<std::endl;
+    auto C = A.slice({0,0}, {2,1});
+ //   auto C = A.slice({0,0}, {2,1}) + B;
+    std::cout << C.size() << std::endl;
+//    C.reshape({6});
+//    for(int i = 0;  i < C.size(); i++ ){
+//            std::cout <<  C[i] << " ";
+//        std::cout << std::endl;
+//    }
+//    
     
-    return 0;
+    return EXIT_SUCCESS;
 }

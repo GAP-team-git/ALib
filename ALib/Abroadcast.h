@@ -68,7 +68,13 @@ inline BroadcastInfo broadcast(const AShape& A,const AShape& B)
             out.strideB[idx]=0;
         }
         else
-            throw std::runtime_error("broadcast error");
+            ALIB_SHAPE_ASSERT(1,AErrorInfoEx(
+                                             AErrors::invalidOperation,
+                                             AErrorCategory::array,
+                                             AErrorSeverity::critical,
+                                             "broadcast(): broadcast error",
+                                             "Check shape parameters"
+                                             ));
     }
     
     return out;

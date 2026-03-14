@@ -18,7 +18,9 @@
 #include <functional>
 #include <cmath>
 
+#include "AAssert.h"
 #include "AObject.h"
+#include "AErrors.h"
 #include "AShape.h"
 #include "Abroadcast.h"
 
@@ -51,7 +53,13 @@ public:
 };
 
 template<typename T>
-class AArray : public AObject {
+class AArrayBase : public AObject{
+    
+};
+
+
+template<typename T>
+class AArray : public AArrayBase<T> {
 public:
     using value_type=T;
 
@@ -114,16 +122,35 @@ public:
     T& at(const std::vector<size_t>& idx)
     {
         if(p_customAt) return p_customAt(idx);
-        if(idx.size()!=p_shape.rank()) throw std::invalid_argument("at: rank mismatch");
+        ALIB_SHAPE_ASSERT(idx.size()==p_shape.rank(), AErrorInfoEx(
+                                                                   ArrayErrors::rankError,
+                                                                   AErrorCategory::array,
+                                                                   AErrorSeverity::critical,
+                                                                   "Rank mismatch",
+                                                                   "Check rank consistency"
+                                                                   ));
         size_t flat=p_offset;
         const auto& strides = p_shape.strides();
         for(size_t i=0;i<idx.size();++i) flat += idx[i]*strides[i];
+        ALIB_SHAPE_ASSERT(flat>=0 && flat < size(), AErrorInfoEx(
+                                                                   ArrayErrors::indexOutOfBounds,
+                                                                   AErrorCategory::array,
+                                                                   AErrorSeverity::critical,
+                                                                   "at: index out of bounds",
+                                                                   "Check index value: "+std::to_string(flat)
+                                                                   ));
         return (*p_dataPtr)[flat];
     }
 
     const T& at(const std::vector<size_t>& idx) const
     {
-        if(idx.size()!=p_shape.rank()) throw std::invalid_argument("at: rank mismatch");
+        ALIB_BOUNDS_ASSERT(idx.size()==p_shape.rank(),AErrorInfoEx(
+                                                                   ShapeErrors::invalidDim,
+                                                                   AErrorCategory::array,
+                                                                   AErrorSeverity::critical,
+                                                                   "at: index out of bounds",
+                                                                   "Check index rank"
+                                                                   ));
         size_t flat=p_offset;
         const auto& strides = p_shape.strides();
         for(size_t i=0;i<idx.size();++i) flat += idx[i]*strides[i];
@@ -135,13 +162,25 @@ public:
 
     template<typename... Idx>
     T& operator()(Idx... idxs) {
-        static_assert((std::is_integral_v<Idx> && ...), "All indices must be integral types");
+        ALIB_ASSERT((std::is_integral_v<Idx> && ...), AErrorInfoEx(
+                                                                   AErrors::typeMismatch,
+                                                                   AErrorCategory::general,
+                                                                   AErrorSeverity::critical,
+                                                                   "operator(): All indices must be integral types",
+                                                                   "Check parameter call"
+                                                                   ));
         return at(std::vector<size_t>{static_cast<size_t>(idxs)...});
     }
 
     template<typename... Idx>
     const T& operator()(Idx... idxs) const {
-        static_assert((std::is_integral_v<Idx> && ...), "All indices must be integral types");
+        ALIB_ASSERT((std::is_integral_v<Idx> && ...), AErrorInfoEx(
+                                                                   AErrors::typeMismatch,
+                                                                   AErrorCategory::general,
+                                                                   AErrorSeverity::critical,
+                                                                   "operator(): All indices must be integral types",
+                                                                   "Check parameter call"
+                                                                   ));
         return at(std::vector<size_t>{static_cast<size_t>(idxs)...});
     }
 
@@ -153,9 +192,13 @@ public:
                     const std::vector<size_t>& step = {}) const
     {
         size_t rank = p_shape.rank();
-        if(start.size()!=rank || stop.size()!=rank)
-            throw std::invalid_argument("slice rank mismatch");
-
+         ALIB_SHAPE_ASSERT(start.size()==rank && stop.size()==rank,AErrorInfoEx(
+                                                                                ArrayErrors::rankError,
+                                                                                AErrorCategory::general,
+                                                                                AErrorSeverity::critical,
+                                                                                "slice(): slice rank mismatch",
+                                                                                "Possible parameter error in function call"
+                                                                                ));
         std::vector<size_t> sstep = step.empty() ? std::vector<size_t>(rank,1) : step;
         std::vector<size_t> newDims(rank), newStrides(rank);
         for(size_t d=0; d<rank; ++d){
@@ -190,7 +233,13 @@ public:
 
     void reshape(const std::vector<size_t>& newDims){
         size_t newTotal=std::accumulate(newDims.begin(),newDims.end(),1ULL,std::multiplies<size_t>());
-        if(newTotal!=size()) throw std::invalid_argument("reshape: total mismatch");
+        ALIB_SHAPE_ASSERT(newTotal==size(), AErrorInfoEx(
+                                                         ShapeErrors::invalidDim,
+                                                         AErrorCategory::array,
+                                                         AErrorSeverity::critical,
+                                                         "total mismatch",
+                                                         "Check rank consistency"
+                                                         ));
         p_shape.setDims(newDims);
     }
 
@@ -320,7 +369,13 @@ public:
     }
 
     T min() const {
-        if(p_dataPtr->empty()) throw std::runtime_error("min() on empty array");
+        ALIB_SHAPE_ASSERT(!p_dataPtr->empty(),AErrorInfoEx(
+                                                           AErrors::notInitialized,
+                                                           AErrorCategory::array,
+                                                           AErrorSeverity::critical,
+                                                           "min(): min on empty array",
+                                                           "Check constructor data"
+                                                           ));
         if(is_contiguous())
             return *std::min_element(p_dataPtr->begin(), p_dataPtr->end());
         
@@ -332,7 +387,13 @@ public:
     }
 
     T max() const {
-        if(p_dataPtr->empty()) throw std::runtime_error("max() on empty array");
+        ALIB_SHAPE_ASSERT(!p_dataPtr->empty(),AErrorInfoEx(
+                                                           AErrors::notInitialized,
+                                                           AErrorCategory::array,
+                                                           AErrorSeverity::critical,
+                                                           "min(): max on empty array",
+                                                           "Check constructor data"
+                                                           ));
         if(is_contiguous())
             return *std::max_element(p_dataPtr->begin(), p_dataPtr->end());
         
@@ -390,14 +451,34 @@ protected:
 
 };
 
+template<typename T>
+class AArrayView: public AArrayBase<T>{
+    
+};
+
+
 // -------------------
 // Generic Tensor Iterator
 // -------------------
+//piccolo miglioramento: evitare allocazione per ptrs.
+//
+//std::array<T*,MAX_ARRAYS>
+//
+//oppure buffer riutilizzato.
+
+#define MAX_ARRAYS 5
 template<typename T>
 class ATensorIteratorGeneric {
 public:
     ATensorIteratorGeneric(const std::vector<AArray<T>*>& arrays){
-        if(arrays.empty()) throw std::invalid_argument("ATensorIteratorGeneric: no arrays provided");
+        
+        ALIB_SHAPE_ASSERT(!arrays.empty(), AErrorInfoEx(
+                                                        AErrors::notInitialized,
+                                                        AErrorCategory::array,
+                                                        AErrorSeverity::critical,
+                                                        "ATensorIteratorGeneric: void parameter array",
+                                                        "Check constructor data"
+                                                        ));
         pp_arrays=arrays;
         pp_shape=arrays[0]->shape();
         for(size_t i=1;i<arrays.size();++i) pp_shape=AShape::broadcast(pp_shape,arrays[i]->shape());
@@ -430,7 +511,8 @@ public:
     }
 
 private:
-    std::vector<AArray<T>*> pp_arrays;
+   // std::array<T*,MAX_ARRAYS> pp_arrays;
+     std::vector<AArray<T>*> pp_arrays;
     AShape pp_shape;
     size_t pp_rank;
 };
