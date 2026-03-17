@@ -108,11 +108,20 @@ public:
     [[nodiscard]] virtual bool write(const std::string& fileName) const {
         std::ofstream os(fileName, std::ios::binary);
         if (!os.good()) return false;
+        return write(os);
+    }
+    [[nodiscard]] virtual bool write(std::ostream& os) const {
+        if (!os.good()) return false;
         return m_write(os);
     }
 
     [[nodiscard]] virtual bool read(const std::string& fileName) {
         std::ifstream is(fileName, std::ios::binary);
+        if (!is.good()) return false;
+        return read(is);
+    }
+    
+    [[nodiscard]] virtual bool read(std::istream& is) {
         if (!is.good()) return false;
         return m_read(is);
     }

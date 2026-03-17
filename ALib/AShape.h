@@ -44,6 +44,15 @@ public:
     
     virtual std::string getClassName() const noexcept override { return "AShape"; }
 
+    AShape& operator=(const AShape& obj){
+        if(&obj != this ){
+            p_dims = obj.p_dims;
+            p_strides = obj.p_strides;
+            p_offset = obj.p_offset;
+            p_contiguous = obj.p_contiguous;
+        }
+        return *this;
+    }
     
     
     // -------------------
@@ -326,6 +335,42 @@ private:
         os << s;
         return os;
     }
+    
+    [[nodiscard]] virtual bool m_write(std::ostream& os) const override {
+
+        size_t dimsBytes = p_dims.size()*sizeof(p_dims[0]);
+        size_t rankValue = rank();
+        os.write(reinterpret_cast<const char*>(&rankValue),sizeof(size_t));
+        os.write(reinterpret_cast<const char*>(p_dims.data()),dimsBytes);
+        os.write(reinterpret_cast<const char*>(p_strides.data()), dimsBytes);
+        os.write(reinterpret_cast<const char*>(&p_offset), sizeof(p_offset));
+        return os.good();
+    }
+
+    [[nodiscard]] virtual bool m_read(std::istream& is) override{
+        
+        size_t rankValue = 0;
+        
+        is.read(reinterpret_cast<char*>(&rankValue),sizeof(size_t));
+        if (!is.good()) return false;
+        
+        if(rankValue <= 0)return false;
+        p_dims.resize(rankValue);
+        int64_t dimsBytes = p_dims.size()*sizeof(p_dims[0]);
+        is.read(reinterpret_cast<char*>(p_dims.data()),dimsBytes);
+        
+        if (!is.good()) return false;
+        p_strides.resize(rankValue);
+        is.read(reinterpret_cast<char*>(p_strides.data()),dimsBytes);
+        if (!is.good()) return false;
+
+        is.read(reinterpret_cast<char*>(&p_offset), sizeof(size_t));
+        if (!is.good()) return false;
+       
+
+        return true;
+    }
+
     
 };
 

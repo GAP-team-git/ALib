@@ -31,55 +31,54 @@ void printShapeTable(const AShape& s, const std::string& name) {
 
 int main() {
     
-    AArray<float> A(3);
+    AShape s({256,32});
     
-    AArray<float> B(2,3);
+    if(s.write("/Users/giuseppe/Desktop/tt/shape.raw"))std::cout << "written "<<std::endl;
     
-    std::cout << std::endl;
-    for(int i = 0;  i < 2; i++ ){
-        for(int j = 0;  j < 3; j++ ){
-            B[i][j] = i+j;
-            std::cout <<  B[i][j] << " ";
+    AShape sr;
+    if(sr.read("/Users/giuseppe/Desktop/tt/shape.raw")){
+        std::cout << sr <<std::endl;
+    }
+    
+    
+    
+    AArray<float> img(512,512),im2(512,512);
+    img += 1;
+    im2 += 3;
+    auto patch = img.slice({100,100},{164,164},{1,1});
+   
+    auto im = img + im2;
+
+    auto p1 = im2.slice({100,100},{164,164},{1,1});
+    
+    auto p2 = p1+patch+p1+p1;
+    
+    for(int i = 0;  i < img.shape().dims()[0]; i++ ){
+        for(int j = 0;  j < img.shape().dims()[1]; j++ ){
+          std::cout << im(i,j) << "  ";
+        }
+       std::cout << std::endl;
+    }
+    
+    std::cout <<img.shape().dims()[0] << " " << img.shape().dims()[1]<<std::endl;
+    
+    std::cout <<" ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ " <<std::endl;
+    
+    for(int i = 0;  i < patch.shape().dims()[0]; i++ ){
+        for(int j = 0;  j < patch.shape().dims()[1]; j++ ){
+            std::cout << p2(i,j) << "  ";
         }
         std::cout << std::endl;
     }
-    
-    auto a = B.transpose();
-    
-    std::cout << a.shape()<< "\n "<<a<< std::endl;
+    std::cout <<p2.shape().dims()[0] << " " << p2.shape().dims()[1]<<std::endl;
     
     
-    for(int i = 0;  i < 3; i++ ){
-        try {
-            A[i] = i+1;
-        } catch (Alib::AException e) {
-            printError(e.info());
-        }
-            
+    if(img.write("/Users/giuseppe/Desktop/tt/img.raw"))std::cout << "written "<<std::endl;
+    
+    AArray<float> im3;
+    if(im3.read("/Users/giuseppe/Desktop/tt/img.raw")){
+        std::cout << im3.shape() <<std::endl;
     }
-    
-    for(int i = 0;  i < 3; i++ ){
-        
-            std::cout <<  A[i] << " ";
-        
-    }
-    std::cout << std::endl;
-    return 0;
-    for(int i = 0;  i < 3; i++ ){
-        for(int j = 0;  j < 2; j++ )
-            std::cout <<  A[i][j] << " ";
-        std::cout << std::endl;
-    }
-    
-    auto C = A.slice({0,0}, {2,1});
- //   auto C = A.slice({0,0}, {2,1}) + B;
-    std::cout << C.size() << std::endl;
-//    C.reshape({6});
-//    for(int i = 0;  i < C.size(); i++ ){
-//            std::cout <<  C[i] << " ";
-//        std::cout << std::endl;
-//    }
-//    
     
     return EXIT_SUCCESS;
 }
