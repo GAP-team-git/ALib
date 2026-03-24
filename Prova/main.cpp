@@ -6,79 +6,37 @@
 //
 
 #include <iostream>
+#include <iomanip>
+#include <time.h>
 #include "AArray.h"
+#include "AExpr.h"
+#include "ABinaryExpr.h"
+#include "AUnaryExpr.h"
+#include "AArrayOps.h"
+
 #include "AShape.h"
 #include "AConfig.h"
 #include "AAssert.h"
+#include <math.h>
 
 using namespace Alib;
 
-
-
-void printShapeTable(const AShape& s, const std::string& name) {
-    std::cout << "Shape " << name << ":\n";
-    std::cout << "  Dim   Stride  Offset\n";
-    auto dims = s.dims();
-    auto strides = s.strides();
-    for (size_t i = 0; i < dims.size(); ++i) {
-        std::cout << "  " << dims[i] << "     " << strides[i];
-        if (i == 0) std::cout << "       " << s.offset();
-        std::cout << "\n";
-    }
-
-    std::cout << std::endl;
-}
-
 int main() {
     
-    AShape s({256,32});
+    std::vector<size_t> d={512,512};
+    AArray<float> img(d),im2(d);
+   // img.randomize(0,1);
+    im2.randomize(0,1);
+    img.fill(10);
     
-    if(s.write("/Users/giuseppe/Desktop/tt/shape.raw"))std::cout << "written "<<std::endl;
+    img = img + im2;
     
-    AShape sr;
-    if(sr.read("/Users/giuseppe/Desktop/tt/shape.raw")){
-        std::cout << sr <<std::endl;
-    }
-    
-    
-    
-    AArray<float> img(512,512),im2(512,512);
-    img += 1;
-    im2 += 3;
-    auto patch = img.slice({100,100},{164,164},{1,1});
-   
-    auto im = img + im2;
-
-    auto p1 = im2.slice({100,100},{164,164},{1,1});
-    
-    auto p2 = p1+patch+p1+p1;
-    
-    for(int i = 0;  i < img.shape().dims()[0]; i++ ){
-        for(int j = 0;  j < img.shape().dims()[1]; j++ ){
-          std::cout << im(i,j) << "  ";
-        }
-       std::cout << std::endl;
-    }
-    
-    std::cout <<img.shape().dims()[0] << " " << img.shape().dims()[1]<<std::endl;
-    
-    std::cout <<" ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ " <<std::endl;
-    
-    for(int i = 0;  i < patch.shape().dims()[0]; i++ ){
-        for(int j = 0;  j < patch.shape().dims()[1]; j++ ){
-            std::cout << p2(i,j) << "  ";
-        }
-        std::cout << std::endl;
-    }
-    std::cout <<p2.shape().dims()[0] << " " << p2.shape().dims()[1]<<std::endl;
-    
-    
-    if(img.write("/Users/giuseppe/Desktop/tt/img.raw"))std::cout << "written "<<std::endl;
-    
-    AArray<float> im3;
-    if(im3.read("/Users/giuseppe/Desktop/tt/img.raw")){
-        std::cout << im3.shape() <<std::endl;
-    }
-    
+    img.print(std::cout);
+    img.printDescription(std::cout);
+    std::cout <<"\nMAX: "<< min(img) << " at ";
+    img.printNDIndex(std::cout,argmin_nd(img));
+    std::cout <<"\nimg at ";
+    img.printNDIndex(std::cout,img.unravel_index(argmin(img)));
+    std::cout << " "<<img(argmin_nd(img)) <<std::endl;
     return EXIT_SUCCESS;
 }

@@ -39,7 +39,24 @@ public:
         {
             return pp_dataPtr->data();
         }
+    
+    virtual std::string getClassName() const noexcept override { return "AArrayView"; }
+    
+    [[nodiscard]] std::string str() const override {
+        std::string s = getClassName() + "(rank=" + std::to_string(this->p_shape.rank())+ ", type=" + typeid(T).name() + ", dims=[";
+        for (size_t i = 0; i < this->p_shape.dims().size(); ++i) {
+            s += std::to_string(this->p_shape.dims()[i]);
+            if (i + 1 < this->p_shape.dims().size()) s += ",";
+        }
+        s += "], size=" + std::to_string(this->p_shape.totalSize())+ ", byte_size=" + std::to_string(this->p_shape.totalSize()*sizeof(T)) +  " strides=[";
+        for (size_t i = 0; i < this->p_shape.strides().size(); ++i) {
+            s += std::to_string(this->p_shape.strides()[i]);
+            if (i + 1 < this->p_shape.strides().size()) s += ",";
+        }
 
+        s += "], offset=" + std::to_string(this->p_shape.offset()) + ", contiguous=" + (this->p_shape.is_contiguous()?"true":"false") + ")";
+        return s;
+    }
     [[nodiscard]] virtual bool m_compare(const AObject& obj) const noexcept override { return m_allEqual(obj); }
 
     [[nodiscard]] virtual bool m_allEqual(const AObject& obj) const noexcept override {
@@ -52,7 +69,7 @@ public:
         //    return std::equal(raw(), raw()+size(), other->raw());
 
         std::vector<AArrayBase<T>*> arrays={const_cast<AArrayView<T>*>(this), const_cast<AArrayView<T>*>(other)};
-        ATensorIteratorGeneric<T> it(arrays);
+        ATensorIterator<T> it(arrays);
         bool eq=true;
         it.forEach([&eq](std::vector<T*> ptrs,size_t){ if(*ptrs[0]!=*ptrs[1]) eq=false; });
         return eq;
@@ -65,7 +82,7 @@ public:
         //if(shape().dims()!=other->shape().dims()) return false;
 
         std::vector<AArrayBase<T>*> arrays={const_cast<AArrayView<T>*>(this), const_cast<AArrayView<T>*>(other)};
-        ATensorIteratorGeneric<T> it(arrays);
+        ATensorIterator<T> it(arrays);
         bool close=true;
         it.forEach([eps,&close](std::vector<T*> ptrs,size_t){ if(std::fabs(*ptrs[0]-*ptrs[1])>eps) close=false; });
         return close;
@@ -80,7 +97,7 @@ public:
             std::vector<AArrayBase<T>*> arrays =
             {const_cast<AArrayView<T>*>(this),&out};
 
-            ATensorIteratorGeneric<T> it(arrays);
+            ATensorIterator<T> it(arrays);
 
             it.forEach([](std::vector<T*> p,size_t)
             {

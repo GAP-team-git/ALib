@@ -29,7 +29,10 @@ public:
 
     explicit AShape(const std::vector<size_t>& dims)
         : p_dims(dims) { calcStrides(); }
-
+    
+    AShape(const std::initializer_list<size_t>& dims)
+        : p_dims(dims) { calcStrides(); }
+    
     AShape(const std::vector<size_t>& dims, const std::vector<size_t>& strides, size_t offset = 0)
         : p_dims(dims), p_strides(strides), p_offset(offset)
     {
@@ -147,6 +150,76 @@ public:
         return !(a == b);
     }
 
+    std::vector<size_t> unravel_index(size_t flat) const
+    {
+        size_t r = rank();
+        std::vector<size_t> idx(r);
+
+        const auto& dims = this->dims();
+
+        for(int i = int(r) - 1; i >= 0; --i)
+        {
+            idx[i] = flat % dims[i];
+            flat /= dims[i];
+        }
+
+        return idx;
+    }
+    // optimized version without memory allocations
+    
+    void unravel_index(size_t flat, std::vector<size_t>& idx) const
+    {
+        size_t r = rank();
+        idx.resize(r);
+
+        const auto& dims = this->dims();
+
+        for(int i = int(r) - 1; i >= 0; --i)
+        {
+            idx[i] = flat % dims[i];
+            flat /= dims[i];
+        }
+    }
+    
+    size_t ravel_multi_index(const std::vector<size_t>& idx) const
+    {
+        size_t flat = offset(); // importantissimo per view
+
+        const auto& strides = this->strides();
+
+        for(size_t i = 0; i < idx.size(); ++i)
+            flat += idx[i] * strides[i];
+
+        return flat;
+    }
+    
+    // without std::vector
+    size_t ravel_multi_index(const size_t* idx) const
+    {
+        size_t flat = offset();
+        const auto& strides = this->strides();
+
+        for(size_t i = 0; i < rank(); ++i)
+            flat += idx[i] * strides[i];
+
+        return flat;
+    }
+    // fast inline version
+    inline size_t ravel_multi_index_fast(const std::vector<size_t>& idx) const
+    {
+        size_t flat = offset();
+        const auto& strides = this->strides();
+
+        const size_t* i_ptr = idx.data();
+        const size_t* s_ptr = strides.data();
+
+        for(size_t i = 0; i < idx.size(); ++i)
+            flat += i_ptr[i] * s_ptr[i];
+
+        return flat;
+    }
+    
+    
     // -------------------
     // Slice
     // -------------------
@@ -286,8 +359,12 @@ public:
     static AShape broadcast(const AShape& a, const AShape& b) {
         return AShape::broadcastWithStrides(a, b);
     }
+    
+    void resetStrides(){
+        calcStrides();
+    }
 
-private:
+protected:
     std::vector<size_t> p_dims;
     std::vector<size_t> p_strides;
     size_t p_offset = 0;
@@ -375,4 +452,4 @@ private:
 };
 
 } // namespace Alib
-#endif
+#endif // !ASHAPE_H

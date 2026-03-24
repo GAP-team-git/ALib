@@ -38,8 +38,8 @@ inline BroadcastInfo broadcast(const AShape& A,const AShape& B)
     
     for(size_t i=0;i<rank;i++)
     {
-        int ia = dimsA.size()-1-i;
-        int ib = dimsB.size()-1-i;
+        int64_t ia = dimsA.size()-1-i;
+        int64_t ib = dimsB.size()-1-i;
         
         size_t da = ia>=0 ? dimsA[ia] : 1;
         size_t db = ib>=0 ? dimsB[ib] : 1;

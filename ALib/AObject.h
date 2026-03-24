@@ -177,6 +177,8 @@ protected:
 
     virtual std::ostream& m_printDescription(std::ostream& os) const {
         os << getClassName()+"{" << std::endl;
+        AObject::m_print(os);
+        os << std::endl;
         m_print(os);
         os << std::endl;
         m_printStatus(os);
@@ -185,7 +187,7 @@ protected:
     }
 
     virtual std::ostream& m_printStatus(std::ostream& os) const {
-        os << "Valid: " << p_valid << std::endl << "Error: " << errorName();
+        os << "Valid: " << (p_valid==true?"true":"false") << std::endl << "Error: " << errorName();
         return os;
     }
 
